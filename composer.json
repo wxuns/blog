@@ -1,0 +1,37 @@
+{
+  "name": "wxuns/polite",
+  "description": "High Performance and Extensible PHP Framework",
+  "keywords": ["framework", "yaf" , "wxuns"],
+  "license": "MIT",
+  "type": "project",
+  "authors": [
+    {
+      "name": "wxuns(lizhixu)",
+      "email": "php7ml@gmail.com",
+      "homepage": "https://lizhixu.cn"
+    }
+  ],
+  "require": {
+    "php": ">=7.0",
+    "ext-yaf": "*",
+    "ext-seaslog": "*",
+    "twig/twig": "^2.5",
+    "illuminate/database": "^5.6",
+    "doctrine/dbal": "^2.9"
+  },
+  "require-dev": {
+    "symfony/var-dumper": "^4.1",
+    "filp/whoops": "^2.2",
+    "wxuns/console": "dev-master",
+    "wxuns/migration": "^1.1"
+  },
+  "autoload": {
+    "psr-4": {
+      "App\\Console\\": "app/library/Console"
+    },
+    "files": [
+      "app/library/Console/Command.php",
+      "app/helpers.php"
+    ]
+  }
+}
