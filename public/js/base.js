@@ -14,14 +14,14 @@ function Router() {
 		this.ajax();
 	}
 	this.ajax = function() {
-		req = new XMLHttpRequest();
-		req.open('get',this.hash);
-		req.send();
-		req.onreadystatechange = function() {
-			if (req.readyState == 4 && req.status == 200) {
-				document.getElementById('app').innerHTML = req.responseText
-			}
-		}
+		fetch(this.hash)
+		  .then(function(response) {
+		  	return response.text();
+		  })
+		  .then(function(response) {
+		    $('#app').html(response)
+		    return;
+		  })
 	}
 	this.init = function() {
 		window.addEventListener("load",this.refresh.bind(this),false)
