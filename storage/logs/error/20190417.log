@@ -1,0 +1,9 @@
+2019-04-17 22:17:58 | yaf.error | 7040 | 5cb73596930ff | 1555510678.662 | Failed opening controller script D:\web\wxuns/app\modules\Adminajcn\controllers\Range.php: No such file or directory | D:\web\wxuns\public\index.php in line 7
+2019-04-17 22:18:34 | yaf.error | 7040 | 5cb735b9e8087 | 1555510714.11 | There is no method rangeAction in IndexController | D:\web\wxuns\public\index.php in line 7
+2019-04-17 22:19:12 | yaf.error | 7040 | 5cb735e014362 | 1555510752.137 | There is no method rangeAction in IndexController | D:\web\wxuns\public\index.php in line 7
+2019-04-17 22:19:25 | yaf.error | 7040 | 5cb735ed43bcf | 1555510765.334 | There is no method rangeAction in IndexController | D:\web\wxuns\public\index.php in line 7
+2019-04-17 22:41:37 | yaf.error | 7040 | 5cb73b21b24f9 | 1555512097.787 | Failed opening controller script D:\web\wxuns/app\modules\Test\controllers\Table.php: No such file or directory | D:\web\wxuns\public\index.php in line 7
+2019-04-17 22:41:45 | yaf.error | 7040 | 5cb73b2967dcc | 1555512105.473 | Failed opening controller script D:\web\wxuns/app\modules\Test\controllers\Table.php: No such file or directory | D:\web\wxuns\public\index.php in line 7
+2019-04-17 22:43:13 | yaf.error | 7040 | 5cb73b8105dad | 1555512193.73 | Failed opening controller script D:\web\wxuns/app\modules\Test\controllers\Table.php: No such file or directory | D:\web\wxuns\public\index.php in line 7
+2019-04-17 22:43:55 | yaf.error | 7040 | 5cb73babd4a1a | 1555512235.902 | Failed opening controller script D:\web\wxuns/app\modules\Test\controllers\Table.php: No such file or directory | D:\web\wxuns\public\index.php in line 7
+2019-04-17 22:44:11 | yaf.error | 7040 | 5cb73bbb1b638 | 1555512251.155 | Failed opening controller script D:\web\wxuns/app\modules\Test\controllers\Table.php: No such file or directory | D:\web\wxuns\public\index.php in line 7
