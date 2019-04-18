@@ -14,7 +14,7 @@
         </div>
         <div class="layui-card-body">
             <button class="layui-btn">删除</button>
-            <button class="layui-btn">添加</button>
+            <button class="layui-btn" id="add">添加</button>
             <table class="layui-hide" id="test" lay-filter="test"></table>
         </div>
     </div>
@@ -51,5 +51,17 @@
             ,{fixed: 'right', title:'操作', toolbar: '#barDemo', width:150}
         ]]
         ,page: true
+    });
+    $('#add').click(function () {
+        layer.open({
+            type: 2,
+            area: ['700px', '450px'],
+            fixed: false, //不固定
+            content: 'test/iframe.html'
+        });
+    });
+    layer.msg('灵活运用offset', {
+        offset: 't',
+        anim: 6
     });
 </script>

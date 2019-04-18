@@ -32,16 +32,28 @@ class __TwigTemplate_faa47e82ef7f6e709579aaacb052452119b4831e243a307f585afafd326
     protected function doDisplay(array $context, array $blocks = [])
     {
         // line 1
-        echo "<fieldset class=\"layui-elem-field wx-elem\">
+        echo "
+<fieldset class=\"layui-elem-field wx-elem\">
     <div class=\"layui-field-box\">
     <span class=\"layui-breadcrumb\">
       <a href=\"#/\">首页</a>
       <a>用户</a>
-      <a><cite>导航元素</cite></a>
+      <a><cite>权限管理</cite></a>
     </span>
     </div>
 </fieldset>
-<table class=\"layui-hide\" id=\"test\" lay-filter=\"test\"></table>
+<div class=\"wx-body\">
+    <div class=\"layui-card\">
+        <div class=\"layui-card-header\">
+        </div>
+        <div class=\"layui-card-body\">
+            <button class=\"layui-btn\">删除</button>
+            <button class=\"layui-btn\" id=\"add\">添加</button>
+            <table class=\"layui-hide\" id=\"test\" lay-filter=\"test\"></table>
+        </div>
+    </div>
+</div>
+
 <script type=\"text/html\" id=\"barDemo\">
     <a class=\"layui-btn layui-btn-xs\" lay-event=\"edit\">编辑</a>
     <a class=\"layui-btn layui-btn-danger layui-btn-xs\" lay-event=\"del\">删除</a>
@@ -55,7 +67,6 @@ class __TwigTemplate_faa47e82ef7f6e709579aaacb052452119b4831e243a307f585afafd326
     table.render({
         elem: '#test'
         ,url:'/test/table/demo1.json'
-        ,toolbar: '#toolbarDemo'
         ,title: '用户数据表'
         ,cols: [[
             {type: 'checkbox', fixed: 'left'}
@@ -75,6 +86,18 @@ class __TwigTemplate_faa47e82ef7f6e709579aaacb052452119b4831e243a307f585afafd326
         ]]
         ,page: true
     });
+    \$('#add').click(function () {
+        layer.open({
+            type: 2,
+            area: ['700px', '450px'],
+            fixed: false, //不固定
+            content: 'test/iframe.html'
+        });
+    });
+    layer.msg('灵活运用offset', {
+        offset: 't',
+        anim: 6
+    });
 </script>
 ";
     }
@@ -91,16 +114,28 @@ class __TwigTemplate_faa47e82ef7f6e709579aaacb052452119b4831e243a307f585afafd326
 
     public function getSourceContext()
     {
-        return new Source("<fieldset class=\"layui-elem-field wx-elem\">
+        return new Source("
+<fieldset class=\"layui-elem-field wx-elem\">
     <div class=\"layui-field-box\">
     <span class=\"layui-breadcrumb\">
       <a href=\"#/\">首页</a>
       <a>用户</a>
-      <a><cite>导航元素</cite></a>
+      <a><cite>权限管理</cite></a>
     </span>
     </div>
 </fieldset>
-<table class=\"layui-hide\" id=\"test\" lay-filter=\"test\"></table>
+<div class=\"wx-body\">
+    <div class=\"layui-card\">
+        <div class=\"layui-card-header\">
+        </div>
+        <div class=\"layui-card-body\">
+            <button class=\"layui-btn\">删除</button>
+            <button class=\"layui-btn\" id=\"add\">添加</button>
+            <table class=\"layui-hide\" id=\"test\" lay-filter=\"test\"></table>
+        </div>
+    </div>
+</div>
+
 <script type=\"text/html\" id=\"barDemo\">
     <a class=\"layui-btn layui-btn-xs\" lay-event=\"edit\">编辑</a>
     <a class=\"layui-btn layui-btn-danger layui-btn-xs\" lay-event=\"del\">删除</a>
@@ -114,7 +149,6 @@ class __TwigTemplate_faa47e82ef7f6e709579aaacb052452119b4831e243a307f585afafd326
     table.render({
         elem: '#test'
         ,url:'/test/table/demo1.json'
-        ,toolbar: '#toolbarDemo'
         ,title: '用户数据表'
         ,cols: [[
             {type: 'checkbox', fixed: 'left'}
@@ -133,6 +167,18 @@ class __TwigTemplate_faa47e82ef7f6e709579aaacb052452119b4831e243a307f585afafd326
             ,{fixed: 'right', title:'操作', toolbar: '#barDemo', width:150}
         ]]
         ,page: true
+    });
+    \$('#add').click(function () {
+        layer.open({
+            type: 2,
+            area: ['700px', '450px'],
+            fixed: false, //不固定
+            content: 'test/iframe.html'
+        });
+    });
+    layer.msg('灵活运用offset', {
+        offset: 't',
+        anim: 6
     });
 </script>
 ", "admin/range.twig", "D:\\web\\wxuns\\resources\\views\\admin\\range.twig");
