@@ -1,1 +1,3 @@
-.wx-elem{margin-left: 0px;}
+html{background-color: #f2f2f2;}
+.wx-elem{margin-left: 0px;background-color:#fff}
+.wx-body{padding: 0 15px;}
