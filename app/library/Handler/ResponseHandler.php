@@ -30,7 +30,7 @@ class ResponseHandler extends Handler
      */
     public function saveLog($e)
     {
-        \SeasLog::setBasePath($this::$config->log->path);
+        \SeasLog::setBasePath($this::$config->log['path']);
         \SeasLog::setLogger('error');
         \SeasLog::log('yaf.error', $e->getMessage().' | '.$e->getFile().' in line '.$e->getLine());
     }

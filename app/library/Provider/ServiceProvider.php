@@ -92,7 +92,7 @@ class ServiceProvider implements Dispatcher
                     $sql = preg_replace('/\\?/', "'".addslashes($v)."'", $sql, 1);
                 }
             }
-            \SeasLog::setBasePath($this::$config->log->path);
+            \SeasLog::setBasePath($this::$config->log['path']);
             \SeasLog::setLogger('db');
             \SeasLog::log('DB', $sql.' | time:{time}', ['time'=>$event->time]);
         }
