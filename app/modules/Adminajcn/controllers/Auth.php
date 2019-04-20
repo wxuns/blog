@@ -9,6 +9,12 @@ class AuthController extends BaseController
     }
     public function addRangeAction()
     {
+
+        $request = Request($this->getRequest());
+        if($request){
+            dump($request);
+            exit();
+        }
         $parent = DB::table('range')->where('parent_id',0)->select('id','name')->get();
 
         $this->getView()->display('admin/addrange',['parent'=>$parent,'csrf'=>Csrf::generate('csrf_token')]);

@@ -27,15 +27,14 @@ class Csrf
      */
     public static function check($key, $origin, $throwException = false, $timespan = null, $multiple = false)
     {
-        if (!isset($_SESSION['csrf_'.$key])) {
+        if (!Session::has('csrf_'.$key)) {
             if ($throwException) {
                 throw new \Exception('Missing CSRF session token.');
             } else {
                 return false;
             }
         }
-
-        if (!isset($origin[$key])) {
+        if (!isset($origin->$key)) {
             if ($throwException) {
                 throw new \Exception('Missing CSRF form token.');
             } else {
@@ -44,11 +43,11 @@ class Csrf
         }
 
         // Get valid token from session
-        $hash = $_SESSION['csrf_'.$key];
+        $hash = Session::get('csrf_'.$key);
 
         // Free up session token for one-time CSRF token usage.
         if (!$multiple) {
-            $_SESSION['csrf_'.$key] = null;
+            Session::set('csrf_'.$key, null);
         }
 
         // Origin checks
@@ -59,9 +58,8 @@ class Csrf
                 return false;
             }
         }
-
         // Check if session token matches form token
-        if ($origin[$key] != $hash) {
+        if ($origin->$key != $hash) {
             if ($throwException) {
                 throw new \Exception('Invalid CSRF token.');
             } else {
@@ -102,8 +100,7 @@ class Csrf
         // token generation (basically base64_encode any random complex string, time() is used for token expiration)
         $token = base64_encode(time().$extra.self::randomString(32));
         // store the one-time token in session
-        $_SESSION['csrf_'.$key] = $token;
-
+        Session::set('csrf_'.$key,$token);
         return $token;
     }
 

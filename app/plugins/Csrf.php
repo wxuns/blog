@@ -14,7 +14,7 @@ class CsrfPlugin extends Yaf\Plugin_Abstract
             $except = include APPLICATION_PATH.'/conf/verifycsrftoken.php';
             if (!in_array($request->getRequestUri(), $except)) {
                 try {
-                    Csrf::check('csrf_token', Request($request), true, 60 * 10, false);
+                    Csrf::check('csrf_token', Request($request), true, 60 * 10, true);
                     // Run CSRF check, on POST data, in exception mode, with a validity of 10 minutes, in one-time mode.
                     // form parsing, DB inserts, etc.
                 } catch (Exception $e) {

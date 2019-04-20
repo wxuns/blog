@@ -14,20 +14,20 @@ class Bootstrap extends Yaf\Bootstrap_Abstract
     protected static $config = '';
 
     /**
-     * 开启session.
-     */
-    public function __initSession()
-    {
-        session_save_path(APPLICATION_PATH.'/storage/framework/session');
-        session_start();
-    }
-
-    /**
      * composer自动加载.
      */
     public function _initLoad()
     {
         Yaf\Loader::import(APPLICATION_PATH.'/vendor/autoload.php');
+    }
+
+    /**
+     * 开启session.
+     */
+    public function __initSession()
+    {
+        class_alias('\Tool\Session','Session');
+        Session::start();
     }
 
     /**

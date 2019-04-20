@@ -12,9 +12,13 @@ if (!function_exists('Request')) {
         if ($request->isGet()) {
             return $request->getQuery();
         } else {
-            parse_str(file_get_contents('php://input'), $data);
-
-            return $data;
+            $contents = file_get_contents('php://input');
+            if(is_object($data = json_decode($contents))){
+                return $data;
+            }else{
+                parse_str(file_get_contents('php://input'), $data);
+                return (object)$data;
+            }
         }
     }
 }

@@ -58,7 +58,6 @@ class __TwigTemplate_faa47e82ef7f6e709579aaacb052452119b4831e243a307f585afafd326
     <a class=\"layui-btn layui-btn-xs\" lay-event=\"edit\">编辑</a>
     <a class=\"layui-btn layui-btn-danger layui-btn-xs\" lay-event=\"del\">删除</a>
 </script>
-<!-- 注意：如果你直接复制所有代码到本地，上述js路径需要改成你本地的 -->
 <script type=\"text/javascript\" src=\"./layui/layui.all.js\"></script>
 
 <script>
@@ -88,15 +87,12 @@ class __TwigTemplate_faa47e82ef7f6e709579aaacb052452119b4831e243a307f585afafd326
     });
     \$('#add').click(function () {
         layer.open({
+            title: '添加权限',
             type: 2,
             area: ['700px', '450px'],
             fixed: false, //不固定
-            content: 'test/iframe.html'
+            content: 'addrange'
         });
-    });
-    layer.msg('灵活运用offset', {
-        offset: 't',
-        anim: 6
     });
 </script>
 ";
@@ -140,7 +136,6 @@ class __TwigTemplate_faa47e82ef7f6e709579aaacb052452119b4831e243a307f585afafd326
     <a class=\"layui-btn layui-btn-xs\" lay-event=\"edit\">编辑</a>
     <a class=\"layui-btn layui-btn-danger layui-btn-xs\" lay-event=\"del\">删除</a>
 </script>
-<!-- 注意：如果你直接复制所有代码到本地，上述js路径需要改成你本地的 -->
 <script type=\"text/javascript\" src=\"./layui/layui.all.js\"></script>
 
 <script>
@@ -170,15 +165,12 @@ class __TwigTemplate_faa47e82ef7f6e709579aaacb052452119b4831e243a307f585afafd326
     });
     \$('#add').click(function () {
         layer.open({
+            title: '添加权限',
             type: 2,
             area: ['700px', '450px'],
             fixed: false, //不固定
-            content: 'test/iframe.html'
+            content: 'addrange'
         });
-    });
-    layer.msg('灵活运用offset', {
-        offset: 't',
-        anim: 6
     });
 </script>
 ", "admin/range.twig", "D:\\web\\wxuns\\resources\\views\\admin\\range.twig");
