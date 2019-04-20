@@ -69,7 +69,7 @@ class __TwigTemplate_4178544944ee0b73a9bde6124ae7bc4171d81e6a800cc3dd8f5aef942c0
             <label class=\"layui-form-label\">父级栏目</label>
             <div class=\"layui-input-inline\">
                 <select name=\"parent_id\" lay-search=\"\">
-                    <option value=\"\">直接选择或搜索选择</option>
+                    <option value=\"0\">直接选择或搜索选择</option>
                     ";
         // line 39
         $context['_parent'] = $context;
@@ -78,7 +78,9 @@ class __TwigTemplate_4178544944ee0b73a9bde6124ae7bc4171d81e6a800cc3dd8f5aef942c0
             // line 40
             echo "                    <option value=\"";
             echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["par"], "id", []), "html", null, true);
-            echo "\">layer</option>
+            echo "\">";
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["par"], "name", []), "html", null, true);
+            echo "</option>
                     ";
         }
         $_parent = $context['_parent'];
@@ -93,7 +95,7 @@ class __TwigTemplate_4178544944ee0b73a9bde6124ae7bc4171d81e6a800cc3dd8f5aef942c0
         <div class=\"layui-inline\">
             <label class=\"layui-form-label\">path</label>
             <div class=\"layui-input-inline\">
-                <input type=\"text\" name=\"path\" lay-verify=\"required\" placeholder=\"xxx/xxx\" autocomplete=\"off\" class=\"layui-input\">
+                <input type=\"text\" name=\"path\" placeholder=\"xxx/xxx\" autocomplete=\"off\" class=\"layui-input\">
             </div>
         </div>
     </div>
@@ -124,12 +126,15 @@ class __TwigTemplate_4178544944ee0b73a9bde6124ae7bc4171d81e6a800cc3dd8f5aef942c0
         }).then(function(response) {
             return response.text();
         }).then(function(response) {
-            console.log(response)
+            response = JSON.parse(response)
+            if(response.status == 1){
+                console.log(231)
+                var index = parent.layer.getFrameIndex(window.name);
+                parent.layer.msg(response.msg,{icon:1})
+                parent.layer.close(index);
+            }
             return;
         });
-        layer.alert(JSON.stringify(data.field), {
-            title: '最终的提交信息'
-        })
         return false;
     });
 
@@ -149,7 +154,7 @@ class __TwigTemplate_4178544944ee0b73a9bde6124ae7bc4171d81e6a800cc3dd8f5aef942c0
 
     public function getDebugInfo()
     {
-        return array (  102 => 54,  88 => 42,  79 => 40,  75 => 39,  35 => 1,);
+        return array (  104 => 54,  90 => 42,  79 => 40,  75 => 39,  35 => 1,);
     }
 
     public function getSourceContext()
@@ -191,9 +196,9 @@ class __TwigTemplate_4178544944ee0b73a9bde6124ae7bc4171d81e6a800cc3dd8f5aef942c0
             <label class=\"layui-form-label\">父级栏目</label>
             <div class=\"layui-input-inline\">
                 <select name=\"parent_id\" lay-search=\"\">
-                    <option value=\"\">直接选择或搜索选择</option>
+                    <option value=\"0\">直接选择或搜索选择</option>
                     {% for par in parent %}
-                    <option value=\"{{ par.id }}\">layer</option>
+                    <option value=\"{{ par.id }}\">{{ par.name }}</option>
                     {% endfor %}
                 </select>
             </div>
@@ -203,7 +208,7 @@ class __TwigTemplate_4178544944ee0b73a9bde6124ae7bc4171d81e6a800cc3dd8f5aef942c0
         <div class=\"layui-inline\">
             <label class=\"layui-form-label\">path</label>
             <div class=\"layui-input-inline\">
-                <input type=\"text\" name=\"path\" lay-verify=\"required\" placeholder=\"xxx/xxx\" autocomplete=\"off\" class=\"layui-input\">
+                <input type=\"text\" name=\"path\" placeholder=\"xxx/xxx\" autocomplete=\"off\" class=\"layui-input\">
             </div>
         </div>
     </div>
@@ -231,12 +236,15 @@ class __TwigTemplate_4178544944ee0b73a9bde6124ae7bc4171d81e6a800cc3dd8f5aef942c0
         }).then(function(response) {
             return response.text();
         }).then(function(response) {
-            console.log(response)
+            response = JSON.parse(response)
+            if(response.status == 1){
+                console.log(231)
+                var index = parent.layer.getFrameIndex(window.name);
+                parent.layer.msg(response.msg,{icon:1})
+                parent.layer.close(index);
+            }
             return;
         });
-        layer.alert(JSON.stringify(data.field), {
-            title: '最终的提交信息'
-        })
         return false;
     });
 

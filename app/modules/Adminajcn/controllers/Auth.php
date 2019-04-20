@@ -12,8 +12,11 @@ class AuthController extends BaseController
 
         $request = Request($this->getRequest());
         if($request){
-            dump($request);
-            exit();
+            unset($request->csrf_token);
+            if (DB::table('range')->insert((array)$request)){
+                echo json_encode(['status'=>1,'msg'=>'新的权限添加成功']);
+            }
+            return false;
         }
         $parent = DB::table('range')->where('parent_id',0)->select('id','name')->get();
 

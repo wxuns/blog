@@ -35,9 +35,9 @@
             <label class="layui-form-label">父级栏目</label>
             <div class="layui-input-inline">
                 <select name="parent_id" lay-search="">
-                    <option value="">直接选择或搜索选择</option>
+                    <option value="0">直接选择或搜索选择</option>
                     {% for par in parent %}
-                    <option value="{{ par.id }}">layer</option>
+                    <option value="{{ par.id }}">{{ par.name }}</option>
                     {% endfor %}
                 </select>
             </div>
@@ -47,7 +47,7 @@
         <div class="layui-inline">
             <label class="layui-form-label">path</label>
             <div class="layui-input-inline">
-                <input type="text" name="path" lay-verify="required" placeholder="xxx/xxx" autocomplete="off" class="layui-input">
+                <input type="text" name="path" placeholder="xxx/xxx" autocomplete="off" class="layui-input">
             </div>
         </div>
     </div>
@@ -75,12 +75,15 @@
         }).then(function(response) {
             return response.text();
         }).then(function(response) {
-            console.log(response)
+            response = JSON.parse(response)
+            if(response.status == 1){
+                console.log(231)
+                var index = parent.layer.getFrameIndex(window.name);
+                parent.layer.msg(response.msg,{icon:1})
+                parent.layer.close(index);
+            }
             return;
         });
-        layer.alert(JSON.stringify(data.field), {
-            title: '最终的提交信息'
-        })
         return false;
     });
 
