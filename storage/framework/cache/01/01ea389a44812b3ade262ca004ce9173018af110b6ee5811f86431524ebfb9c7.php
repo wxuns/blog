@@ -84,7 +84,7 @@ class __TwigTemplate_3a7267076082960069b941dc673163f9d5c23dd27e4174b4b31d35c19e9
         <li class=\"layui-nav-item layui-nav-itemed\">
           <a class=\"\" href=\"javascript:;\">用户</a>
           <dl class=\"layui-nav-child\">
-            <dd><a href=\"#/range\">权限范围</a></dd>
+            <dd><a href=\"#/power/range\">权限范围</a></dd>
             <dd><a href=\"javascript:;\">列表二</a></dd>
             <dd><a href=\"javascript:;\">列表三</a></dd>
             <dd><a href=\"\">超链接</a></dd>
@@ -104,12 +104,12 @@ class __TwigTemplate_3a7267076082960069b941dc673163f9d5c23dd27e4174b4b31d35c19e9
     </div>
   </div>
 
-  <div id=\"app\" class=\"layui-body\">
+  <div class=\"layui-body\" id=\"app\">
   </div>
 
   <div class=\"layui-footer\">
     <!-- 底部固定区域 -->
-    © layui.com - 底部固定区域
+    © 文讯天下 - 版权所有
   </div>
 </div>
 <script type=\"text/javascript\" src=\"./layui/layui.all.js\"></script>
@@ -184,7 +184,7 @@ class __TwigTemplate_3a7267076082960069b941dc673163f9d5c23dd27e4174b4b31d35c19e9
         <li class=\"layui-nav-item layui-nav-itemed\">
           <a class=\"\" href=\"javascript:;\">用户</a>
           <dl class=\"layui-nav-child\">
-            <dd><a href=\"#/range\">权限范围</a></dd>
+            <dd><a href=\"#/power/range\">权限范围</a></dd>
             <dd><a href=\"javascript:;\">列表二</a></dd>
             <dd><a href=\"javascript:;\">列表三</a></dd>
             <dd><a href=\"\">超链接</a></dd>
@@ -204,12 +204,12 @@ class __TwigTemplate_3a7267076082960069b941dc673163f9d5c23dd27e4174b4b31d35c19e9
     </div>
   </div>
 
-  <div id=\"app\" class=\"layui-body\">
+  <div class=\"layui-body\" id=\"app\">
   </div>
 
   <div class=\"layui-footer\">
     <!-- 底部固定区域 -->
-    © layui.com - 底部固定区域
+    © 文讯天下 - 版权所有
   </div>
 </div>
 <script type=\"text/javascript\" src=\"./layui/layui.all.js\"></script>

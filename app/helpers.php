@@ -10,7 +10,7 @@ if (!function_exists('Request')) {
     function Request($request)
     {
         if ($request->isGet()) {
-            return $request->getQuery();
+            return $request->getQuery()?(object)$request->getQuery():null;
         } else {
             $contents = file_get_contents('php://input');
             if(is_object($data = json_decode($contents))){

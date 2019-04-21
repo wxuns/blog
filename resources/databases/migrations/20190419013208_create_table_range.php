@@ -11,8 +11,8 @@ class CreateTableRange extends Migration
         $this->schema->create('range', function (Blueprint $table) {
             $table->comment = '权限范围';
             $table->increments('id');
-            $table->string('path',10);
-            $table->string('icon',10);
+            $table->string('path');
+            $table->string('icon',30);
             $table->string('name',10);
             $table->integer('parent_id')->unsigned()->default(0);
         });
