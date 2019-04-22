@@ -22,6 +22,24 @@ class AuthController extends BaseController
         $this->getView()->display('admin/range',['rangelist'=>$rangelist]);
         return false;
     }
+    public function addRangeAction()
+    {
+        $request = Request($this->getRequest());
+        if($request){
+            $request->status = isset($request->status)?1:0;
+            unset($request->csrf_token);
+            if (DB::table('range')->insert((array)$request)){
+                echo json_encode(['status'=>1,'msg'=>'新的权限添加成功']);
+            }
+            return false;
+        }
+        $parent = DB::table('range')
+            ->where('parent_id',0)
+            ->select('id','name')
+            ->get();
+        $this->getView()->display('admin/addrange',['parent'=>$parent,'csrf'=>Csrf::generate('csrf_token')]);
+        return false;
+    }
     public function editrangeAction()
     {
         $request = Request($this->getRequest());
@@ -45,22 +63,24 @@ class AuthController extends BaseController
         ]);
         return false;
     }
-    public function addRangeAction()
+    public function delrangeAction()
     {
         $request = Request($this->getRequest());
-        if($request){
-            $request->status = isset($request->status)?1:0;
-            unset($request->csrf_token);
-            if (DB::table('range')->insert((array)$request)){
-                echo json_encode(['status'=>1,'msg'=>'新的权限添加成功']);
+        if ($request){
+            if(DB::table('range')->where('id',$request->id)->delete()){
+                echo json_encode(['status'=>1,'msg'=>'删除成功']);
             }
-            return false;
         }
-        $parent = DB::table('range')
-            ->where('parent_id',0)
-            ->select('id','name')
-            ->get();
-        $this->getView()->display('admin/addrange',['parent'=>$parent,'csrf'=>Csrf::generate('csrf_token')]);
+        return false;
+    }
+    public function changestatusAction()
+    {
+        $request = Request($this->getRequest());
+        if ($request){
+            if(DB::table('range')->where('id',$request->id)->update((array)$request)){
+                echo json_encode(['status'=>1,'msg'=>'修改成功']);
+            }
+        }
         return false;
     }
 }

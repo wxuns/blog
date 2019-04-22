@@ -37,7 +37,7 @@
                 <select name="parent_id" lay-search="">
                     <option value="0">直接选择或搜索选择</option>
                     {% for par in parent %}
-                    <option value="{{ par.id }}" {{ range.id==par.id ? 'selected':''}}>{{ par.name }}</option>
+                    <option value="{{ par.id }}" {{ range.parent_id==par.id ? 'selected':''}}>{{ par.name }}</option>
                     {% endfor %}
                 </select>
             </div>

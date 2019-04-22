@@ -28,5 +28,3 @@ function Router() {
 		window.addEventListener("hashchange",this.refresh.bind(this),false)
 	}
 }
-var route = new Router();
-route.init()

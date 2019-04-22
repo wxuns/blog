@@ -10,7 +10,6 @@
 <div class="wx-body">
     <div class="layui-card">
         <div class="layui-card-header wx-header">
-            <button class="layui-btn">删除</button>
             <button class="layui-btn" id="add">添加</button>
         </div>
         <div class="layui-card-body">
@@ -26,13 +25,13 @@
                     <th>ID</th>
                     <th>权限名称</th>
                     <th>权限路径</th>
-                    <th class="wx-center">图标</th>
-                    <th class="wx-center">是否显示</th>
-                    <th class="wx-center">操作</th>
+                    <th>图标</th>
+                    <th>是否显示</th>
+                    <th>操作</th>
                 </tr>
                 </thead>
                 <tbody>
-                {% for rangelist in rangelist %}
+                {% for key,rangelist in rangelist %}
                 <tr>
                     <td style="width: 8%;">
                         {% if(rangelist.level) %}
@@ -43,7 +42,7 @@
                     <td>{{ rangelist.path }}</td>
                     <td style="width: 30px;text-align: center"><i class="{{ rangelist.icon }}"></i></td>
                     <td style="width: 10%;text-align: center">
-                        <form class="layui-form" action="">
+                        <form class="layui-form" action="" onclick="changestatus({{ rangelist.id }})" id="changestatus{{ rangelist.id }}">
                             <input type="checkbox" {% if(rangelist.status) %}checked=""{% endif %} name="open" lay-skin="switch" lay-filter="switchTest" lay-text="是|否">
                         </form>
                     </td>
@@ -61,7 +60,7 @@
                     <td>{{ level.path }}</td>
                     <td style="width: 30px;text-align: center"><i class="{{ level.icon }}"></i></td>
                     <td style="width: 10%;text-align: center">
-                        <form class="layui-form" action="">
+                        <form class="layui-form" action="" onclick="changestatus({{ level.id }})" id="changestatus{{ level.id }}">
                             <input type="checkbox" {% if(level.status) %}checked=""{% endif %} name="open" lay-skin="switch" lay-filter="switchTest" lay-text="是|否">
                         </form>
                     </td>
@@ -83,13 +82,19 @@
 <script type="text/javascript" src="./layui/layui.all.js"></script>
 
 <script>
+    var form = layui.form;
+    var status = '';
     $('#add').click(function () {
         layer.open({
             title: '添加权限',
             type: 2,
             area: ['700px', '450px'],
             fixed: false, //不固定
-            content: 'power/addrange'
+            content: 'power/addrange',
+            end:function () {
+                var route = new Router();
+                route.refresh()
+            }
         });
     });
     down = function (id,that) {
@@ -111,8 +116,46 @@
             fixed: false, //不固定
             content: 'power/editrange?id='+id,
             end:function () {
-                window.location.href = '#/power/range'
+                var route = new Router();
+                route.refresh()
             }
+        });
+    }
+    del = function (id) {
+        layer.confirm('删除操作不可逆，确定删除？', {
+            title:'提示信息'
+            ,btn: ['确定','取消'] //按钮
+            ,icon: 2
+        }, function(){
+            fetch('power/delrange?id='+id,{
+                method: 'GET'
+            }).then(function(response) {
+                return response.text();
+            }).then(function(response) {
+                response = JSON.parse(response)
+                if(response.status == 1){
+                    layer.msg(response.msg, {icon: 1});
+                    var route = new Router();
+                    route.refresh()
+                }
+                return;
+            });
+        });
+    }
+    changestatus = function (id) {
+        var status = $('#changestatus'+id+'>.layui-unselect>em').html() == '是'?1:0
+        fetch('power/changestatus?id='+id+'&status='+status,{
+            method: 'GET'
+        }).then(function(response) {
+            return response.text();
+        }).then(function(response) {
+            response = JSON.parse(response)
+            if(response.status == 1){
+                layer.msg(response.msg, {icon: 1});
+                var route = new Router();
+                route.refresh()
+            }
+            return;
         });
     }
 </script>
