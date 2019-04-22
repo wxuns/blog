@@ -32,7 +32,8 @@ class __TwigTemplate_76ebae5b385edf96969523a1478421250ba62de209608f45e1768685289
     protected function doDisplay(array $context, array $blocks = [])
     {
         // line 1
-        echo "213";
+        echo "213
+";
     }
 
     public function getTemplateName()
@@ -47,6 +48,7 @@ class __TwigTemplate_76ebae5b385edf96969523a1478421250ba62de209608f45e1768685289
 
     public function getSourceContext()
     {
-        return new Source("213", "admin/home.twig", "D:\\web\\wxuns\\resources\\views\\admin\\home.twig");
+        return new Source("213
+", "admin/home.twig", "D:\\web\\wxuns\\resources\\views\\admin\\home.twig");
     }
 }

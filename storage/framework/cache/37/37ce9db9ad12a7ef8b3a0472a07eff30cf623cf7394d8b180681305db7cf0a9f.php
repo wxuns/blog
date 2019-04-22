@@ -85,7 +85,7 @@ class __TwigTemplate_4178544944ee0b73a9bde6124ae7bc4171d81e6a800cc3dd8f5aef942c0
             echo "                    <option value=\"";
             echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["par"], "id", []), "html", null, true);
             echo "\" ";
-            echo (((twig_get_attribute($this->env, $this->source, ($context["range"] ?? null), "id", []) == twig_get_attribute($this->env, $this->source, $context["par"], "id", []))) ? ("selected") : (""));
+            echo (((twig_get_attribute($this->env, $this->source, ($context["range"] ?? null), "parent_id", []) == twig_get_attribute($this->env, $this->source, $context["par"], "id", []))) ? ("selected") : (""));
             echo ">";
             echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["par"], "name", []), "html", null, true);
             echo "</option>
@@ -222,7 +222,7 @@ class __TwigTemplate_4178544944ee0b73a9bde6124ae7bc4171d81e6a800cc3dd8f5aef942c0
                 <select name=\"parent_id\" lay-search=\"\">
                     <option value=\"0\">直接选择或搜索选择</option>
                     {% for par in parent %}
-                    <option value=\"{{ par.id }}\" {{ range.id==par.id ? 'selected':''}}>{{ par.name }}</option>
+                    <option value=\"{{ par.id }}\" {{ range.parent_id==par.id ? 'selected':''}}>{{ par.name }}</option>
                     {% endfor %}
                 </select>
             </div>

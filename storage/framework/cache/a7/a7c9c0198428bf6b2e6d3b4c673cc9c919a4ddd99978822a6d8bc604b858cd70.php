@@ -44,7 +44,6 @@ class __TwigTemplate_faa47e82ef7f6e709579aaacb052452119b4831e243a307f585afafd326
 <div class=\"wx-body\">
     <div class=\"layui-card\">
         <div class=\"layui-card-header wx-header\">
-            <button class=\"layui-btn\">删除</button>
             <button class=\"layui-btn\" id=\"add\">添加</button>
         </div>
         <div class=\"layui-card-body\">
@@ -60,49 +59,54 @@ class __TwigTemplate_faa47e82ef7f6e709579aaacb052452119b4831e243a307f585afafd326
                     <th>ID</th>
                     <th>权限名称</th>
                     <th>权限路径</th>
-                    <th class=\"wx-center\">图标</th>
-                    <th class=\"wx-center\">是否显示</th>
-                    <th class=\"wx-center\">操作</th>
+                    <th>图标</th>
+                    <th>是否显示</th>
+                    <th>操作</th>
                 </tr>
                 </thead>
                 <tbody>
                 ";
-        // line 35
+        // line 34
         $context['_parent'] = $context;
         $context['_seq'] = twig_ensure_traversable($context["rangelist"]);
-        foreach ($context['_seq'] as $context["_key"] => $context["rangelist"]) {
-            // line 36
+        foreach ($context['_seq'] as $context["key"] => $context["rangelist"]) {
+            // line 35
             echo "                <tr>
                     <td style=\"width: 8%;\">
                         ";
-            // line 38
+            // line 37
             if (twig_get_attribute($this->env, $this->source, $context["rangelist"], "level", [])) {
-                // line 39
+                // line 38
                 echo "                        <i class=\"layui-icon layui-icon-right\" style=\"cursor:pointer;\" onclick=\"down(";
                 echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["rangelist"], "id", []), "html", null, true);
                 echo ",this)\"></i>
                         ";
             }
-            // line 41
+            // line 40
             echo "                         ";
             echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["rangelist"], "id", []), "html", null, true);
             echo "</td>
                     <td>";
-            // line 42
+            // line 41
             echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["rangelist"], "name", []), "html", null, true);
             echo "</td>
                     <td>";
-            // line 43
+            // line 42
             echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["rangelist"], "path", []), "html", null, true);
             echo "</td>
                     <td style=\"width: 30px;text-align: center\"><i class=\"";
-            // line 44
+            // line 43
             echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["rangelist"], "icon", []), "html", null, true);
             echo "\"></i></td>
                     <td style=\"width: 10%;text-align: center\">
-                        <form class=\"layui-form\" action=\"\">
+                        <form class=\"layui-form\" action=\"\" onclick=\"changestatus(";
+            // line 45
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["rangelist"], "id", []), "html", null, true);
+            echo ")\" id=\"changestatus";
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["rangelist"], "id", []), "html", null, true);
+            echo "\">
                             <input type=\"checkbox\" ";
-            // line 47
+            // line 46
             if (twig_get_attribute($this->env, $this->source, $context["rangelist"], "status", [])) {
                 echo "checked=\"\"";
             }
@@ -112,46 +116,51 @@ class __TwigTemplate_faa47e82ef7f6e709579aaacb052452119b4831e243a307f585afafd326
                     <td style=\"width: 15%;text-align: center\">
                         <div class=\"layui-btn-group\">
                             <button class=\"layui-btn layui-btn-sm\" onclick=\"edit(";
-            // line 52
+            // line 51
             echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["rangelist"], "id", []), "html", null, true);
             echo ")\"><i class=\"layui-icon\"></i></button>
                             <button class=\"layui-btn layui-btn-sm layui-btn-danger\" onclick=\"del(";
-            // line 53
+            // line 52
             echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["rangelist"], "id", []), "html", null, true);
             echo ")\"><i class=\"layui-icon\"></i></button>
                         </div>
                     </td>
                 </tr>
                     ";
-            // line 57
+            // line 56
             $context['_parent'] = $context;
             $context['_seq'] = twig_ensure_traversable(twig_get_attribute($this->env, $this->source, $context["rangelist"], "level", []));
             foreach ($context['_seq'] as $context["_key"] => $context["level"]) {
                 if (twig_get_attribute($this->env, $this->source, $context["rangelist"], "level", [])) {
-                    // line 58
+                    // line 57
                     echo "                <tr class=\"level";
                     echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["rangelist"], "id", []), "html", null, true);
                     echo "\" hidden>
                     <td style=\"width: 8%;\">&emsp;&emsp;";
-                    // line 59
+                    // line 58
                     echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["level"], "id", []), "html", null, true);
                     echo "</td>
                     <td>";
-                    // line 60
+                    // line 59
                     echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["level"], "name", []), "html", null, true);
                     echo "</td>
                     <td>";
-                    // line 61
+                    // line 60
                     echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["level"], "path", []), "html", null, true);
                     echo "</td>
                     <td style=\"width: 30px;text-align: center\"><i class=\"";
-                    // line 62
+                    // line 61
                     echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["level"], "icon", []), "html", null, true);
                     echo "\"></i></td>
                     <td style=\"width: 10%;text-align: center\">
-                        <form class=\"layui-form\" action=\"\">
+                        <form class=\"layui-form\" action=\"\" onclick=\"changestatus(";
+                    // line 63
+                    echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["level"], "id", []), "html", null, true);
+                    echo ")\" id=\"changestatus";
+                    echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["level"], "id", []), "html", null, true);
+                    echo "\">
                             <input type=\"checkbox\" ";
-                    // line 65
+                    // line 64
                     if (twig_get_attribute($this->env, $this->source, $context["level"], "status", [])) {
                         echo "checked=\"\"";
                     }
@@ -161,11 +170,11 @@ class __TwigTemplate_faa47e82ef7f6e709579aaacb052452119b4831e243a307f585afafd326
                     <td style=\"width: 15%;text-align: center\">
                         <div class=\"layui-btn-group\">
                             <button class=\"layui-btn layui-btn-sm\" onclick=\"edit(";
-                    // line 70
+                    // line 69
                     echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["level"], "id", []), "html", null, true);
                     echo ")\"><i class=\"layui-icon\"></i></button>
                             <button class=\"layui-btn layui-btn-sm layui-btn-danger\" onclick=\"del(";
-                    // line 71
+                    // line 70
                     echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["level"], "id", []), "html", null, true);
                     echo ")\"><i class=\"layui-icon\"></i></button>
                         </div>
@@ -177,13 +186,13 @@ class __TwigTemplate_faa47e82ef7f6e709579aaacb052452119b4831e243a307f585afafd326
             $_parent = $context['_parent'];
             unset($context['_seq'], $context['_iterated'], $context['_key'], $context['level'], $context['_parent'], $context['loop']);
             $context = array_intersect_key($context, $_parent) + $_parent;
-            // line 76
+            // line 75
             echo "                ";
         }
         $_parent = $context['_parent'];
-        unset($context['_seq'], $context['_iterated'], $context['_key'], $context['rangelist'], $context['_parent'], $context['loop']);
+        unset($context['_seq'], $context['_iterated'], $context['key'], $context['rangelist'], $context['_parent'], $context['loop']);
         $context = array_intersect_key($context, $_parent) + $_parent;
-        // line 77
+        // line 76
         echo "                </tbody>
             </table>
         </div>
@@ -193,13 +202,19 @@ class __TwigTemplate_faa47e82ef7f6e709579aaacb052452119b4831e243a307f585afafd326
 <script type=\"text/javascript\" src=\"./layui/layui.all.js\"></script>
 
 <script>
+    var form = layui.form;
+    var status = '';
     \$('#add').click(function () {
         layer.open({
             title: '添加权限',
             type: 2,
             area: ['700px', '450px'],
             fixed: false, //不固定
-            content: 'power/addrange'
+            content: 'power/addrange',
+            end:function () {
+                var route = new Router();
+                route.refresh()
+            }
         });
     });
     down = function (id,that) {
@@ -221,8 +236,46 @@ class __TwigTemplate_faa47e82ef7f6e709579aaacb052452119b4831e243a307f585afafd326
             fixed: false, //不固定
             content: 'power/editrange?id='+id,
             end:function () {
-                window.location.href = '#/power/range'
+                var route = new Router();
+                route.refresh()
             }
+        });
+    }
+    del = function (id) {
+        layer.confirm('删除操作不可逆，确定删除？', {
+            title:'提示信息'
+            ,btn: ['确定','取消'] //按钮
+            ,icon: 2
+        }, function(){
+            fetch('power/delrange?id='+id,{
+                method: 'GET'
+            }).then(function(response) {
+                return response.text();
+            }).then(function(response) {
+                response = JSON.parse(response)
+                if(response.status == 1){
+                    layer.msg(response.msg, {icon: 1});
+                    var route = new Router();
+                    route.refresh()
+                }
+                return;
+            });
+        });
+    }
+    changestatus = function (id) {
+        var status = \$('#changestatus'+id+'>.layui-unselect>em').html() == '是'?1:0
+        fetch('power/changestatus?id='+id+'&status='+status,{
+            method: 'GET'
+        }).then(function(response) {
+            return response.text();
+        }).then(function(response) {
+            response = JSON.parse(response)
+            if(response.status == 1){
+                layer.msg(response.msg, {icon: 1});
+                var route = new Router();
+                route.refresh()
+            }
+            return;
         });
     }
 </script>
@@ -241,7 +294,7 @@ class __TwigTemplate_faa47e82ef7f6e709579aaacb052452119b4831e243a307f585afafd326
 
     public function getDebugInfo()
     {
-        return array (  187 => 77,  181 => 76,  169 => 71,  165 => 70,  155 => 65,  149 => 62,  145 => 61,  141 => 60,  137 => 59,  132 => 58,  127 => 57,  120 => 53,  116 => 52,  106 => 47,  100 => 44,  96 => 43,  92 => 42,  87 => 41,  81 => 39,  79 => 38,  75 => 36,  71 => 35,  35 => 1,);
+        return array (  196 => 76,  190 => 75,  178 => 70,  174 => 69,  164 => 64,  158 => 63,  153 => 61,  149 => 60,  145 => 59,  141 => 58,  136 => 57,  131 => 56,  124 => 52,  120 => 51,  110 => 46,  104 => 45,  99 => 43,  95 => 42,  91 => 41,  86 => 40,  80 => 38,  78 => 37,  74 => 35,  70 => 34,  35 => 1,);
     }
 
     public function getSourceContext()
@@ -258,7 +311,6 @@ class __TwigTemplate_faa47e82ef7f6e709579aaacb052452119b4831e243a307f585afafd326
 <div class=\"wx-body\">
     <div class=\"layui-card\">
         <div class=\"layui-card-header wx-header\">
-            <button class=\"layui-btn\">删除</button>
             <button class=\"layui-btn\" id=\"add\">添加</button>
         </div>
         <div class=\"layui-card-body\">
@@ -274,13 +326,13 @@ class __TwigTemplate_faa47e82ef7f6e709579aaacb052452119b4831e243a307f585afafd326
                     <th>ID</th>
                     <th>权限名称</th>
                     <th>权限路径</th>
-                    <th class=\"wx-center\">图标</th>
-                    <th class=\"wx-center\">是否显示</th>
-                    <th class=\"wx-center\">操作</th>
+                    <th>图标</th>
+                    <th>是否显示</th>
+                    <th>操作</th>
                 </tr>
                 </thead>
                 <tbody>
-                {% for rangelist in rangelist %}
+                {% for key,rangelist in rangelist %}
                 <tr>
                     <td style=\"width: 8%;\">
                         {% if(rangelist.level) %}
@@ -291,7 +343,7 @@ class __TwigTemplate_faa47e82ef7f6e709579aaacb052452119b4831e243a307f585afafd326
                     <td>{{ rangelist.path }}</td>
                     <td style=\"width: 30px;text-align: center\"><i class=\"{{ rangelist.icon }}\"></i></td>
                     <td style=\"width: 10%;text-align: center\">
-                        <form class=\"layui-form\" action=\"\">
+                        <form class=\"layui-form\" action=\"\" onclick=\"changestatus({{ rangelist.id }})\" id=\"changestatus{{ rangelist.id }}\">
                             <input type=\"checkbox\" {% if(rangelist.status) %}checked=\"\"{% endif %} name=\"open\" lay-skin=\"switch\" lay-filter=\"switchTest\" lay-text=\"是|否\">
                         </form>
                     </td>
@@ -309,7 +361,7 @@ class __TwigTemplate_faa47e82ef7f6e709579aaacb052452119b4831e243a307f585afafd326
                     <td>{{ level.path }}</td>
                     <td style=\"width: 30px;text-align: center\"><i class=\"{{ level.icon }}\"></i></td>
                     <td style=\"width: 10%;text-align: center\">
-                        <form class=\"layui-form\" action=\"\">
+                        <form class=\"layui-form\" action=\"\" onclick=\"changestatus({{ level.id }})\" id=\"changestatus{{ level.id }}\">
                             <input type=\"checkbox\" {% if(level.status) %}checked=\"\"{% endif %} name=\"open\" lay-skin=\"switch\" lay-filter=\"switchTest\" lay-text=\"是|否\">
                         </form>
                     </td>
@@ -331,13 +383,19 @@ class __TwigTemplate_faa47e82ef7f6e709579aaacb052452119b4831e243a307f585afafd326
 <script type=\"text/javascript\" src=\"./layui/layui.all.js\"></script>
 
 <script>
+    var form = layui.form;
+    var status = '';
     \$('#add').click(function () {
         layer.open({
             title: '添加权限',
             type: 2,
             area: ['700px', '450px'],
             fixed: false, //不固定
-            content: 'power/addrange'
+            content: 'power/addrange',
+            end:function () {
+                var route = new Router();
+                route.refresh()
+            }
         });
     });
     down = function (id,that) {
@@ -359,8 +417,46 @@ class __TwigTemplate_faa47e82ef7f6e709579aaacb052452119b4831e243a307f585afafd326
             fixed: false, //不固定
             content: 'power/editrange?id='+id,
             end:function () {
-                window.location.href = '#/power/range'
+                var route = new Router();
+                route.refresh()
             }
+        });
+    }
+    del = function (id) {
+        layer.confirm('删除操作不可逆，确定删除？', {
+            title:'提示信息'
+            ,btn: ['确定','取消'] //按钮
+            ,icon: 2
+        }, function(){
+            fetch('power/delrange?id='+id,{
+                method: 'GET'
+            }).then(function(response) {
+                return response.text();
+            }).then(function(response) {
+                response = JSON.parse(response)
+                if(response.status == 1){
+                    layer.msg(response.msg, {icon: 1});
+                    var route = new Router();
+                    route.refresh()
+                }
+                return;
+            });
+        });
+    }
+    changestatus = function (id) {
+        var status = \$('#changestatus'+id+'>.layui-unselect>em').html() == '是'?1:0
+        fetch('power/changestatus?id='+id+'&status='+status,{
+            method: 'GET'
+        }).then(function(response) {
+            return response.text();
+        }).then(function(response) {
+            response = JSON.parse(response)
+            if(response.status == 1){
+                layer.msg(response.msg, {icon: 1});
+                var route = new Router();
+                route.refresh()
+            }
+            return;
         });
     }
 </script>
