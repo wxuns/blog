@@ -4,6 +4,7 @@ class IndexController extends BaseController
 {
 	public function indexAction()
 	{
+	    //目录菜单
         $rangelist = DB::table('range')->get();
         foreach($rangelist as $k=>$v){
             if ($v->parent_id > 0){
