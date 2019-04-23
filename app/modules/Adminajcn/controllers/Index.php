@@ -23,9 +23,25 @@ class IndexController extends BaseController
 		$this->getView()->display('admin/index',['rangelist'=>$rangelist]);
 		return false;
 	}
-	public function testAction()
+	public function getmenuAction()
 	{
-		$this->getView()->display('admin/test');
+        //目录菜单
+        $rangelist = DB::table('range')->get();
+        foreach($rangelist as $k=>$v){
+            if ($v->parent_id > 0){
+                foreach ($rangelist as $key=>$value){
+                    if ($value->id == $v->parent_id){
+                        if (isset($rangelist[$key]->level)){
+                            array_push($rangelist[$key]->level,$v);
+                        }else{
+                            $rangelist[$key]->level[] = $v;
+                        }
+                        unset($rangelist[$k]);
+                    }
+                }
+            }
+        }
+        echo json_encode($rangelist);
 		return false;
 	}
 	public function homeAction()

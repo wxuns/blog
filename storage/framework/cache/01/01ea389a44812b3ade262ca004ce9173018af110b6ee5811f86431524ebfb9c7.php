@@ -45,6 +45,7 @@ class __TwigTemplate_3a7267076082960069b941dc673163f9d5c23dd27e4174b4b31d35c19e9
   <link rel=\"stylesheet\" href=\"./css/base.css\">
   <script src=\"https://cdn.bootcss.com/jquery/3.4.0/jquery.min.js\"></script>
   <script type=\"text/javascript\" src=\"/js/base.js\"></script>
+  <script type=\"text/javascript\" src=\"/js/menu.js\"></script>
 </head>
 <body class=\"layui-layout-body\">
 <div class=\"layui-layout layui-layout-admin\">
@@ -85,7 +86,7 @@ class __TwigTemplate_3a7267076082960069b941dc673163f9d5c23dd27e4174b4b31d35c19e9
       <!-- 左侧导航区域（可配合layui已有的垂直导航） -->
       <aside class=\"main-sidebar\">
         <section class=\"sidebar\">
-          <ul class=\"sidebar-menu layui-nav layui-nav-tree site-demo-nav\">
+          <ul class=\"sidebar-menu layui-nav layui-nav-tree site-demo-nav\" id=\"menudom\">
             <li class=\"treeview active\">
               <a href=\"#/\">
                 <i class=\"fa fa-dashboard\"></i> <span>仪表盘</span> <i class=\"fa fa-angle-right pull-right\"></i>
@@ -95,129 +96,53 @@ class __TwigTemplate_3a7267076082960069b941dc673163f9d5c23dd27e4174b4b31d35c19e9
                 <li><a href=\"#/power/range\"><i class=\"fa fa-circle-o\"></i> 权限范围</a></li>
               </ul>
             </li>
-            <li class=\"treeview\">
-              <a href=\"#/\">
-                <i class=\"fa fa-files-o\"></i>
-                <span>布局选项</span>
-                <span class=\"label label-primary pull-right\">4</span>
-              </a>
-              <ul class=\"treeview-menu\" style=\"display: none;\">
-                <li><a href=\"#/\"><i class=\"fa fa-circle-o\"></i> 顶部导航</a></li>
-                <li><a href=\"#/\"><i class=\"fa fa-circle-o\"></i> 盒子布局</a></li>
-                <li><a href=\"#/\"><i class=\"fa fa-circle-o\"></i> 固定布局</a></li>
-                <li class=\"\"><a href=\"#/\"><i class=\"fa fa-circle-o\"></i> 折叠侧边栏</a>
-                </li>
-              </ul>
-            </li>
-            <li>
-              <a href=\"#/\">
-                <i class=\"fa fa-th\"></i> <span>窗口小部件</span>
-                <small class=\"label pull-right label-info\">新的</small>
-              </a>
-            </li>
-            <li class=\"treeview\">
-              <a href=\"#/\">
-                <i class=\"fa fa-pie-chart\"></i>
-                <span>图表</span>
+            ";
+        // line 65
+        $context['_parent'] = $context;
+        $context['_seq'] = twig_ensure_traversable($context["rangelist"]);
+        foreach ($context['_seq'] as $context["_key"] => $context["rangelist"]) {
+            // line 66
+            echo "            <li class=\"treeview\">
+              <a href=\"javascript:;\">
+                <i class=\"";
+            // line 68
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["rangelist"], "icon", []), "html", null, true);
+            echo "\"></i>
+                <span>";
+            // line 69
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["rangelist"], "name", []), "html", null, true);
+            echo "</span>
                 <i class=\"fa fa-angle-right pull-right\"></i>
               </a>
               <ul class=\"treeview-menu\" style=\"display: none;\">
-                <li><a href=\"#/\"><i class=\"fa fa-circle-o\"></i> ChartJS</a></li>
-                <li><a href=\"#/\"><i class=\"fa fa-circle-o\"></i> Morris</a></li>
-                <li><a href=\"#/\"><i class=\"fa fa-circle-o\"></i> Flot</a></li>
-                <li><a href=\"#/\"><i class=\"fa fa-circle-o\"></i> Inline charts</a></li>
-              </ul>
+                ";
+            // line 73
+            $context['_parent'] = $context;
+            $context['_seq'] = twig_ensure_traversable(twig_get_attribute($this->env, $this->source, $context["rangelist"], "level", []));
+            foreach ($context['_seq'] as $context["_key"] => $context["level"]) {
+                if ((twig_get_attribute($this->env, $this->source, $context["level"], "status", []) == 1)) {
+                    // line 74
+                    echo "                <li><a href=\"#/";
+                    echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["level"], "path", []), "html", null, true);
+                    echo "\"><i class=\"fa fa-circle-o\"></i> ";
+                    echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["level"], "name", []), "html", null, true);
+                    echo "</a></li>
+                ";
+                }
+            }
+            $_parent = $context['_parent'];
+            unset($context['_seq'], $context['_iterated'], $context['_key'], $context['level'], $context['_parent'], $context['loop']);
+            $context = array_intersect_key($context, $_parent) + $_parent;
+            // line 76
+            echo "              </ul>
             </li>
-            <li class=\"treeview\">
-              <a href=\"#/\">
-                <i class=\"fa fa-laptop\"></i>
-                <span>UI 元素</span>
-                <i class=\"fa fa-angle-right pull-right\"></i>
-              </a>
-              <ul class=\"treeview-menu\" style=\"display: none;\">
-                <li><a href=\"#/\"><i class=\"fa fa-circle-o\"></i> 一般</a></li>
-                <li><a href=\"#/\"><i class=\"fa fa-circle-o\"></i> Icons图标</a></li>
-                <li><a href=\"#/\"><i class=\"fa fa-circle-o\"></i> 按钮</a></li>
-                <li><a href=\"#/\"><i class=\"fa fa-circle-o\"></i> 滑块</a></li>
-                <li><a href=\"#/\"><i class=\"fa fa-circle-o\"></i> 时间表</a></li>
-                <li><a href=\"#/\"><i class=\"fa fa-circle-o\"></i> 模态框</a></li>
-              </ul>
-            </li>
-            <li class=\"treeview\">
-              <a href=\"#/\">
-                <i class=\"fa fa-edit\"></i> <span>表单</span>
-                <i class=\"fa fa-angle-right pull-right\"></i>
-              </a>
-              <ul class=\"treeview-menu\" style=\"display: none;\">
-                <li><a href=\"#/\"><i class=\"fa fa-circle-o\"></i> 一般表单</a></li>
-                <li><a href=\"#/\"><i class=\"fa fa-circle-o\"></i> 高级表单</a></li>
-                <li><a href=\"#/\"><i class=\"fa fa-circle-o\"></i> 可编辑表单</a></li>
-              </ul>
-            </li>
-            <li class=\"treeview\">
-              <a href=\"#/\">
-                <i class=\"fa fa-table\"></i> <span>表格</span>
-                <i class=\"fa fa-angle-right pull-right\"></i>
-              </a>
-              <ul class=\"treeview-menu\" style=\"display: none;\">
-                <li><a href=\"#/\"><i class=\"fa fa-circle-o\"></i> 简单表格</a></li>
-                <li><a href=\"#/\"><i class=\"fa fa-circle-o\"></i> 时间表格</a></li>
-              </ul>
-            </li>
-            <li>
-              <a href=\"#/\">
-                <i class=\"fa fa-calendar\"></i> <span>日历</span>
-                <small class=\"label pull-right label-danger\">3</small>
-              </a>
-            </li>
-            <li>
-              <a href=\"#/\">
-                <i class=\"fa fa-envelope\"></i> <span>邮箱</span>
-                <small class=\"label pull-right label-warning\">12</small>
-              </a>
-            </li>
-            <li class=\"treeview\">
-              <a href=\"#/\">
-                <i class=\"fa fa-folder\"></i> <span>实例</span>
-                <i class=\"fa fa-angle-right pull-right\"></i>
-              </a>
-              <ul class=\"treeview-menu\">
-                <li><a href=\"#/\"><i class=\"fa fa-circle-o\"></i> 清单</a></li>
-                <li><a href=\"#/\"><i class=\"fa fa-circle-o\"></i> 简况</a></li>
-                <li><a href=\"#/\"><i class=\"fa fa-circle-o\"></i> 登录</a></li>
-                <li><a href=\"#/\"><i class=\"fa fa-circle-o\"></i> 注册</a></li>
-                <li><a href=\"#/\"><i class=\"fa fa-circle-o\"></i> 锁频</a></li>
-                <li><a href=\"#/\"><i class=\"fa fa-circle-o\"></i> 404 错误</a></li>
-                <li><a href=\"#/\"><i class=\"fa fa-circle-o\"></i> 500 错误</a></li>
-                <li><a href=\"#/\"><i class=\"fa fa-circle-o\"></i> 空白页面</a></li>
-                <li><a href=\"#/\"><i class=\"fa fa-circle-o\"></i> 自适应页面</a></li>
-              </ul>
-            </li>
-            <li class=\"treeview\">
-              <a href=\"#/\">
-                <i class=\"fa fa-share\"></i> <span>多级</span>
-                <i class=\"fa fa-angle-right pull-right\"></i>
-              </a>
-              <ul class=\"treeview-menu\">
-                <li><a href=\"#/\"><i class=\"fa fa-circle-o\"></i> 一级</a></li>
-                <li>
-                  <a href=\"#/\"><i class=\"fa fa-circle-o\"></i> 一级 <i class=\"fa fa-angle-right pull-right\"></i></a>
-                  <ul class=\"treeview-menu\">
-                    <li><a href=\"#/\"><i class=\"fa fa-circle-o\"></i> 二级</a></li>
-                    <li>
-                      <a href=\"#/\"><i class=\"fa fa-circle-o\"></i> 二级 <i class=\"fa fa-angle-right pull-right\"></i></a>
-                      <ul class=\"treeview-menu\">
-                        <li><a href=\"#/\"><i class=\"fa fa-circle-o\"></i> 三级</a></li>
-                        <li><a href=\"#/\"><i class=\"fa fa-circle-o\"></i> 三级</a></li>
-                      </ul>
-                    </li>
-                  </ul>
-                </li>
-                <li><a href=\"#/\"><i class=\"fa fa-circle-o\"></i> 一级</a></li>
-              </ul>
-            </li>
-            <li><a href=\"#/\"><i class=\"fa fa-book\"></i> <span>文档</span></a></li>
-          </ul>
+            ";
+        }
+        $_parent = $context['_parent'];
+        unset($context['_seq'], $context['_iterated'], $context['_key'], $context['rangelist'], $context['_parent'], $context['loop']);
+        $context = array_intersect_key($context, $_parent) + $_parent;
+        // line 79
+        echo "          </ul>
         </section>
       </aside>
     </div>
@@ -248,9 +173,14 @@ class __TwigTemplate_3a7267076082960069b941dc673163f9d5c23dd27e4174b4b31d35c19e9
         return "admin/index.twig";
     }
 
+    public function isTraitable()
+    {
+        return false;
+    }
+
     public function getDebugInfo()
     {
-        return array (  35 => 1,);
+        return array (  145 => 79,  137 => 76,  125 => 74,  120 => 73,  113 => 69,  109 => 68,  105 => 66,  101 => 65,  35 => 1,);
     }
 
     public function getSourceContext()
@@ -268,6 +198,7 @@ class __TwigTemplate_3a7267076082960069b941dc673163f9d5c23dd27e4174b4b31d35c19e9
   <link rel=\"stylesheet\" href=\"./css/base.css\">
   <script src=\"https://cdn.bootcss.com/jquery/3.4.0/jquery.min.js\"></script>
   <script type=\"text/javascript\" src=\"/js/base.js\"></script>
+  <script type=\"text/javascript\" src=\"/js/menu.js\"></script>
 </head>
 <body class=\"layui-layout-body\">
 <div class=\"layui-layout layui-layout-admin\">
@@ -308,7 +239,7 @@ class __TwigTemplate_3a7267076082960069b941dc673163f9d5c23dd27e4174b4b31d35c19e9
       <!-- 左侧导航区域（可配合layui已有的垂直导航） -->
       <aside class=\"main-sidebar\">
         <section class=\"sidebar\">
-          <ul class=\"sidebar-menu layui-nav layui-nav-tree site-demo-nav\">
+          <ul class=\"sidebar-menu layui-nav layui-nav-tree site-demo-nav\" id=\"menudom\">
             <li class=\"treeview active\">
               <a href=\"#/\">
                 <i class=\"fa fa-dashboard\"></i> <span>仪表盘</span> <i class=\"fa fa-angle-right pull-right\"></i>
@@ -318,128 +249,20 @@ class __TwigTemplate_3a7267076082960069b941dc673163f9d5c23dd27e4174b4b31d35c19e9
                 <li><a href=\"#/power/range\"><i class=\"fa fa-circle-o\"></i> 权限范围</a></li>
               </ul>
             </li>
+            {% for rangelist in rangelist %}
             <li class=\"treeview\">
-              <a href=\"#/\">
-                <i class=\"fa fa-files-o\"></i>
-                <span>布局选项</span>
-                <span class=\"label label-primary pull-right\">4</span>
-              </a>
-              <ul class=\"treeview-menu\" style=\"display: none;\">
-                <li><a href=\"#/\"><i class=\"fa fa-circle-o\"></i> 顶部导航</a></li>
-                <li><a href=\"#/\"><i class=\"fa fa-circle-o\"></i> 盒子布局</a></li>
-                <li><a href=\"#/\"><i class=\"fa fa-circle-o\"></i> 固定布局</a></li>
-                <li class=\"\"><a href=\"#/\"><i class=\"fa fa-circle-o\"></i> 折叠侧边栏</a>
-                </li>
-              </ul>
-            </li>
-            <li>
-              <a href=\"#/\">
-                <i class=\"fa fa-th\"></i> <span>窗口小部件</span>
-                <small class=\"label pull-right label-info\">新的</small>
-              </a>
-            </li>
-            <li class=\"treeview\">
-              <a href=\"#/\">
-                <i class=\"fa fa-pie-chart\"></i>
-                <span>图表</span>
+              <a href=\"javascript:;\">
+                <i class=\"{{ rangelist.icon }}\"></i>
+                <span>{{ rangelist.name }}</span>
                 <i class=\"fa fa-angle-right pull-right\"></i>
               </a>
               <ul class=\"treeview-menu\" style=\"display: none;\">
-                <li><a href=\"#/\"><i class=\"fa fa-circle-o\"></i> ChartJS</a></li>
-                <li><a href=\"#/\"><i class=\"fa fa-circle-o\"></i> Morris</a></li>
-                <li><a href=\"#/\"><i class=\"fa fa-circle-o\"></i> Flot</a></li>
-                <li><a href=\"#/\"><i class=\"fa fa-circle-o\"></i> Inline charts</a></li>
+                {% for level in rangelist.level if level.status == 1 %}
+                <li><a href=\"#/{{ level.path }}\"><i class=\"fa fa-circle-o\"></i> {{ level.name }}</a></li>
+                {% endfor %}
               </ul>
             </li>
-            <li class=\"treeview\">
-              <a href=\"#/\">
-                <i class=\"fa fa-laptop\"></i>
-                <span>UI 元素</span>
-                <i class=\"fa fa-angle-right pull-right\"></i>
-              </a>
-              <ul class=\"treeview-menu\" style=\"display: none;\">
-                <li><a href=\"#/\"><i class=\"fa fa-circle-o\"></i> 一般</a></li>
-                <li><a href=\"#/\"><i class=\"fa fa-circle-o\"></i> Icons图标</a></li>
-                <li><a href=\"#/\"><i class=\"fa fa-circle-o\"></i> 按钮</a></li>
-                <li><a href=\"#/\"><i class=\"fa fa-circle-o\"></i> 滑块</a></li>
-                <li><a href=\"#/\"><i class=\"fa fa-circle-o\"></i> 时间表</a></li>
-                <li><a href=\"#/\"><i class=\"fa fa-circle-o\"></i> 模态框</a></li>
-              </ul>
-            </li>
-            <li class=\"treeview\">
-              <a href=\"#/\">
-                <i class=\"fa fa-edit\"></i> <span>表单</span>
-                <i class=\"fa fa-angle-right pull-right\"></i>
-              </a>
-              <ul class=\"treeview-menu\" style=\"display: none;\">
-                <li><a href=\"#/\"><i class=\"fa fa-circle-o\"></i> 一般表单</a></li>
-                <li><a href=\"#/\"><i class=\"fa fa-circle-o\"></i> 高级表单</a></li>
-                <li><a href=\"#/\"><i class=\"fa fa-circle-o\"></i> 可编辑表单</a></li>
-              </ul>
-            </li>
-            <li class=\"treeview\">
-              <a href=\"#/\">
-                <i class=\"fa fa-table\"></i> <span>表格</span>
-                <i class=\"fa fa-angle-right pull-right\"></i>
-              </a>
-              <ul class=\"treeview-menu\" style=\"display: none;\">
-                <li><a href=\"#/\"><i class=\"fa fa-circle-o\"></i> 简单表格</a></li>
-                <li><a href=\"#/\"><i class=\"fa fa-circle-o\"></i> 时间表格</a></li>
-              </ul>
-            </li>
-            <li>
-              <a href=\"#/\">
-                <i class=\"fa fa-calendar\"></i> <span>日历</span>
-                <small class=\"label pull-right label-danger\">3</small>
-              </a>
-            </li>
-            <li>
-              <a href=\"#/\">
-                <i class=\"fa fa-envelope\"></i> <span>邮箱</span>
-                <small class=\"label pull-right label-warning\">12</small>
-              </a>
-            </li>
-            <li class=\"treeview\">
-              <a href=\"#/\">
-                <i class=\"fa fa-folder\"></i> <span>实例</span>
-                <i class=\"fa fa-angle-right pull-right\"></i>
-              </a>
-              <ul class=\"treeview-menu\">
-                <li><a href=\"#/\"><i class=\"fa fa-circle-o\"></i> 清单</a></li>
-                <li><a href=\"#/\"><i class=\"fa fa-circle-o\"></i> 简况</a></li>
-                <li><a href=\"#/\"><i class=\"fa fa-circle-o\"></i> 登录</a></li>
-                <li><a href=\"#/\"><i class=\"fa fa-circle-o\"></i> 注册</a></li>
-                <li><a href=\"#/\"><i class=\"fa fa-circle-o\"></i> 锁频</a></li>
-                <li><a href=\"#/\"><i class=\"fa fa-circle-o\"></i> 404 错误</a></li>
-                <li><a href=\"#/\"><i class=\"fa fa-circle-o\"></i> 500 错误</a></li>
-                <li><a href=\"#/\"><i class=\"fa fa-circle-o\"></i> 空白页面</a></li>
-                <li><a href=\"#/\"><i class=\"fa fa-circle-o\"></i> 自适应页面</a></li>
-              </ul>
-            </li>
-            <li class=\"treeview\">
-              <a href=\"#/\">
-                <i class=\"fa fa-share\"></i> <span>多级</span>
-                <i class=\"fa fa-angle-right pull-right\"></i>
-              </a>
-              <ul class=\"treeview-menu\">
-                <li><a href=\"#/\"><i class=\"fa fa-circle-o\"></i> 一级</a></li>
-                <li>
-                  <a href=\"#/\"><i class=\"fa fa-circle-o\"></i> 一级 <i class=\"fa fa-angle-right pull-right\"></i></a>
-                  <ul class=\"treeview-menu\">
-                    <li><a href=\"#/\"><i class=\"fa fa-circle-o\"></i> 二级</a></li>
-                    <li>
-                      <a href=\"#/\"><i class=\"fa fa-circle-o\"></i> 二级 <i class=\"fa fa-angle-right pull-right\"></i></a>
-                      <ul class=\"treeview-menu\">
-                        <li><a href=\"#/\"><i class=\"fa fa-circle-o\"></i> 三级</a></li>
-                        <li><a href=\"#/\"><i class=\"fa fa-circle-o\"></i> 三级</a></li>
-                      </ul>
-                    </li>
-                  </ul>
-                </li>
-                <li><a href=\"#/\"><i class=\"fa fa-circle-o\"></i> 一级</a></li>
-              </ul>
-            </li>
-            <li><a href=\"#/\"><i class=\"fa fa-book\"></i> <span>文档</span></a></li>
+            {% endfor %}
           </ul>
         </section>
       </aside>
