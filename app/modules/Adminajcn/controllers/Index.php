@@ -26,7 +26,7 @@ class IndexController extends BaseController
 	public function getmenuAction()
 	{
         //目录菜单
-        $rangelist = DB::table('range')->get();
+        $rangelist = DB::table('range')->where('status',1)->get();
         foreach($rangelist as $k=>$v){
             if ($v->parent_id > 0){
                 foreach ($rangelist as $key=>$value){

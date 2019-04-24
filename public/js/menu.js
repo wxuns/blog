@@ -1,40 +1,72 @@
 function Menu() {
-    this.menudom = document.getElementById('menudom');
-    this.menulist = '';
     this.path = '';
-    this.menuhtml = '';
 
-    this.getMenu = function () {
-        var menusto = localStorage.getItem('menu');
-        if (menusto){
-            this.menulist = JSON.parse(menusto)
-        } else {
-            fetch('getmenu')
-                .then(response => response.text())
-                .then(function(res) {
-                    localStorage.setItem('menu',res)
-                    this.menulist = JSON.parse(res)
-                });
-        }
-    }
     this.getPath = function () {
         var route = new Router();
         this.path = route.getHash(window.location.hash)
     }
-    this.relMenu = function () {
-
-    }
-    this.menuhtml = function () {
-        this.getMenu();
-        console.log(this.menulist)
-        for (i in this.menulist){
-            console.log(i)
+    this.isactive = function (list) {
+        if(list.level){
+            for(j in list.level){
+                level = list.level[j];
+                if (this.path == level.path) {
+                    return 'active';
+                }
+            }
+        }else{
+            return;
         }
     }
-    this.init = function () {
+    this.secondmenu = function (list) {
+        var html = '';
+        for(j in list.level){
+            level = list.level[j];
+            if(level.status == 1){
+                html += '<li><a href="#/'+level.path+'"><i class="fa fa-circle-o"></i> '+level.name+'</a></li>';
+            }
+        }
+        return html;
+    }
+    this.menuhtml = function (menulist) {
         this.getPath();
-        this.menuhtml();
+        var html = '';
+        for (i in menulist){
+            var list = menulist[i];
+            var active = this.isactive(list);
+            if (list.status) {
+                html += '<li class="treeview ' + active + '"><a href="javascript:;' + list.path + '">' +
+                    '<i class="' + list.icon + '"></i> ' +
+                    '<span>' + list.name + '</span> ' +
+                    '<i class="fa fa-angle-right pull-right"></i></a>' +
+                    (active == 'active' ? '<ul class="treeview-menu menu-open" style="display: block;">' :
+                        '<ul class="treeview-menu" style="display: none;">') +
+                    this.secondmenu(list) +
+                    '</ul></li>';
+            }
+        }
+        return html;
+    }
+    this.init = function () {
+        var menusto = localStorage.getItem('menu');
+        if (menusto){
+            menulist = JSON.parse(menusto)
+            $('#menudom').html(menu.menuhtml(menulist))
+            $.sidebarMenu($('.sidebar-menu'))
+        } else {
+            fetch('/getmenu',{cache: 'no-cache'})
+                .then(response => response.text())
+                .then(function(res) {
+                    localStorage.setItem('menu',res)
+                    res = JSON.parse(res)
+                    var menu = new Menu();
+                    $('#menudom').html(menu.menuhtml(res))
+                    $.sidebarMenu($('.sidebar-menu'))
+                    return;
+                });
+        }
+    }
+    this.relMenu = function () {
+        localStorage.removeItem('menu');
+        this.init();
     }
 }
-var menu = new Menu();
-menu.init();

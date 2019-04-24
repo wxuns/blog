@@ -3,7 +3,7 @@
     <span class="layui-breadcrumb">
       <a href="#/">首页</a>
       <a>用户</a>
-      <a href="#/power/range"><cite>权限管理</cite></a>
+      <a><cite>权限管理</cite></a>
     </span>
     </div>
 </fieldset>
@@ -93,7 +93,9 @@
             content: 'power/addrange',
             end:function () {
                 var route = new Router();
-                route.refresh()
+                route.refresh();
+                var menu = new Menu();
+                menu.relMenu();
             }
         });
     });
@@ -118,6 +120,8 @@
             end:function () {
                 var route = new Router();
                 route.refresh()
+                var menu = new Menu();
+                menu.relMenu();
             }
         });
     }
@@ -137,6 +141,8 @@
                     layer.msg(response.msg, {icon: 1});
                     var route = new Router();
                     route.refresh()
+                    var menu = new Menu();
+                    menu.relMenu();
                 }
                 return;
             });
@@ -154,6 +160,8 @@
                 layer.msg(response.msg, {icon: 1});
                 var route = new Router();
                 route.refresh()
+                var menu = new Menu();
+                menu.relMenu();
             }
             return;
         });

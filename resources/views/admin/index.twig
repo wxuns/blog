@@ -52,31 +52,7 @@
       <!-- 左侧导航区域（可配合layui已有的垂直导航） -->
       <aside class="main-sidebar">
         <section class="sidebar">
-          <ul class="sidebar-menu layui-nav layui-nav-tree site-demo-nav" id="menudom">
-            <li class="treeview active">
-              <a href="#/">
-                <i class="fa fa-dashboard"></i> <span>仪表盘</span> <i class="fa fa-angle-right pull-right"></i>
-              </a>
-              <ul class="treeview-menu menu-open" style="display: block;">
-                <li><a href="#/"><i class="fa fa-circle-o"></i> 仪表盘 v1</a></li>
-                <li><a href="#/power/range"><i class="fa fa-circle-o"></i> 权限范围</a></li>
-              </ul>
-            </li>
-            {% for rangelist in rangelist %}
-            <li class="treeview">
-              <a href="javascript:;">
-                <i class="{{ rangelist.icon }}"></i>
-                <span>{{ rangelist.name }}</span>
-                <i class="fa fa-angle-right pull-right"></i>
-              </a>
-              <ul class="treeview-menu" style="display: none;">
-                {% for level in rangelist.level if level.status == 1 %}
-                <li><a href="#/{{ level.path }}"><i class="fa fa-circle-o"></i> {{ level.name }}</a></li>
-                {% endfor %}
-              </ul>
-            </li>
-            {% endfor %}
-          </ul>
+          <ul class="sidebar-menu layui-nav layui-nav-tree site-demo-nav" id="menudom"></ul>
         </section>
       </aside>
     </div>
@@ -94,7 +70,8 @@
 <script>
   var route = new Router();
   route.init()
-  $.sidebarMenu($('.sidebar-menu'))
+  var menu = new Menu();
+  menu.init();
 </script>
 </body>
 </html>
