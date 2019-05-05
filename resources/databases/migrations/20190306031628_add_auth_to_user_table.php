@@ -23,6 +23,7 @@ class AddAuthToUserTable extends Migration
     public function down()
     {
         $this->schema->table('users',function ($table) {
+            $table->dropForeign('users_auth_foreign');
             $table->dropColumn('auth');
         });
     }

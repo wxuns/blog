@@ -26,6 +26,7 @@
                     <th>权限名称</th>
                     <th>权限路径</th>
                     <th>图标</th>
+                    <th>访问权限</th>
                     <th>是否显示</th>
                     <th>操作</th>
                 </tr>
@@ -41,6 +42,7 @@
                     <td>{{ rangelist.name }}</td>
                     <td>{{ rangelist.path }}</td>
                     <td style="width: 30px;text-align: center"><i class="{{ rangelist.icon }}"></i></td>
+                    <td style="width: 80px;text-align: center">{{ rangelist.rolename }}</td>
                     <td style="width: 10%;text-align: center">
                         <form class="layui-form" action="" onclick="changestatus({{ rangelist.id }})" id="changestatus{{ rangelist.id }}">
                             <input type="checkbox" {% if(rangelist.status) %}checked=""{% endif %} name="open" lay-skin="switch" lay-filter="switchTest" lay-text="是|否">
@@ -59,6 +61,7 @@
                     <td>{{ level.name }}</td>
                     <td>{{ level.path }}</td>
                     <td style="width: 30px;text-align: center"><i class="{{ level.icon }}"></i></td>
+                    <td style="width: 80px;text-align: center">{{ rangelist.rolename }}</td>
                     <td style="width: 10%;text-align: center">
                         <form class="layui-form" action="" onclick="changestatus({{ level.id }})" id="changestatus{{ level.id }}">
                             <input type="checkbox" {% if(level.status) %}checked=""{% endif %} name="open" lay-skin="switch" lay-filter="switchTest" lay-text="是|否">
@@ -88,7 +91,7 @@
         layer.open({
             title: '添加权限',
             type: 2,
-            area: ['700px', '450px'],
+            area: ['600px', '500px'],
             fixed: false, //不固定
             content: 'power/addrange',
             end:function () {
@@ -114,7 +117,7 @@
         layer.open({
             title: '修改权限',
             type: 2,
-            area: ['700px', '450px'],
+            area: ['600px', '500px'],
             fixed: false, //不固定
             content: 'power/editrange?id='+id,
             end:function () {

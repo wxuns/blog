@@ -4,7 +4,10 @@ class AuthController extends BaseController
 {
     public function rangeAction()
     {
-        $rangelist = DB::table('range')->get();
+        $rangelist = DB::table('range')
+            ->join('auth','auth.id','=','range.auth_id')
+            ->select('range.*','auth.rolename')
+            ->get();
         foreach($rangelist as $k=>$v){
             if ($v->parent_id > 0){
                 foreach ($rangelist as $key=>$value){
@@ -22,6 +25,11 @@ class AuthController extends BaseController
         $this->getView()->display('admin/range',['rangelist'=>$rangelist]);
         return false;
     }
+
+    /**
+     * 添加权限
+     * @return bool
+     */
     public function addRangeAction()
     {
         $request = Request($this->getRequest());
@@ -37,9 +45,15 @@ class AuthController extends BaseController
             ->where('parent_id',0)
             ->select('id','name')
             ->get();
-        $this->getView()->display('admin/addrange',['parent'=>$parent,'csrf'=>Csrf::generate('csrf_token')]);
+        $auth = DB::table('auth')->select('id','rolename')->orderBy('star','desc')->get();
+        $this->getView()->display('admin/addrange',[
+            'parent'=>$parent,
+            'csrf'=>Csrf::generate('csrf_token'),
+            'auth'=>$auth
+        ]);
         return false;
     }
+
     public function editrangeAction()
     {
         $request = Request($this->getRequest());
@@ -56,9 +70,11 @@ class AuthController extends BaseController
             ->where('parent_id',0)
             ->select('id','name')
             ->get();
+        $auth = DB::table('auth')->select('id','rolename')->orderBy('star','desc')->get();
         $this->getView()->display('admin/addrange',[
             'parent'=>$parent,
             'range'=>$range,
+            'auth'=>$auth,
             'csrf'=>Csrf::generate('csrf_token')
         ]);
         return false;

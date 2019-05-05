@@ -54,6 +54,19 @@
     </div>
     <div class="layui-form-item">
         <div class="layui-inline">
+            <label class="layui-form-label">访问权限</label>
+            <div class="layui-input-inline">
+                <select name="auth_id" lay-search="">
+                    <option value="0">直接选择或搜索选择</option>
+                    {% for auth in auth %}
+                        <option value="{{ auth.id }}" {{ range.auth_id==auth.id ? 'selected':''}}>{{ auth.rolename }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <div class="layui-inline">
             <label class="layui-form-label">是否显示</label>
             <div class="layui-input-block">
                 <input type="checkbox" {% if(range.status) %}checked=""{% endif %} name="status" lay-skin="switch" lay-filter="switchTest" lay-text="是|否">
