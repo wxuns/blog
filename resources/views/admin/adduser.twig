@@ -14,13 +14,13 @@
     <div class="layui-form-item">
         <label class="layui-form-label">用户名</label>
         <div class="layui-input-block">
-            <input type="text" name="username" lay-verify="title" autocomplete="off" placeholder="请输入用户名" class="layui-input">
+            <input type="text" name="username" lay-verify="title" autocomplete="off" placeholder="请输入用户名" class="layui-input" value="{{ usermsg.username }}">
         </div>
     </div>
     <div class="layui-form-item">
         <label class="layui-form-label">密码</label>
         <div class="layui-input-inline">
-            <input type="password" name="password" lay-verify="pass" placeholder="请输入密码" autocomplete="off" class="layui-input">
+            <input type="password" name="password"{{ usermsg.password?'': 'lay-verify="pass"'}} placeholder="请输入密码" autocomplete="off" class="layui-input" value="">
         </div>
         <div class="layui-form-mid layui-word-aux">请填写6到12位密码</div>
     </div>
@@ -28,7 +28,7 @@
         <label class="layui-form-label">验证手机</label>
         <div class="layui-inline">
             <div class="layui-input-inline">
-                <input type="tel" name="mobile" lay-verify="required|phone" autocomplete="off" class="layui-input">
+                <input type="tel" name="mobile" lay-verify="required|phone" autocomplete="off" class="layui-input" value="{{ usermsg.mobile }}">
             </div>
         </div>
     </div>
@@ -37,7 +37,7 @@
         <label class="layui-form-label">验证邮箱</label>
         <div class="layui-inline">
             <div class="layui-input-inline">
-                <input type="text" name="email" lay-verify="email" autocomplete="off" class="layui-input">
+                <input type="text" name="email" lay-verify="email" autocomplete="off" class="layui-input" value="{{ usermsg.email }}">
             </div>
         </div>
     </div>
@@ -46,17 +46,10 @@
             <div class="layui-inline">
                 <label class="layui-form-label">nick</label>
                 <div class="layui-input-inline">
-                    <input type="text" name="nick" lay-verify="required" autocomplete="off" class="layui-input">
+                    <input type="text" name="nick" lay-verify="required" autocomplete="off" class="layui-input" value="{{ usermsg.nick }}">
                 </div>
             </div>
 
-        </div>
-
-        <div class="layui-form-item">
-            <label class="layui-form-label">上传头像</label>
-            <div class="layui-input-block">
-                <input type="file" name="pic" lay-verify="identity" autocomplete="off">
-            </div>
         </div>
 
 
@@ -64,10 +57,11 @@
             <div class="layui-inline">
                 <label class="layui-form-label">用户类别</label>
                 <div class="layui-input-inline">
-                    <select name="modules" lay-verify="required" lay-search="">
+                    <select name="auth" lay-verify="required" lay-search="">
                         <option value="">直接选择或搜索选择</option>
-                        <option value="1">layer</option>
-                        <option value="2">form</option>
+                        {% for aa in auth %}
+                        <option value="{{ aa.id }}"{{ aa.id==usermsg.auth ? 'selected':''}}>{{ aa.rolename }}</option>
+                        {% endfor %}
                     </select>
                 </div>
             </div>
@@ -75,9 +69,10 @@
         <div class="layui-form-item layui-form-text">
             <label class="layui-form-label">签名</label>
             <div class="layui-input-block">
-                <textarea placeholder="请输入内容" class="layui-textarea"></textarea>
+                <textarea placeholder="请输入内容" class="layui-textarea" name="intro">{{ usermsg.intro }}</textarea>
             </div>
         </div>
+    <input type="hidden" name="csrf_token" value="{{ csrf }}">
         <div class="layui-form-item">
             <div class="layui-input-block">
                 <button class="layui-btn" lay-submit="" lay-filter="demo1">立即提交</button>
@@ -91,8 +86,7 @@
 <!-- 注意：如果你直接复制所有代码到本地，上述js路径需要改成你本地的 -->
 <script>
     var form = layui.form
-        ,rate = layui.rate;
-
+        ,upload = layui.upload;
     //监听提交
     form.on('submit(demo1)', function(data){
         console.log(data.field)
@@ -126,5 +120,4 @@
             layedit.sync(editIndex);
         }
     });
-
 </script>
