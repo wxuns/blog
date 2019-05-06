@@ -1,17 +1,19 @@
 <?php
 
-class UserController extends BaseController 
+class UserController extends BaseController
 {
     public function loginAction()
     {
+        Tool\Session::del('user');
         $request = Request($this->getRequest());
         if ($request){
             $user = DB::table('users')->where('username',$request->username)
                 ->orwhere('mobile',$request->username)
                 ->orwhere('email',$request->username)
                 ->where('status',1)->first();
-            if ($user&&$user->password == md5($request->password)){
-                \Tool\Session::set('user_id',$user->id);
+            if ($user&&$user->password == md5('wxuns'.$request->password)){
+                unset($user->password);
+                \Tool\Session::set('user',$user);
                 echo json_encode(['status'=>1,'msg'=>'登录成功']);
             }else{
                 echo json_encode(['status'=>400,'msg'=>'账号不存在']);

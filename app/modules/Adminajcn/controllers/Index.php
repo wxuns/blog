@@ -4,6 +4,10 @@ class IndexController extends BaseController
 {
 	public function indexAction()
 	{
+	    $user = \Tool\Session::get('user');
+	    if (!$user){
+            $this->redirect('/login/');
+        }
 	    //目录菜单
         $rangelist = DB::table('range')->get();
         foreach($rangelist as $k=>$v){
@@ -20,7 +24,10 @@ class IndexController extends BaseController
                 }
             }
         }
-		$this->getView()->display('admin/index',['rangelist'=>$rangelist]);
+		$this->getView()->display('admin/index',[
+		    'rangelist'=>$rangelist,
+            'user'=>\Tool\Session::get('user')
+        ]);
 		return false;
 	}
 	public function getmenuAction()
