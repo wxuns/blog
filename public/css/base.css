@@ -1,6 +1,73 @@
-html{background-color: #f2f2f2;}
-.wx-elem{margin-left: 0px;background-color:#fff}
-.wx-body{padding: 0 15px;}
-.wx-header{padding: 15px;}
-.layui-table-cell .layui-form-checkbox[lay-skin=primary]{top: 5px;}
-.wx-center{text-align: center;}
+@charset "gb2312";
+/* css */
+* { margin: 0; padding: 0 }
+body { font: 15px "Microsoft YaHei", Arial, Helvetica, sans-serif; color: #555; background: url(../images/topbg.jpg) no-repeat right top #D6E0E1; line-height: 1.5; }
+img { border: 0; display: block }
+ul, li { list-style: none; }
+a { text-decoration: none; color: #555 }
+a:hover { text-decoration: none; color: #000; }
+.clear { clear: both; }
+.blank { height: 20px; overflow: hidden; width: 100%; margin: auto; clear: both }
+.f_l { float: left }
+.f_r { float: right }
+.contentim{margin-top: 18px;font-size: 14px;text-align: center;}
+.wx-btn_mini{padding: 0 1em !important;line-height: 2 !important;font-size: 9px !important;}
+article { width: 1000px; margin: auto; overflow: hidden }
+.container { width: 1000px; margin: auto }
+/* header */
+header { width: 100%; overflow: hidden; }
+.header-navigation { position: fixed; top: 0; width: 100%; height: 60px; line-height: 60px; background: rgba(255,255,255,.9); text-align: center; border-bottom: 1px solid #ddd; box-shadow: 0 1px 1px rgba(0,0,0,.04); z-index: 9999; }
+/* Slide transitions */
+.slideUp { -webkit-transform: translateY(-100px); -ms-transform: translateY(-100px); -o-transform: translateY(-100px); transform: translateY(-100px); -webkit-transition: transform .5s ease-out; -o-transition: transform .5s ease-out; transition: transform .5s ease-out; }
+.slideDown { -webkit-transform: translateY(0); -ms-transform: translateY(0); -o-transform: translateY(0); transform: translateY(0); -webkit-transition: transform .5s ease-out; -o-transition: transform .5s ease-out; transition: transform .5s ease-out; }
+
+.logo { text-align: center; width: 1000px; margin: auto; font-size: 40px; padding: 10px 0;font-family: ZCOOL XiaoWei; -webkit-text-shadow: 1px 1px 1px rgba(0,0,0,.2); -moz-text-shadow: 1px 1px 1px rgba(0,0,0,.2); text-shadow: 1px 1px 1px rgba(0,0,0,.2); }
+.logo a { color: #fffef9 }
+nav { width: 1000px; margin: auto; overflow: hidden; padding: 20px 0 }
+nav li { display: inline-block; float: left; width: 100px; text-align: center; overflow: hidden; line-height: 30px; text-shadow: #fff 1px 0 2px, #fff 0 1px 2px, #fff -1px 0 2px, #fff 0 -1px 2px; }
+nav li a { color: #d11a2d; }
+a#selected,nav li a:hover { display: block; color: #d11a2d; border-radius: 20px 3px;font-family: ZCOOL XiaoWei; text-shadow: none; font-size: 23px;letter-spacing:-4px;}
+/*cd-top*/
+.cd-top { display: inline-block; height: 40px; width: 40px; position: fixed; bottom: 40px; right: 10px; box-shadow: 0 0 10px rgba(0, 0, 0, 0.05); overflow: hidden; text-indent: 100%; white-space: nowrap; background: rgba(0, 0, 0, 0.8) url(../images/top.png) no-repeat center; visibility: hidden; opacity: 0; -webkit-transition: all 0.3s; -moz-transition: all 0.3s; transition: all 0.3s; }
+.cd-top.cd-is-visible { visibility: visible; opacity: 1; }
+/*footer*/
+footer { width: 100%; color: #a5a4a4; text-align: center; padding: 20px 0; clear: both; text-shadow: #fff 1px 0 2px, #fff 0 1px 2px, #fff -1px 0 2px, #fff 0 -1px 2px; }
+footer a { color: #a5a4a4 ; }
+.copy{text-align: center;font-size: 13px;}
+/* zcool-xiaowei-regular */
+@font-face {
+    font-family: 'ZCOOL XiaoWei';
+    font-style: normal;
+    font-weight: regular;
+    src: url('//lib.baomitu.com/fonts/zcool-xiaowei/zcool-xiaowei-regular.eot'); /* IE9 Compat Modes */
+    src: local('ZCOOL XiaoWei'), local('ZCOOLXiaoWei-Normal'),
+    url('//lib.baomitu.com/fonts/zcool-xiaowei/zcool-xiaowei-regular.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+    url('//lib.baomitu.com/fonts/zcool-xiaowei/zcool-xiaowei-regular.woff2') format('woff2'), /* Super Modern Browsers */
+    url('//lib.baomitu.com/fonts/zcool-xiaowei/zcool-xiaowei-regular.woff') format('woff'), /* Modern Browsers */
+    url('//lib.baomitu.com/fonts/zcool-xiaowei/zcool-xiaowei-regular.ttf') format('truetype'), /* Safari, Android, iOS */
+    url('//lib.baomitu.com/fonts/zcool-xiaowei/zcool-xiaowei-regular.svg#ZCOOLXiaoWei') format('svg'); /* Legacy iOS */
+}
+
+/* zcool-qingke-huangyou-regular */
+@font-face {
+    font-family: 'ZCOOL QingKe HuangYou';
+    font-style: normal;
+    font-weight: regular;
+    src: url('//lib.baomitu.com/fonts/zcool-qingke-huangyou/zcool-qingke-huangyou-regular.eot'); /* IE9 Compat Modes */
+    src: local('ZCOOL QingKe HuangYou'), local('ZCOOLQingKe HuangYou-Normal'),
+    url('//lib.baomitu.com/fonts/zcool-qingke-huangyou/zcool-qingke-huangyou-regular.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+    url('//lib.baomitu.com/fonts/zcool-qingke-huangyou/zcool-qingke-huangyou-regular.woff2') format('woff2'), /* Super Modern Browsers */
+    url('//lib.baomitu.com/fonts/zcool-qingke-huangyou/zcool-qingke-huangyou-regular.woff') format('woff'), /* Modern Browsers */
+    url('//lib.baomitu.com/fonts/zcool-qingke-huangyou/zcool-qingke-huangyou-regular.ttf') format('truetype'), /* Safari, Android, iOS */
+    url('//lib.baomitu.com/fonts/zcool-qingke-huangyou/zcool-qingke-huangyou-regular.svg#ZCOOLQingKe HuangYou') format('svg'); /* Legacy iOS */
+}
+@font-face {font-family: 'webfont';
+    src: url('//at.alicdn.com/t/webfont_map5gzl6ut.eot'); /* IE9*/
+    src: url('//at.alicdn.com/t/webfont_map5gzl6ut.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+    url('//at.alicdn.com/t/webfont_map5gzl6ut.woff') format('woff'), /* chrome、firefox */
+    url('//at.alicdn.com/t/webfont_map5gzl6ut.ttf') format('truetype'), /* chrome、firefox、opera、Safari, Android, iOS 4.2+*/
+    url('//at.alicdn.com/t/webfont_map5gzl6ut.svg#杨任东竹石体-Bold') format('svg'); /* iOS 4.1- */
+}
+/*cd-top*/
+.cd-top { display: inline-block; height: 40px; width: 40px; position: fixed; bottom: 40px; right: 10px; box-shadow: 0 0 10px rgba(0, 0, 0, 0.05); overflow: hidden; text-indent: 100%; white-space: nowrap; background: rgba(0, 0, 0, 0.8) url(../images/top.png) no-repeat center; visibility: hidden; opacity: 0; -webkit-transition: all 0.3s; -moz-transition: all 0.3s; transition: all 0.3s; }
+.cd-top.cd-is-visible { visibility: visible; opacity: 1; }

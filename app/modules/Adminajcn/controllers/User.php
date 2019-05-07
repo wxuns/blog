@@ -74,7 +74,7 @@ class UserController extends BaseController
             if (!$request->password)
                 unset($request->password);
             else
-                $request->password = md5($request->password);
+                $request->password = md5('wxuns'.$request->password);
             DB::table('users')->where('id',$_GET['id'])->update((array)$request);
             echo json_encode(['status'=>1,'msg'=>'用户信息修改成功']);
         }
