@@ -42,7 +42,7 @@ class __TwigTemplate_d2b7e32f0fc580996e9e7bf1e4aa463efb0725bbb088d51bffb056e0e8e
   <link href=\"./css/font-awesome.4.6.0.css\" rel=\"stylesheet\" media=\"screen\">
   <link rel=\"stylesheet\" href=\"./css/sidebar-menu.css\">
   <link rel=\"stylesheet\" type=\"text/css\" href=\"./layui/css/layui.css\">
-  <link rel=\"stylesheet\" href=\"./css/base.css\">
+  <link rel=\"stylesheet\" href=\"./css/admin.css\">
   <script src=\"https://cdn.bootcss.com/jquery/3.4.0/jquery.min.js\"></script>
   <script type=\"text/javascript\" src=\"/js/base.js\"></script>
   <script type=\"text/javascript\" src=\"/js/menu.js\"></script>
@@ -137,7 +137,7 @@ class __TwigTemplate_d2b7e32f0fc580996e9e7bf1e4aa463efb0725bbb088d51bffb056e0e8e
   <link href=\"./css/font-awesome.4.6.0.css\" rel=\"stylesheet\" media=\"screen\">
   <link rel=\"stylesheet\" href=\"./css/sidebar-menu.css\">
   <link rel=\"stylesheet\" type=\"text/css\" href=\"./layui/css/layui.css\">
-  <link rel=\"stylesheet\" href=\"./css/base.css\">
+  <link rel=\"stylesheet\" href=\"./css/admin.css\">
   <script src=\"https://cdn.bootcss.com/jquery/3.4.0/jquery.min.js\"></script>
   <script type=\"text/javascript\" src=\"/js/base.js\"></script>
   <script type=\"text/javascript\" src=\"/js/menu.js\"></script>
