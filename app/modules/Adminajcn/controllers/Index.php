@@ -2,6 +2,10 @@
 
 class IndexController extends BaseController
 {
+    /**
+     * 主页
+     * @return bool
+     */
 	public function indexAction()
 	{
 	    $user = \Tool\Session::get('user');
@@ -30,6 +34,11 @@ class IndexController extends BaseController
         ]);
 		return false;
 	}
+
+    /**
+     * 获得菜单
+     * @return bool
+     */
 	public function getmenuAction()
 	{
         //目录菜单
@@ -51,9 +60,29 @@ class IndexController extends BaseController
         echo json_encode($rangelist);
 		return false;
 	}
+
+    /**
+     * 控制台
+     * @return bool
+     */
 	public function homeAction()
 	{
 		$this->getView()->display('admin/home');
 		return false;
 	}
+	public function writemenuAction()
+    {
+        $config = new \Yaf\Config\Ini(APPLICATION_PATH.'/conf/adminajcn.ini', ini_get('yaf.environ'));
+        foreach($config->routes as $value){
+            if(!DB::table('range')->where('path',trim($value->match,'/'))->exists()){
+                DB::table('range')->insert([
+                    'icon'=>'',
+                    'path'=>trim($value->match,'/'),
+                    'name'=>'test'
+                ]);
+                var_dump($value->match);
+            }
+        }
+        return false;
+    }
 }

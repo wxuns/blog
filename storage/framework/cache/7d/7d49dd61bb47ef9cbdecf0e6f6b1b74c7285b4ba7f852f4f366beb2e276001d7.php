@@ -266,7 +266,7 @@ class __TwigTemplate_311a05016ce553b88bce17893496c1bb7b634b5334f0529d0fc93947c66
         loop: true, // 循环模式选项
         autoplay:true,
         slidesPerView : 'auto',
-        effect : 'cube',
+        // effect : 'cube',
         centeredSlides: true,
         // 如果需要分页器
         pagination: {
@@ -525,7 +525,7 @@ class __TwigTemplate_311a05016ce553b88bce17893496c1bb7b634b5334f0529d0fc93947c66
         loop: true, // 循环模式选项
         autoplay:true,
         slidesPerView : 'auto',
-        effect : 'cube',
+        // effect : 'cube',
         centeredSlides: true,
         // 如果需要分页器
         pagination: {

@@ -62,7 +62,6 @@ class __TwigTemplate_8ece4e117c31bdf4d0c071f300ee8f45c42b76b836443ad1f9024a09a05
     //第一个实例
     table.render({
         elem: '#userlist'
-        ,height: 560
         ,url: '/user/roleapi' //数据接口
         ,cols: [[ //表头
             {type: 'checkbox', fixed: 'left'}
@@ -162,7 +161,6 @@ class __TwigTemplate_8ece4e117c31bdf4d0c071f300ee8f45c42b76b836443ad1f9024a09a05
     //第一个实例
     table.render({
         elem: '#userlist'
-        ,height: 560
         ,url: '/user/roleapi' //数据接口
         ,cols: [[ //表头
             {type: 'checkbox', fixed: 'left'}

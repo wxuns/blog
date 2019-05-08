@@ -12,64 +12,35 @@
 <body>
 <form class="layui-form" action="" style="margin: 30px 30px 0 0px;">
     <div class="layui-form-item">
-        <label class="layui-form-label">用户名</label>
+        <label class="layui-form-label">类名</label>
         <div class="layui-input-block">
-            <input type="text" name="username" lay-verify="title" autocomplete="off" placeholder="请输入用户名" class="layui-input" value="{{ usermsg.username }}">
-        </div>
-    </div>
-    <div class="layui-form-item">
-        <label class="layui-form-label">密码</label>
-        <div class="layui-input-inline">
-            <input type="password" name="password"{{ usermsg.password?'': 'lay-verify="pass"'}} placeholder="请输入密码" autocomplete="off" class="layui-input" value="">
-        </div>
-        <div class="layui-form-mid layui-word-aux">请填写6到12位密码</div>
-    </div>
-    <div class="layui-form-item">
-        <label class="layui-form-label">验证手机</label>
-        <div class="layui-inline">
-            <div class="layui-input-inline">
-                <input type="tel" name="mobile" lay-verify="required|phone" autocomplete="off" class="layui-input" value="{{ usermsg.mobile }}">
-            </div>
-        </div>
-    </div>
-
-    <div class="layui-form-item">
-        <label class="layui-form-label">验证邮箱</label>
-        <div class="layui-inline">
-            <div class="layui-input-inline">
-                <input type="text" name="email" lay-verify="email" autocomplete="off" class="layui-input" value="{{ usermsg.email }}">
-            </div>
+            <input type="text" name="classname" lay-verify="title" autocomplete="off" placeholder="请输入类名" class="layui-input" value="{{ class.classname }}">
         </div>
     </div>
 
     <div class="layui-form-item">
         <div class="layui-inline">
-            <label class="layui-form-label">nick</label>
-            <div class="layui-input-inline">
-                <input type="text" name="nick" lay-verify="required" autocomplete="off" class="layui-input" value="{{ usermsg.nick }}">
-            </div>
-        </div>
-
-    </div>
-
-
-    <div class="layui-form-item">
-        <div class="layui-inline">
-            <label class="layui-form-label">用户类别</label>
+            <label class="layui-form-label">权限</label>
             <div class="layui-input-inline">
                 <select name="auth" lay-verify="required" lay-search="">
                     <option value="">直接选择或搜索选择</option>
                     {% for aa in auth %}
-                        <option value="{{ aa.id }}"{{ aa.id==usermsg.auth ? 'selected':''}}>{{ aa.rolename }}</option>
+                        <option value="{{ aa.id }}"{{ aa.id==class.auth ? 'selected':''}}>{{ aa.rolename }}</option>
                     {% endfor %}
                 </select>
             </div>
         </div>
     </div>
     <div class="layui-form-item layui-form-text">
-        <label class="layui-form-label">签名</label>
+        <label class="layui-form-label">简介</label>
         <div class="layui-input-block">
-            <textarea placeholder="请输入内容" class="layui-textarea" name="intro">{{ usermsg.intro }}</textarea>
+            <textarea placeholder="请输入内容" class="layui-textarea" name="itro">{{ class.itro }}</textarea>
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">是否显示</label>
+        <div class="layui-input-block">
+            <input type="checkbox" {{ class.status?'checked':'' }} name="status" lay-skin="switch" lay-filter="switchTest" lay-text="ON|OFF">
         </div>
     </div>
     <input type="hidden" name="csrf_token" value="{{ csrf }}">
@@ -89,7 +60,7 @@
         ,upload = layui.upload;
     //监听提交
     form.on('submit(demo1)', function(data){
-        console.log(data.field)
+        data.field.status = data.field.status=='on'?1:0;
         fetch('',{
             body: JSON.stringify(data.field),
             method: 'post'
@@ -108,8 +79,8 @@
     });
     form.verify({
         title: function(value){
-            if(value.length < 5){
-                return '用户名至少得5个字符啊';
+            if(value.length < 2){
+                return '类名至少得2个字符啊';
             }
         }
         ,pass: [

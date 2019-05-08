@@ -49,9 +49,10 @@ class __TwigTemplate_d2b7e32f0fc580996e9e7bf1e4aa463efb0725bbb088d51bffb056e0e8e
 </head>
 <body class=\"layui-layout-body\">
 <div class=\"layui-layout layui-layout-admin\">
-  <div class=\"layui-header\">
+  <div class=\"layui-header layui-bg-green\">
     <div class=\"layui-logo\" style=\"border-right: 0.1px solid #393d49;\">
-      <img src=\"/images/logo.gif\" alt=\"\" style=\"width: 35px\">&emsp;管理后台
+      <img src=\"/images/logo.gif\" alt=\"\" style=\"width: 35px\">
+      <span style=\"color: #fff;\">管理后台</span>
     </div>
     <!-- 头部区域（可配合layui已有的水平导航） -->
     <ul class=\"layui-nav layui-layout-left\">
@@ -62,12 +63,12 @@ class __TwigTemplate_d2b7e32f0fc580996e9e7bf1e4aa463efb0725bbb088d51bffb056e0e8e
       <li class=\"layui-nav-item\">
         <a href=\"javascript:;\">
           <img src=\"";
-        // line 30
-        ((twig_get_attribute($this->env, $this->source, ($context["user"] ?? null), "pic", [], "any", false, false, false, 30)) ? (print (twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, ($context["user"] ?? null), "pic", [], "any", false, false, false, 30), "html", null, true))) : (print ("/images/tx.jpeg")));
+        // line 31
+        ((twig_get_attribute($this->env, $this->source, ($context["user"] ?? null), "pic", [], "any", false, false, false, 31)) ? (print (twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, ($context["user"] ?? null), "pic", [], "any", false, false, false, 31), "html", null, true))) : (print ("/images/tx.jpeg")));
         echo "\" class=\"layui-nav-img\">
           ";
-        // line 31
-        echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, ($context["user"] ?? null), "nick", [], "any", false, false, false, 31), "html", null, true);
+        // line 32
+        echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, ($context["user"] ?? null), "nick", [], "any", false, false, false, 32), "html", null, true);
         echo "
         </a>
         <dl class=\"layui-nav-child\">
@@ -122,7 +123,7 @@ class __TwigTemplate_d2b7e32f0fc580996e9e7bf1e4aa463efb0725bbb088d51bffb056e0e8e
 
     public function getDebugInfo()
     {
-        return array (  70 => 31,  66 => 30,  35 => 1,);
+        return array (  71 => 32,  67 => 31,  35 => 1,);
     }
 
     public function getSourceContext()
@@ -144,9 +145,10 @@ class __TwigTemplate_d2b7e32f0fc580996e9e7bf1e4aa463efb0725bbb088d51bffb056e0e8e
 </head>
 <body class=\"layui-layout-body\">
 <div class=\"layui-layout layui-layout-admin\">
-  <div class=\"layui-header\">
+  <div class=\"layui-header layui-bg-green\">
     <div class=\"layui-logo\" style=\"border-right: 0.1px solid #393d49;\">
-      <img src=\"/images/logo.gif\" alt=\"\" style=\"width: 35px\">&emsp;管理后台
+      <img src=\"/images/logo.gif\" alt=\"\" style=\"width: 35px\">
+      <span style=\"color: #fff;\">管理后台</span>
     </div>
     <!-- 头部区域（可配合layui已有的水平导航） -->
     <ul class=\"layui-nav layui-layout-left\">

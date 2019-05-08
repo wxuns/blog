@@ -44,7 +44,7 @@ class __TwigTemplate_75be7ea5b543d94a9b8785ccdff0fad49e8d541359ecf77db04a083035e
     <!-- 注意：如果你直接复制所有代码到本地，上述css路径需要改成你本地的 -->
 </head>
 <body>
-<form class=\"layui-form\" action=\"\" style=\"margin: 30px 30px 0 0px;\">
+<form class=\"layui-form\" action=\"\" style=\"margin: 30px 30px 0 0px;\" enctype=\"multipart/form-data\">
 
     <div class=\"layui-form-item\">
         <div class=\"layui-inline\">
@@ -112,7 +112,6 @@ class __TwigTemplate_75be7ea5b543d94a9b8785ccdff0fad49e8d541359ecf77db04a083035e
     });
     //监听提交
     form.on('submit(demo1)', function(data){
-        console.log(data.field)
         fetch('',{
             body: JSON.stringify(data.field),
             method: 'post'
@@ -163,7 +162,7 @@ class __TwigTemplate_75be7ea5b543d94a9b8785ccdff0fad49e8d541359ecf77db04a083035e
     <!-- 注意：如果你直接复制所有代码到本地，上述css路径需要改成你本地的 -->
 </head>
 <body>
-<form class=\"layui-form\" action=\"\" style=\"margin: 30px 30px 0 0px;\">
+<form class=\"layui-form\" action=\"\" style=\"margin: 30px 30px 0 0px;\" enctype=\"multipart/form-data\">
 
     <div class=\"layui-form-item\">
         <div class=\"layui-inline\">
@@ -216,7 +215,6 @@ class __TwigTemplate_75be7ea5b543d94a9b8785ccdff0fad49e8d541359ecf77db04a083035e
     });
     //监听提交
     form.on('submit(demo1)', function(data){
-        console.log(data.field)
         fetch('',{
             body: JSON.stringify(data.field),
             method: 'post'
