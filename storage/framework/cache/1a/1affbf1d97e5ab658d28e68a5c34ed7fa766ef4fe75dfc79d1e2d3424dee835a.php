@@ -52,7 +52,7 @@ class __TwigTemplate_d2b7e32f0fc580996e9e7bf1e4aa463efb0725bbb088d51bffb056e0e8e
   <div class=\"layui-header layui-bg-green\">
     <div class=\"layui-logo\" style=\"border-right: 0.1px solid #393d49;\">
       <img src=\"/images/logo.gif\" alt=\"\" style=\"width: 35px\">
-      <span style=\"color: #fff;\">管理后台</span>
+      <span style=\"color: #fff;font-family: ZCOOL XiaoWei\">管理后台</span>
     </div>
     <!-- 头部区域（可配合layui已有的水平导航） -->
     <ul class=\"layui-nav layui-layout-left\">
@@ -148,7 +148,7 @@ class __TwigTemplate_d2b7e32f0fc580996e9e7bf1e4aa463efb0725bbb088d51bffb056e0e8e
   <div class=\"layui-header layui-bg-green\">
     <div class=\"layui-logo\" style=\"border-right: 0.1px solid #393d49;\">
       <img src=\"/images/logo.gif\" alt=\"\" style=\"width: 35px\">
-      <span style=\"color: #fff;\">管理后台</span>
+      <span style=\"color: #fff;font-family: ZCOOL XiaoWei\">管理后台</span>
     </div>
     <!-- 头部区域（可配合layui已有的水平导航） -->
     <ul class=\"layui-nav layui-layout-left\">
