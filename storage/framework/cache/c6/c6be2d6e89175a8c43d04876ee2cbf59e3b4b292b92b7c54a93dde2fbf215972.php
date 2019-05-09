@@ -45,13 +45,13 @@ class __TwigTemplate_813e05948fc2bcfe18e9947acfd75d85aaa8c21284c67832fe791a67131
                 <div class=\"layui-form-item\">
                     <label class=\"layui-form-label\">标题</label>
                     <div class=\"layui-input-block\">
-                        <input type=\"text\" name=\"title\" lay-verify=\"title\" autocomplete=\"off\" placeholder=\"请输入标题\" class=\"layui-input\">
+                        <input type=\"text\" name=\"title\" lay-verify=\"required\" autocomplete=\"off\" placeholder=\"请输入标题\" class=\"layui-input\">
                     </div>
                 </div>
                 <div class=\"layui-form-item\">
                     <label class=\"layui-form-label\">分类</label>
                     <div class=\"layui-input-inline\">
-                        <select name=\"city\" lay-verify=\"required\">
+                        <select name=\"class_id\" lay-verify=\"required\">
                             <option value=\"\"></option>
                             <option value=\"0\">北京</option>
                             <option value=\"1\">上海</option>
@@ -65,14 +65,14 @@ class __TwigTemplate_813e05948fc2bcfe18e9947acfd75d85aaa8c21284c67832fe791a67131
                     <div class=\"layui-inline\">
                         <label class=\"layui-form-label\">版权</label>
                         <div class=\"layui-input-inline\">
-                            <input type=\"tel\" name=\"phone\" lay-verify=\"required|phone\" placeholder=\"请输入版权\" autocomplete=\"off\" class=\"layui-input\">
+                            <input type=\"tel\" name=\"copyright\" lay-verify=\"required\" placeholder=\"请输入版权\" autocomplete=\"off\" class=\"layui-input\">
                         </div>
                         <div class=\"layui-form-mid layui-word-aux\">非必填</div>
                     </div>
                     <div class=\"layui-inline\">
                         <label class=\"layui-form-label\">第三方来源</label>
                         <div class=\"layui-input-inline\">
-                            <input type=\"text\" name=\"email\" lay-verify=\"email\" placeholder=\"请输入第三方来源\" autocomplete=\"off\" class=\"layui-input\">
+                            <input type=\"text\" name=\"url\" lay-verify=\"email\" placeholder=\"请输入第三方来源\" autocomplete=\"off\" class=\"layui-input\">
                         </div>
                         <div class=\"layui-form-mid layui-word-aux\">非必填</div>
                     </div>
@@ -80,14 +80,14 @@ class __TwigTemplate_813e05948fc2bcfe18e9947acfd75d85aaa8c21284c67832fe791a67131
                 <div class=\"layui-form-item\">
                     <label class=\"layui-form-label\">关键字</label>
                     <div class=\"layui-input-block\">
-                        <input type=\"text\" name=\"title\" lay-verify=\"title\" autocomplete=\"off\" placeholder=\"请用逗号隔开\" class=\"layui-input\">
+                        <input type=\"text\" name=\"keyword\" lay-verify=\"title\" autocomplete=\"off\" placeholder=\"请用逗号隔开\" class=\"layui-input\">
                     </div>
                 </div>
                 <div class=\"layui-form-item layui-form-text\">
                     <label class=\"layui-form-label\">内容</label>
                     <div class=\"layui-input-block\">
                         <div id=\"editormd\">
-                            <textarea style=\"display:none;\"></textarea>
+                            <textarea name=\"content\" style=\"display:none;\"></textarea>
                         </div>
                     </div>
                 </div>
@@ -122,8 +122,16 @@ class __TwigTemplate_813e05948fc2bcfe18e9947acfd75d85aaa8c21284c67832fe791a67131
                       \"||\", \"watch\", \"preview\", \"clear\",\"search\"]
             },
         });
+        var form = layui.form;
+        form.on('submit(demo1)', function(data){
+            layer.alert(JSON.stringify(data.field), {
+                title: '最终的提交信息'
+            })
+            return false;
+        });
     });
-</script>";
+</script>
+";
     }
 
     public function getTemplateName()
@@ -156,13 +164,13 @@ class __TwigTemplate_813e05948fc2bcfe18e9947acfd75d85aaa8c21284c67832fe791a67131
                 <div class=\"layui-form-item\">
                     <label class=\"layui-form-label\">标题</label>
                     <div class=\"layui-input-block\">
-                        <input type=\"text\" name=\"title\" lay-verify=\"title\" autocomplete=\"off\" placeholder=\"请输入标题\" class=\"layui-input\">
+                        <input type=\"text\" name=\"title\" lay-verify=\"required\" autocomplete=\"off\" placeholder=\"请输入标题\" class=\"layui-input\">
                     </div>
                 </div>
                 <div class=\"layui-form-item\">
                     <label class=\"layui-form-label\">分类</label>
                     <div class=\"layui-input-inline\">
-                        <select name=\"city\" lay-verify=\"required\">
+                        <select name=\"class_id\" lay-verify=\"required\">
                             <option value=\"\"></option>
                             <option value=\"0\">北京</option>
                             <option value=\"1\">上海</option>
@@ -176,14 +184,14 @@ class __TwigTemplate_813e05948fc2bcfe18e9947acfd75d85aaa8c21284c67832fe791a67131
                     <div class=\"layui-inline\">
                         <label class=\"layui-form-label\">版权</label>
                         <div class=\"layui-input-inline\">
-                            <input type=\"tel\" name=\"phone\" lay-verify=\"required|phone\" placeholder=\"请输入版权\" autocomplete=\"off\" class=\"layui-input\">
+                            <input type=\"tel\" name=\"copyright\" lay-verify=\"required\" placeholder=\"请输入版权\" autocomplete=\"off\" class=\"layui-input\">
                         </div>
                         <div class=\"layui-form-mid layui-word-aux\">非必填</div>
                     </div>
                     <div class=\"layui-inline\">
                         <label class=\"layui-form-label\">第三方来源</label>
                         <div class=\"layui-input-inline\">
-                            <input type=\"text\" name=\"email\" lay-verify=\"email\" placeholder=\"请输入第三方来源\" autocomplete=\"off\" class=\"layui-input\">
+                            <input type=\"text\" name=\"url\" lay-verify=\"email\" placeholder=\"请输入第三方来源\" autocomplete=\"off\" class=\"layui-input\">
                         </div>
                         <div class=\"layui-form-mid layui-word-aux\">非必填</div>
                     </div>
@@ -191,14 +199,14 @@ class __TwigTemplate_813e05948fc2bcfe18e9947acfd75d85aaa8c21284c67832fe791a67131
                 <div class=\"layui-form-item\">
                     <label class=\"layui-form-label\">关键字</label>
                     <div class=\"layui-input-block\">
-                        <input type=\"text\" name=\"title\" lay-verify=\"title\" autocomplete=\"off\" placeholder=\"请用逗号隔开\" class=\"layui-input\">
+                        <input type=\"text\" name=\"keyword\" lay-verify=\"title\" autocomplete=\"off\" placeholder=\"请用逗号隔开\" class=\"layui-input\">
                     </div>
                 </div>
                 <div class=\"layui-form-item layui-form-text\">
                     <label class=\"layui-form-label\">内容</label>
                     <div class=\"layui-input-block\">
                         <div id=\"editormd\">
-                            <textarea style=\"display:none;\"></textarea>
+                            <textarea name=\"content\" style=\"display:none;\"></textarea>
                         </div>
                     </div>
                 </div>
@@ -230,7 +238,15 @@ class __TwigTemplate_813e05948fc2bcfe18e9947acfd75d85aaa8c21284c67832fe791a67131
                       \"||\", \"watch\", \"preview\", \"clear\",\"search\"]
             },
         });
+        var form = layui.form;
+        form.on('submit(demo1)', function(data){
+            layer.alert(JSON.stringify(data.field), {
+                title: '最终的提交信息'
+            })
+            return false;
+        });
     });
-</script>", "admin/article/addarticle.twig", "D:\\web\\wxuns\\resources\\views\\admin\\article\\addarticle.twig");
+</script>
+", "admin/article/addarticle.twig", "D:\\web\\wxuns\\resources\\views\\admin\\article\\addarticle.twig");
     }
 }
