@@ -14,7 +14,17 @@ class ArticleController extends BaseController
     }
     public function addAction()
     {
-        $this->getView()->display('admin/article/addarticle');
+        $auth = DB::table('users')
+            ->where('users.id',\Tool\Session::get('user')->id)
+            ->join('auth','auth.id','=','users.auth')
+            ->select('auth.id','auth.star')->first();
+        $range = DB::table('auth')
+            ->where('star','<',$auth->star)
+            ->select('id')->get()->toArray();
+        dd($range);
+        $this->getView()->display('admin/article/addarticle',[
+            'csrf' => Csrf::generate('csrf_token')
+        ]);
         return false;
     }
 
