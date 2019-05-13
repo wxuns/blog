@@ -85,4 +85,19 @@ class IndexController extends BaseController
         }
         return false;
     }
+    public function uploadimgAction()
+    {
+        $secretId = "AKIDUsGZgb9YZPAwX86y897GUhweSUUaBv2x"; //"云 API 密钥 SecretId";
+        $secretKey = "PtCKLYaUZbgIrGUoDg1BOSKYzS4e9qTw"; //"云 API 密钥 SecretKey";
+        $region = "ap-beijing"; //设置一个默认的存储桶地域
+        $cosClient = new Qcloud\Cos\Client(
+            array(
+                'region' => $region,
+                'schema' => 'https', //协议头部，默认为http
+                'credentials'=> array(
+                    'secretId'  => $secretId ,
+                    'secretKey' => $secretKey)));
+        dump($cosClient);
+        return false;
+    }
 }

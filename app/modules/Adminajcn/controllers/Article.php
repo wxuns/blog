@@ -21,9 +21,16 @@ class ArticleController extends BaseController
         $range = DB::table('auth')
             ->where('star','<',$auth->star)
             ->select('id')->get()->toArray();
-        dd($range);
+        $limit = '';
+        foreach ($range as $value){
+            $limit .= $limit==''?$value->id:(','.$value->id);
+        }
+        $class = DB::table('article_class')
+            ->whereIn('auth',explode(',',$limit))
+            ->select('id','classname')->get();
         $this->getView()->display('admin/article/addarticle',[
-            'csrf' => Csrf::generate('csrf_token')
+            'csrf' => Csrf::generate('csrf_token'),
+            'class'=>$class
         ]);
         return false;
     }
@@ -86,6 +93,11 @@ class ArticleController extends BaseController
         }
         return false;
     }
+
+    /**
+     * 删除类别
+     * @return bool
+     */
     public function delclassAction()
     {
         $id = Request($this->getRequest())->id;

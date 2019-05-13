@@ -19,11 +19,9 @@
                     <div class="layui-input-inline">
                         <select name="class_id" lay-verify="required">
                             <option value=""></option>
-                            <option value="0">北京</option>
-                            <option value="1">上海</option>
-                            <option value="2">广州</option>
-                            <option value="3">深圳</option>
-                            <option value="4">杭州</option>
+                            {% for class in class %}
+                            <option value="{{ class.id }}">{{ class.classname }}</option>
+                            {% endfor %}
                         </select>
                     </div>
                 </div>
@@ -75,6 +73,8 @@
         var editor = editormd("editormd", {
             path : "/editor.md/lib/", // Autoload modules mode, codemirror, marked... dependents libs path
             imageUpload       : true,
+            imageFormats   : ["jpg", "jpeg", "gif", "png", "bmp", "webp"],
+            imageUploadURL : "uploadimg?type=article",
             height:'80%',
             toolbarIcons : function() {
                 // Or return editormd.toolbarModes[name]; // full, simple, mini
