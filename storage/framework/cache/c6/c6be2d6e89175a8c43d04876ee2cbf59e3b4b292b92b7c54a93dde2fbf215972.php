@@ -53,26 +53,38 @@ class __TwigTemplate_813e05948fc2bcfe18e9947acfd75d85aaa8c21284c67832fe791a67131
                     <div class=\"layui-input-inline\">
                         <select name=\"class_id\" lay-verify=\"required\">
                             <option value=\"\"></option>
-                            <option value=\"0\">北京</option>
-                            <option value=\"1\">上海</option>
-                            <option value=\"2\">广州</option>
-                            <option value=\"3\">深圳</option>
-                            <option value=\"4\">杭州</option>
-                        </select>
+                            ";
+        // line 22
+        $context['_parent'] = $context;
+        $context['_seq'] = twig_ensure_traversable($context["class"]);
+        foreach ($context['_seq'] as $context["_key"] => $context["class"]) {
+            // line 23
+            echo "                            <option value=\"";
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["class"], "id", [], "any", false, false, false, 23), "html", null, true);
+            echo "\">";
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["class"], "classname", [], "any", false, false, false, 23), "html", null, true);
+            echo "</option>
+                            ";
+        }
+        $_parent = $context['_parent'];
+        unset($context['_seq'], $context['_iterated'], $context['_key'], $context['class'], $context['_parent'], $context['loop']);
+        $context = array_intersect_key($context, $_parent) + $_parent;
+        // line 25
+        echo "                        </select>
                     </div>
                 </div>
                 <div class=\"layui-form-item\">
                     <div class=\"layui-inline\">
                         <label class=\"layui-form-label\">版权</label>
                         <div class=\"layui-input-inline\">
-                            <input type=\"tel\" name=\"copyright\" lay-verify=\"required\" placeholder=\"请输入版权\" autocomplete=\"off\" class=\"layui-input\">
+                            <input type=\"tel\" name=\"copyright\" placeholder=\"请输入版权\" autocomplete=\"off\" class=\"layui-input\">
                         </div>
                         <div class=\"layui-form-mid layui-word-aux\">非必填</div>
                     </div>
                     <div class=\"layui-inline\">
                         <label class=\"layui-form-label\">第三方来源</label>
                         <div class=\"layui-input-inline\">
-                            <input type=\"text\" name=\"url\" lay-verify=\"email\" placeholder=\"请输入第三方来源\" autocomplete=\"off\" class=\"layui-input\">
+                            <input type=\"text\" name=\"url\" placeholder=\"请输入第三方来源\" autocomplete=\"off\" class=\"layui-input\">
                         </div>
                         <div class=\"layui-form-mid layui-word-aux\">非必填</div>
                     </div>
@@ -92,7 +104,7 @@ class __TwigTemplate_813e05948fc2bcfe18e9947acfd75d85aaa8c21284c67832fe791a67131
                     </div>
                 </div>
                 <input type=\"hidden\" name=\"csrf_token\" value=\"";
-        // line 60
+        // line 58
         echo twig_escape_filter($this->env, ($context["csrf"] ?? null), "html", null, true);
         echo "\">
                 <div class=\"layui-form-item\">
@@ -112,6 +124,8 @@ class __TwigTemplate_813e05948fc2bcfe18e9947acfd75d85aaa8c21284c67832fe791a67131
         var editor = editormd(\"editormd\", {
             path : \"/editor.md/lib/\", // Autoload modules mode, codemirror, marked... dependents libs path
             imageUpload       : true,
+            imageFormats   : [\"jpg\", \"jpeg\", \"gif\", \"png\", \"bmp\", \"webp\"],
+            imageUploadURL : \"uploadimg?type=article\",
             height:'80%',
             toolbarIcons : function() {
                 // Or return editormd.toolbarModes[name]; // full, simple, mini
@@ -124,9 +138,7 @@ class __TwigTemplate_813e05948fc2bcfe18e9947acfd75d85aaa8c21284c67832fe791a67131
         });
         var form = layui.form;
         form.on('submit(demo1)', function(data){
-            layer.alert(JSON.stringify(data.field), {
-                title: '最终的提交信息'
-            })
+            fetch('',);
             return false;
         });
     });
@@ -146,7 +158,7 @@ class __TwigTemplate_813e05948fc2bcfe18e9947acfd75d85aaa8c21284c67832fe791a67131
 
     public function getDebugInfo()
     {
-        return array (  96 => 60,  35 => 1,);
+        return array (  108 => 58,  73 => 25,  62 => 23,  58 => 22,  35 => 1,);
     }
 
     public function getSourceContext()
@@ -172,11 +184,9 @@ class __TwigTemplate_813e05948fc2bcfe18e9947acfd75d85aaa8c21284c67832fe791a67131
                     <div class=\"layui-input-inline\">
                         <select name=\"class_id\" lay-verify=\"required\">
                             <option value=\"\"></option>
-                            <option value=\"0\">北京</option>
-                            <option value=\"1\">上海</option>
-                            <option value=\"2\">广州</option>
-                            <option value=\"3\">深圳</option>
-                            <option value=\"4\">杭州</option>
+                            {% for class in class %}
+                            <option value=\"{{ class.id }}\">{{ class.classname }}</option>
+                            {% endfor %}
                         </select>
                     </div>
                 </div>
@@ -184,14 +194,14 @@ class __TwigTemplate_813e05948fc2bcfe18e9947acfd75d85aaa8c21284c67832fe791a67131
                     <div class=\"layui-inline\">
                         <label class=\"layui-form-label\">版权</label>
                         <div class=\"layui-input-inline\">
-                            <input type=\"tel\" name=\"copyright\" lay-verify=\"required\" placeholder=\"请输入版权\" autocomplete=\"off\" class=\"layui-input\">
+                            <input type=\"tel\" name=\"copyright\" placeholder=\"请输入版权\" autocomplete=\"off\" class=\"layui-input\">
                         </div>
                         <div class=\"layui-form-mid layui-word-aux\">非必填</div>
                     </div>
                     <div class=\"layui-inline\">
                         <label class=\"layui-form-label\">第三方来源</label>
                         <div class=\"layui-input-inline\">
-                            <input type=\"text\" name=\"url\" lay-verify=\"email\" placeholder=\"请输入第三方来源\" autocomplete=\"off\" class=\"layui-input\">
+                            <input type=\"text\" name=\"url\" placeholder=\"请输入第三方来源\" autocomplete=\"off\" class=\"layui-input\">
                         </div>
                         <div class=\"layui-form-mid layui-word-aux\">非必填</div>
                     </div>
@@ -228,6 +238,8 @@ class __TwigTemplate_813e05948fc2bcfe18e9947acfd75d85aaa8c21284c67832fe791a67131
         var editor = editormd(\"editormd\", {
             path : \"/editor.md/lib/\", // Autoload modules mode, codemirror, marked... dependents libs path
             imageUpload       : true,
+            imageFormats   : [\"jpg\", \"jpeg\", \"gif\", \"png\", \"bmp\", \"webp\"],
+            imageUploadURL : \"uploadimg?type=article\",
             height:'80%',
             toolbarIcons : function() {
                 // Or return editormd.toolbarModes[name]; // full, simple, mini
@@ -240,9 +252,7 @@ class __TwigTemplate_813e05948fc2bcfe18e9947acfd75d85aaa8c21284c67832fe791a67131
         });
         var form = layui.form;
         form.on('submit(demo1)', function(data){
-            layer.alert(JSON.stringify(data.field), {
-                title: '最终的提交信息'
-            })
+            fetch('',);
             return false;
         });
     });

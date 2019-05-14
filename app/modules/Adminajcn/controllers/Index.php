@@ -87,17 +87,27 @@ class IndexController extends BaseController
     }
     public function uploadimgAction()
     {
-        $secretId = "AKIDUsGZgb9YZPAwX86y897GUhweSUUaBv2x"; //"云 API 密钥 SecretId";
-        $secretKey = "PtCKLYaUZbgIrGUoDg1BOSKYzS4e9qTw"; //"云 API 密钥 SecretKey";
-        $region = "ap-beijing"; //设置一个默认的存储桶地域
-        $cosClient = new Qcloud\Cos\Client(
-            array(
-                'region' => $region,
-                'schema' => 'https', //协议头部，默认为http
-                'credentials'=> array(
-                    'secretId'  => $secretId ,
-                    'secretKey' => $secretKey)));
-        dump($cosClient);
+        $file = $_FILES['editormd-image-file'];
+        $type = explode('/',$file['type']);
+        if($type[0]=='image'){
+            $secretId = "AKIDUsGZgb9YZPAwX86y897GUhweSUUaBv2x"; //"云 API 密钥 SecretId";
+            $secretKey = "PtCKLYaUZbgIrGUoDg1BOSKYzS4e9qTw"; //"云 API 密钥 SecretKey";
+            $region = "ap-beijing"; //设置一个默认的存储桶地域
+            $cosClient = new Qcloud\Cos\Client(
+                array(
+                    'region' => $region,
+                    'schema' => 'https', //协议头部，默认为http
+                    'credentials'=> array(
+                        'secretId'  => $secretId ,
+                        'secretKey' => $secretKey)));
+            $bucket = 'wxuns-1251014182';
+            $key = $_GET['type'] . date('Y/m') . md5(time()) . '.' . $type[1];
+            $local_path = "E:/a.txt";
+            dump($cosClient);
+        }else{
+            throw new Exception('not image.');
+        }
+
         return false;
     }
 }
