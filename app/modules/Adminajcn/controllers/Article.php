@@ -12,6 +12,11 @@ class ArticleController extends BaseController
         $this->getView()->display('admin/article/classlist');
         return false;
     }
+
+    /**
+     * 添加文章
+     * @return bool
+     */
     public function addAction()
     {
         $auth = DB::table('users')
