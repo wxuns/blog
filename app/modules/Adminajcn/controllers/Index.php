@@ -87,6 +87,7 @@ class IndexController extends BaseController
     }
     public function uploadimgAction()
     {
+        dump($_FILES);
         $file = $_FILES['editormd-image-file'];
         $type = explode('/',$file['type']);
         if($type[0]=='image'){
