@@ -39,6 +39,20 @@ class ArticleController extends BaseController
         ]);
         return false;
     }
+    /**
+     *
+     */
+    public function addarticleAction()
+    {
+        $request = Request($this->getRequest());
+        unset($request->csrf_token);
+        $rules = [
+            'title' => 'required|min:5',
+            'class_id' => 'required',
+            ///...
+        ];
+        return false;
+    }
 
     /**
      * 获得类别api

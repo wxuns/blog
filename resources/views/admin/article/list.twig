@@ -16,8 +16,8 @@
             <button class="layui-btn layui-btn-danger" id="del">
                 <i class="fa fa-trash-o" aria-hidden="true"></i>
             </button>
-            <a href="/#/article/add"><button class="layui-btn">
-                    <i class="fa fa-pencil" aria-hidden="true"></i></button></a>
+            <button class="layui-btn" id="add">
+                    <i class="fa fa-pencil" aria-hidden="true"></i></button>
             <table id="userlist" lay-filter="userlist"></table>
         </div>
     </div>
@@ -111,12 +111,12 @@
         layer.open({
             title: '添加用户',
             type: 2,
-            area: ['500px', '600px'],
+            area: ['100%', '100%'],
             fixed: false, //不固定
-            content: 'user/adduser',
+            content: '/article/add',
             end:function () {
                 table.reload('userlist', {
-                    url: '/user/getlist'
+                    url: '/article/add'
                     ,where: {} //设定异步数据接口的额外参数
                     //,height: 300
                 });
