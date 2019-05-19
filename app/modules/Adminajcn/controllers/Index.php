@@ -87,7 +87,6 @@ class IndexController extends BaseController
     }
     public function uploadimgAction()
     {
-        dump($_FILES);
         $file = $_FILES['editormd-image-file'];
         $type = explode('/',$file['type']);
         if($type[0]=='image'){
@@ -102,9 +101,24 @@ class IndexController extends BaseController
                         'secretId'  => $secretId ,
                         'secretKey' => $secretKey)));
             $bucket = 'wxuns-1251014182';
-            $key = $_GET['type'] . date('Y/m') . md5(time()) . '.' . $type[1];
-            $local_path = "E:/a.txt";
-            dump($cosClient);
+            $key = '/' . $_GET['type'] . '/' . date('Y/m/') . md5(time()) . '.' . $type[1];
+            $local_path = $_FILES['editormd-image-file']['tmp_name'];
+            $result = $cosClient->putObject(array(
+                'Bucket' => $bucket,
+                'Key' => $key,
+                'Body' => fopen($local_path, 'rb')));
+            if ($result){
+                echo json_encode([
+                    'success'=>1,
+                    'message'=>'上传成功',
+                    'url'=>str_replace('wxuns-1251014182.cos.ap-beijing.myqcloud.com','images.wxuns.cn',$result['ObjectURL'])
+                ]);
+            }else{
+                echo json_encode([
+                    'success'=>0,
+                    'message'=>'上传失败'
+                ]);
+            }
         }else{
             throw new Exception('not image.');
         }

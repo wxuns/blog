@@ -26,9 +26,11 @@ class ArticleController extends BaseController
         $range = DB::table('auth')
             ->where('star','<',$auth->star)
             ->select('id')->get()->toArray();
-        $limit = '';
+        $limit = $auth->id;
         foreach ($range as $value){
-            $limit .= $limit==''?$value->id:(','.$value->id);
+            if ($value->id != $auth->id){
+                $limit .= ','.$value->id;
+            }
         }
         $class = DB::table('article_class')
             ->whereIn('auth',explode(',',$limit))
@@ -40,7 +42,7 @@ class ArticleController extends BaseController
         return false;
     }
     /**
-     *
+     * 添加文章
      */
     public function addarticleAction()
     {
@@ -48,12 +50,71 @@ class ArticleController extends BaseController
         unset($request->csrf_token);
         $rules = [
             'title' => 'required|min:5',
-            'class_id' => 'required',
-            ///...
+            'class_id' => 'required|numeric',
+            'keyword'=>'required',
+            'content'=>'required'
         ];
+        $validator = $this->factory->make((array)$request, $rules);
+
+        //判断验证是否通过
+        if ($validator->passes()) {
+            //通过
+            $request->author = $this->user->id;
+            $request->time = date('Y-m-d H:i:s');
+            $request->last_time = date('Y-m-d H:i:s');
+            if (DB::table('article')->insert((array)$request)){
+                echo json_encode(['status'=>0,'message'=>'添加成功']);
+            }
+        } else {
+            //未通过
+            //输出错误消息
+            echo json_encode(['status'=>402,'message'=> $validator->messages()->all()[0]]); // 或者 $validator->errors();
+        }
         return false;
     }
 
+    /**
+     * 添加文章
+     * @return bool
+     */
+    public function getlistAction()
+    {
+        $request = Request($this->getRequest());
+        $data = DB::table('article')
+            ->skip(($request->page-1)*$request->limit)
+            ->take($request->limit)
+            ->join('users','users.id','=','article.author')
+            ->join('article_class','article_class.id','=','article.class_id')
+            ->select('article.*','users.username','article_class.classname')
+            ->orderBy('id','desc')
+            ->get();
+        echo json_encode(['code'=>0,'msg'=>'','count'=>DB::table('article')->count(),'data'=>$data]);
+        return false;
+    }
+    public function editAction()
+    {
+        $auth = DB::table('users')
+            ->where('users.id',\Tool\Session::get('user')->id)
+            ->join('auth','auth.id','=','users.auth')
+            ->select('auth.id','auth.star')->first();
+        $range = DB::table('auth')
+            ->where('star','<',$auth->star)
+            ->select('id')->get()->toArray();
+        $limit = $auth->id;
+        foreach ($range as $value){
+            if ($value->id != $auth->id){
+                $limit .= ','.$value->id;
+            }
+        }
+        $class = DB::table('article_class')
+            ->whereIn('auth',explode(',',$limit))
+            ->select('id','classname')->get();
+        $this->getView()->display('admin/article/addarticle',[
+            'csrf' => Csrf::generate('csrf_token'),
+            'class'=>$class
+        ]);
+        return false;
+    }
     /**
      * 获得类别api
      * @return bool

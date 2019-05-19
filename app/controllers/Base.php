@@ -14,6 +14,7 @@ abstract class BaseController extends YafController
 {
     public $factory = '';
     public $attributes = '';
+    public $user = '';
     public function init()
     {
         $messages = [
@@ -153,5 +154,6 @@ abstract class BaseController extends YafController
             'size'                  => '大小',
         ];
         $this->factory = new ValidatorFactory(new Translator($messages));
+        $this->user = \Tool\Session::get('user');
     }
 }

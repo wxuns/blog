@@ -18,19 +18,22 @@
             </button>
             <button class="layui-btn" id="add">
                     <i class="fa fa-pencil" aria-hidden="true"></i></button>
-            <table id="userlist" lay-filter="userlist"></table>
+            <table class="layui-hide" id="userlist" lay-filter="userlist"></table>
         </div>
     </div>
 </div>
 <script type="text/javascript" src="./layui/layui.all.js"></script>
 
 <script type="text/html" id="statusTpl">
-    {{ "{{ d.status==1?'正常':'封号' }}" }}
+    {{ "{{ d.status==1?'正常':'回收' }}" }}
 </script>
 
+<script type="text/html" id="ontopTpl">
+    {{ "{{ d.ontop==1?'是':'否' }}" }}
+</script>
 
-<script type="text/html" id="picTpl">
-    <img src="{{ "{{ d.pic }}" }}" alt="" style="height:50px;">
+<script type="text/html" id="eliteTpl">
+    {{ "{{ d.elite==1?'是':'否' }}" }}
 </script>
 
 <script type="text/html" id="bar">
@@ -38,7 +41,7 @@
     {{ "{{# if(d.status == 1){ }}" }}
     <a class="layui-btn layui-btn-danger layui-btn-sm" lay-event="delete">封号</a>
     {{ "{{# } else { }}" }}
-    <a class="layui-btn layui-btn-sm" lay-event="lifted">解封</a>
+    <a class="layui-btn layui-btn-sm" lay-event="lifted">删除</a>
     {{ "{{# } }}" }}
 </script>
 <script>
@@ -47,20 +50,26 @@
     //第一个实例
     table.render({
         elem: '#userlist'
-        ,url: '/user/getlist' //数据接口
+        ,url: '/article/getlist' //数据接口
         ,page: true //开启分页
         ,cols: [[ //表头
             {type: 'checkbox', fixed: 'left'}
-            ,{field: 'id', title: 'ID', width:80, sort: true}
-            ,{field: 'username', title: '用户名'}
-            ,{field: 'pic', title: '头像', width:80, templet: '#picTpl'}
-            ,{field: 'mobile', title: '电话'}
-            ,{field: 'email', title: 'email'}
-            ,{field: 'nick', title: '昵称'}
-            ,{field: 'intro', title: '签名'}
-            ,{field: 'rolename', title: '角色权限'}
-            ,{field: 'status', title: '状态', width: 80, templet: '#statusTpl'}
-            ,{fixed: 'right', title:'操作', toolbar: '#bar',align:'center', width:180}
+            ,{field: 'id', title: 'ID', width:60, sort: true, fixed: 'left', unresize: true}
+            ,{field: 'title', title: '标题', width:180}
+            ,{field: 'username', title: '作者', width:80}
+            ,{field: 'classname', title: '类别名称', width:100}
+            ,{field: 'keyword', title: '关键字', width:100}
+            ,{field: 'copyright', title: '版权'}
+            ,{field: 'url', title: '三方来源'}
+            ,{field: 'count', title: '访问量', width: 80}
+            ,{field: 'laud', title: '点赞数', width: 80}
+            ,{field: 'comment', title: '评论数', width: 80}
+            ,{field: 'ontop', title: '置顶', width: 60, templet: '#ontopTpl',align:'center'}
+            ,{field: 'elite', title: '加精', width: 60, templet: '#eliteTpl',align:'center'}
+            ,{field: 'status', title: '状态', width: 70, templet: '#statusTpl',align:'center'}
+            ,{field: 'time', title: '时间', width: 160}
+            ,{field: 'last_time', title: '最后时间', width: 160}
+            ,{fixed: 'right', title:'操作', toolbar: '#bar',align:'center', width:150}
         ]]
     });
     table.on('tool(userlist)', function(obj){
@@ -82,7 +91,7 @@
                     if(response.status == 1){
                         layer.msg(response.msg, {icon: 1});
                         table.reload('userlist', {
-                            url: '/user/getlist'
+                            url: '/article/getlist'
                             ,where: {} //设定异步数据接口的额外参数
                             //,height: 300
                         });
@@ -92,14 +101,14 @@
             });
         } else if(obj.event === 'edit'){
             layer.open({
-                title: '修改用户信息',
+                title: '修改文章',
                 type: 2,
-                area: ['500px', '600px'],
+                area: ['100%', '100%'],
                 fixed: false, //不固定
-                content: 'user/edituser?id='+data.id,
+                content: 'article/edit',
                 end:function () {
                     table.reload('userlist', {
-                        url: '/user/getlist'
+                        url: 'article/getlist'
                         ,where: {} //设定异步数据接口的额外参数
                         //,height: 300
                     });
@@ -109,14 +118,14 @@
     });
     $('#add').click(function () {
         layer.open({
-            title: '添加用户',
+            title: '添加文章',
             type: 2,
             area: ['100%', '100%'],
             fixed: false, //不固定
             content: '/article/add',
             end:function () {
                 table.reload('userlist', {
-                    url: '/article/add'
+                    url: '/article/getlist'
                     ,where: {} //设定异步数据接口的额外参数
                     //,height: 300
                 });
