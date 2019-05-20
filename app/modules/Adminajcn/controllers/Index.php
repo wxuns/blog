@@ -85,11 +85,17 @@ class IndexController extends BaseController
         }
         return false;
     }
+
+    /**
+     * 图片上传api
+     * @return bool
+     * @throws Exception
+     */
     public function uploadimgAction()
     {
         $file = $_FILES['editormd-image-file'];
         $type = explode('/',$file['type']);
-        if($type[0]=='image'){
+        if($type[0]=='image'&&$file['error']==0&&$file['size']<=10485760){
             $secretId = "AKIDUsGZgb9YZPAwX86y897GUhweSUUaBv2x"; //"云 API 密钥 SecretId";
             $secretKey = "PtCKLYaUZbgIrGUoDg1BOSKYzS4e9qTw"; //"云 API 密钥 SecretKey";
             $region = "ap-beijing"; //设置一个默认的存储桶地域

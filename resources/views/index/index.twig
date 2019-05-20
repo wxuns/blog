@@ -3,13 +3,13 @@
 <head>
     <meta charset="gbk">
     <title>文讯博客 - 因为热爱</title>
-    <meta name="keywords" content="个人博客,杨青个人博客,个人博客模板,杨青" />
-    <meta name="description" content="杨青个人博客，是一个站在web前端设计之路的女程序员个人网站，提供个人博客模板免费资源下载的个人原创网站。" />
+    <meta name="keywords" content="个人博客,李志旭个人博客,个人博客模板,文讯博客,李志旭" />
+    <meta name="description" content="文讯博客，技术类文章分享，分享个人收集的有趣文章，分享个人学习使用技巧。" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" href="/favicon.ico"/>
     <link href="css/base.css" rel="stylesheet">
     <link href="css/index.css" rel="stylesheet">
-    <link href="https://cdn.bootcss.com/weui/1.1.3/style/weui.min.css" rel="stylesheet">
+    <link href="https://cdn.bootcss.com/weui/2.0.0/style/weui.min.css" rel="stylesheet">
     <link rel="stylesheet" href="//at.alicdn.com/t/font_1137992_r1qxefehlko.css">
     <link href="https://lib.baomitu.com/Swiper/4.5.0/css/swiper.min.css" rel="stylesheet">
     <script src="https://lib.baomitu.com/Swiper/4.5.0/js/swiper.min.js"></script>
@@ -26,15 +26,12 @@
         <div class="clearfix toolbar-inner">
             <div class="quicklink">
                 <ul id="chinaz_website_links" class="accesslink">
-                    <li><a href="http://www.chinaz.com"><span>站长之家</span></a></li>
-                    <li><a href="http://down.chinaz.com" target="_blank"><span>源码下载</span></a></li>
-                    <li><a href="http://bbs.chinaz.com" target="_blank"><span>站长论坛</span></a></li>
-
+                    <li><a href="" target="_blank"><span>文讯小店</span></a></li>
                 </ul>
-
             </div>
             <div id="chinaz_topbar"><div class="userbar">
-                    <span>快捷登录：</span>
+                    <a href="#" title="账号登陆" id="login">账号登陆</a>
+                    <span>| 快捷登录：</span>
                     <a href="#" target="_top" title="QQ登录"><i class="iconfont icon-qq"></i></a>
                     <a href="#" target="_top" title="微博登录"><i class="iconfont icon-xinlangweibo"></i></a>
                     <a href="#" target="_top" title="Github登录"><i class="iconfont icon-github"></i></a>
@@ -49,11 +46,12 @@
     <div class="toolbar"></div>
     <nav id="nav">
         <ul id="starlist">
-            <li><a href="index.html" id="selected">网站首页</a></li>
-            <li><a href="share.html">我的相册</a></li>
-            <li><a href="list.html">我的日记</a></li>
-            <li><a href="about.html">关于我</a></li>
-            <li><a href="gbook.html">留言</a></li>
+            <li><a href="/" id="selected">网站首页</a></li>
+            {% for c in class %}
+            <li><a href="/category/{{ c.id }}">{{ c.classname }}</a></li>
+            {% endfor %}
+            <li><a href="liuyan">留言</a></li>
+            <li><a href="aboutme">关于我</a></li>
         </ul>
     </nav>
 </header>
@@ -165,38 +163,38 @@
                 <div class="swiper-button-next swiper-button-white hide"></div>
             </div>
         </li>
-        {% for i in 0..10 %}
+        {% for art in article %}
             <li>
-                {% if i%6 %}
-                    <i><a href="/"><img src="images/{{ i }}.jpg"></a></i>
+                {% if art.img %}
+                    <i><a href="/"><img src="{{ art.img }}"></a></i>
                 {% endif %}
-                <h3><a href="/">你是什么人便会遇上什么人</a></h3>
-                <p>有时就为了一句狠话，像心头一口毒钉，永远麻痺着亲密感情交流。恶言，真要慎出，平日多誠心爱语，乃最简易之佈施。有时就为了一句狠话，像心头一口毒钉，永远麻痺着亲密感情交流。恶言，真要慎出，平日多誠心爱语，乃最简易之佈施。</p>
+                <h3><a href="/{{ art.id }}">{{ art.title }}</a></h3>
+                <p>{{ art.content }}</p>
                 <div class="weui-flex">
                     <div class="weui-flex__item">
                         <div class="placeholder">
                             <a href="javascript:;" class="weui-btn wx-btn_mini weui-btn_mini weui-btn_default">
-                                <span class="iconfont icon-shang"></span>99
+                                <span class="iconfont icon-shang"></span> {{ art.laud }}
                             </a>
                             <a href="javascript:;" class="weui-btn wx-btn_mini weui-btn_mini weui-btn_default">
-                                <span class="iconfont icon-xia"></span>22
+                                <span class="iconfont icon-xia"></span>
                             </a>
                         </div>
                     </div>
                     <div class="weui-flex__item contentim">
                         <div class="placeholder">
-                            <span class="iconfont icon-shijian"></span> 2019-2-10
+                            <span class="iconfont icon-shijian"></span> {{ art.last_time }}
                         </div>
                     </div>
                     <div class="weui-flex__item contentim">
                         <div class="placeholder">
-                            <span class="iconfont icon-weibiaoti--"></span> 666
+                            <span class="iconfont icon-weibiaoti--"></span> {{ art.count }}
                         </div>
                     </div>
                     <div class="weui-flex__item contentim">
                         <div class="placeholder">
                             <span class="iconfont icon-nav"></span>
-                            <a href="#" style="color: #797b7c">【PHP技术】</a>
+                            <a href="#" style="color: #797b7c">【{{ art.classname }}】</a>
                         </div>
                     </div>
                 </div>

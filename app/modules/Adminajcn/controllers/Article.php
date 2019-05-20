@@ -62,7 +62,9 @@ class ArticleController extends BaseController
             $request->author = $this->user->id;
             $request->time = date('Y-m-d H:i:s');
             $request->last_time = date('Y-m-d H:i:s');
-            if (DB::table('article')->insert((array)$request)){
+            $request = (array)$request;
+            unset($request['editormd-image-file']);
+            if (DB::table('article')->insert($request)){
                 echo json_encode(['status'=>0,'message'=>'添加成功']);
             }
         } else {
@@ -100,7 +102,7 @@ class ArticleController extends BaseController
     {
         $request = Request($this->getRequest());
         $auth = DB::table('users')
-            ->where('users.id',\Tool\Session::get('user')->id)
+            ->where('users.id',$this->user->id)
             ->join('auth','auth.id','=','users.auth')
             ->select('auth.id','auth.star')->first();
         $range = DB::table('auth')

@@ -7,6 +7,7 @@
  *
  * @see http://www.php.net/manual/en/class.yaf-controller-abstract.php
  */
+use League\CommonMark\CommonMarkConverter;
 class IndexController extends BaseController
 {
     /**
@@ -16,11 +17,43 @@ class IndexController extends BaseController
      */
     public function indexAction($name = 'Polite')
     {
-        $model = new SampleModel();
-        $this->getView()->assign('content', $model->selectSample());
-        $this->getView()->assign('name', $name);
-        //4. render by Yaf, 如果这里返回FALSE, Yaf将不会调用自动视图引擎Render模板
-        return true;
+        if ($this->user){
+
+        }else{
+            $class = DB::table('article_class')
+                ->where('auth',3)
+                ->select('id','classname')->get();
+        }
+        //文章列表
+        $article = DB::table('article')
+            ->take(10)
+            ->join('users','users.id','=','article.author')
+            ->join('article_class','article_class.id','=','article.class_id')
+            ->select('article.id',
+                'article.class_id',
+                'article.title',
+                'article.content',
+                'article.count',
+                'article.laud',
+                'article.comment',
+                'article.ontop',
+                'article.elite',
+                'article.last_time',
+                'article_class.classname'
+            )
+            ->where('article.status',1)
+            ->orderBy('id','desc')
+            ->get();
+        foreach ($article as $k=>$a){
+            $converter = new CommonMarkConverter();
+            //获取图片
+            preg_match('/<\s*img\s+[^>]*?src\s*=\s*(\'|\")(.*?)\\1[^>]*?\/?\s*>/i',$converter->convertToHtml($a->content),$match);
+            $article[$k]->img = $match?$match[2]:'';
+            $article[$k]->content = mb_substr(str_replace(array("\r\n", "\r", "\n"), "",strip_tags($converter->convertToHtml($a->content))),0,150);
+            $article[$k]->last_time = date('Y-m-d',strtotime($article[$k]->last_time));
+        }
+        $this->getView()->display('index/index',['class'=>$class,'article'=>$article]);
+        return false;
     }
 
     public function infoAction()
