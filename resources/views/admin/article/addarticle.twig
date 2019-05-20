@@ -21,7 +21,7 @@
             <div class="layui-form-item">
                 <label class="layui-form-label">标题</label>
                 <div class="layui-input-block">
-                    <input type="text" name="title" lay-verify="required" autocomplete="off" placeholder="请输入标题" class="layui-input">
+                    <input type="text" name="title" lay-verify="required" autocomplete="off" placeholder="请输入标题" class="layui-input" value="{{ article.title }}">
                 </div>
             </div>
             <div class="layui-form-item">
@@ -30,7 +30,7 @@
                     <select name="class_id" lay-verify="required" style="display: none">
                         <option value=""></option>
                         {% for class in class %}
-                        <option value="{{ class.id }}">{{ class.classname }}</option>
+                        <option value="{{ class.id }}" {{ article.class_id==class.id ? 'selected':''}}>{{ class.classname }}</option>
                         {% endfor %}
                     </select>
                 </div>
@@ -39,14 +39,14 @@
                 <div class="layui-inline">
                     <label class="layui-form-label">版权</label>
                     <div class="layui-input-inline">
-                        <input type="tel" name="copyright" placeholder="请输入版权" autocomplete="off" class="layui-input">
+                        <input type="tel" name="copyright" placeholder="请输入版权" autocomplete="off" class="layui-input" value="{{ article.copyright }}">
                     </div>
                     <div class="layui-form-mid layui-word-aux">非必填</div>
                 </div>
                 <div class="layui-inline">
                     <label class="layui-form-label">第三方来源</label>
                     <div class="layui-input-inline">
-                        <input type="text" name="url" placeholder="请输入第三方来源" autocomplete="off" class="layui-input">
+                        <input type="text" name="url" placeholder="请输入第三方来源" autocomplete="off" class="layui-input" value="{{ article.url }}">
                     </div>
                     <div class="layui-form-mid layui-word-aux">非必填</div>
                 </div>
@@ -54,20 +54,20 @@
             <div class="layui-form-item">
                 <label class="layui-form-label">关键字</label>
                 <div class="layui-input-block">
-                    <input type="text" name="keyword" lay-verify="title" autocomplete="off" placeholder="请用逗号隔开" class="layui-input">
+                    <input type="text" name="keyword" lay-verify="title" autocomplete="off" placeholder="请用逗号隔开" class="layui-input" value="{{ article.keyword }}">
                 </div>
             </div>
             <div class="layui-form-item layui-form-text">
                 <label class="layui-form-label">内容</label>
                 <div class="layui-input-block">
                     <div id="editormd">
-                        <textarea name="content" style="display:none;"></textarea>
+                        <textarea name="content" style="display:none;">{{ article.content }}</textarea>
                     </div>
                 </div>
             </div>
             <input type="hidden" name="csrf_token" value="{{ csrf }}">
             <div class="layui-form-item">
-                <button class="layui-btn" lay-submit lay-filter="ssss" style="margin-left:10%">立即提交</button>
+                <button class="layui-btn" lay-submit lay-filter="{{ article?'edit':'add' }}" style="margin-left:10%">立即提交</button>
             </div>
         </form>
     </div>
@@ -97,8 +97,26 @@
             },
         });
     });
-    form.on('submit(ssss)', function(data){
+    form.on('submit(add)', function(data){
         fetch('/article/addarticle',{
+            body:JSON.stringify(data.field),
+            method:'POST'
+        }).then(function(response) {
+            return response.text();
+        }).then(function (response) {
+            response = JSON.parse(response);
+            if (response.status){
+                layer.msg(response.message)
+            }else{
+                var index = parent.layer.getFrameIndex(window.name);
+                parent.layer.msg(response.message,{icon:1})
+                parent.layer.close(index);
+            }
+        });
+        return false;
+    });
+    form.on('submit(edit)', function(data){
+        fetch('/article/editarticleapi?id={{ article.id }}',{
             body:JSON.stringify(data.field),
             method:'POST'
         }).then(function(response) {

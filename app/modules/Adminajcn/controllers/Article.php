@@ -91,8 +91,14 @@ class ArticleController extends BaseController
         echo json_encode(['code'=>0,'msg'=>'','count'=>DB::table('article')->count(),'data'=>$data]);
         return false;
     }
+
+    /**
+     * 修改文章
+     * @return bool
+     */
     public function editAction()
     {
+        $request = Request($this->getRequest());
         $auth = DB::table('users')
             ->where('users.id',\Tool\Session::get('user')->id)
             ->join('auth','auth.id','=','users.auth')
@@ -109,10 +115,56 @@ class ArticleController extends BaseController
         $class = DB::table('article_class')
             ->whereIn('auth',explode(',',$limit))
             ->select('id','classname')->get();
+        //文章详情
+        $article = DB::table('article')
+            ->where('id',$request->id)
+            ->first();
         $this->getView()->display('admin/article/addarticle',[
             'csrf' => Csrf::generate('csrf_token'),
-            'class'=>$class
+            'class'=>$class,
+            'article'=>$article
         ]);
+        return false;
+    }
+
+    /**
+     * 修改文章api
+     * @return bool
+     */
+    public function editarticleapiAction()
+    {
+        $request = Request($this->getRequest());
+        unset($request->csrf_token);
+        $rules = [
+            'title' => 'required|min:5',
+            'class_id' => 'required|numeric',
+            'keyword'=>'required',
+            'content'=>'required'
+        ];
+        $validator = $this->factory->make((array)$request, $rules);
+
+        //判断验证是否通过
+        if ($validator->passes()) {
+            //通过
+            $request->author = $this->user->id;
+            $request->last_time = date('Y-m-d H:i:s');
+            if (DB::table('article')->where('id',$_GET['id'])->update((array)$request)){
+                echo json_encode(['status'=>0,'message'=>'修改成功']);
+            }
+        } else {
+            //未通过
+            //输出错误消息
+            echo json_encode(['status'=>402,'message'=> $validator->messages()->all()[0]]); // 或者 $validator->errors();
+        }
+        return false;
+    }
+    public function delarticleAction()
+    {
+        $id = Request($this->getRequest())->id;
+        $status = DB::table('article')->where('id',$id)->value('status');
+        if (DB::table('article')->where('id',$id)->update(['status'=>!$status])){
+            echo json_encode(['status'=>1,'msg'=>'状态修改成功']);
+        }
         return false;
     }
     /**
