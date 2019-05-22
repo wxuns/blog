@@ -24,7 +24,7 @@ header { width: 100%; overflow: hidden; }
 .logo { text-align: center; width: 1000px; margin: auto; font-size: 40px; padding: 10px 0;font-family: ZCOOL XiaoWei; -webkit-text-shadow: 1px 1px 1px rgba(0,0,0,.2); -moz-text-shadow: 1px 1px 1px rgba(0,0,0,.2); text-shadow: 1px 1px 1px rgba(0,0,0,.2); }
 .logo a { color: #fffef9 }
 nav { width: 1000px; margin: auto; overflow: hidden; padding: 20px 0 }
-nav li { display: inline-block; float: left; width: 100px; text-align: center; overflow: hidden; line-height: 30px; text-shadow: #fff 1px 0 2px, #fff 0 1px 2px, #fff -1px 0 2px, #fff 0 -1px 2px; }
+nav li { margin: 0 10px; display: inline-block; float: left; text-align: center; overflow: hidden; line-height: 30px; text-shadow: #fff 1px 0 2px, #fff 0 1px 2px, #fff -1px 0 2px, #fff 0 -1px 2px; }
 nav li a { color: #d11a2d; }
 a#selected,nav li a:hover { display: block; color: #d11a2d; border-radius: 20px 3px;font-family: ZCOOL XiaoWei; text-shadow: none; font-size: 23px;letter-spacing:-4px;}
 /*cd-top*/

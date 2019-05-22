@@ -17,8 +17,24 @@ class IndexController extends BaseController
      */
     public function indexAction($name = 'Polite')
     {
+        //类名
         if ($this->user){
-
+            $auth = DB::table('users')
+                ->where('users.id',$this->user->id)
+                ->join('auth','auth.id','=','users.auth')
+                ->select('auth.id','auth.star')->first();
+            $range = DB::table('auth')
+                ->where('star','<',$auth->star)
+                ->select('id')->get()->toArray();
+            $limit = $auth->id;
+            foreach ($range as $value){
+                if ($value->id != $auth->id){
+                    $limit .= ','.$value->id;
+                }
+            }
+            $class = DB::table('article_class')
+                ->whereIn('auth',explode(',',$limit))
+                ->select('id','classname')->get();
         }else{
             $class = DB::table('article_class')
                 ->where('auth',3)
@@ -52,7 +68,15 @@ class IndexController extends BaseController
             $article[$k]->content = mb_substr(str_replace(array("\r\n", "\r", "\n"), "",strip_tags($converter->convertToHtml($a->content))),0,150);
             $article[$k]->last_time = date('Y-m-d',strtotime($article[$k]->last_time));
         }
-        $this->getView()->display('index/index',['class'=>$class,'article'=>$article]);
+        //点击排行
+        $hot = DB::table('article')
+            ->
+        $this->getView()->display('index/index',[
+            'csrf' => Csrf::generate('csrf_token'),
+            'class'=>$class,
+            'article'=>$article,
+            'user'=>$this->user
+        ]);
         return false;
     }
 

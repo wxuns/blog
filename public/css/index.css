@@ -80,3 +80,8 @@ a.curPage { color: #d11a2d; font-weight: bold; }
 .icon-xinlangweibo{color: #ea5d5c}
 .icon-github{color: #161614}
 .icon-weixin{color: #50b674}
+.wx-title{margin-bottom: 0 !important;}
+.wx-cell{height: 5px;}
+.user{overflow: initial !important;}
+.user-m a{margin: 0 10px;}
+.user-m img{vertical-align: middle;width: 27px;border-radius:3px;display: inline-block;}
