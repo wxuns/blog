@@ -152,42 +152,12 @@
         <div class="remen">
             <h2>点击排行</h2>
             <ul>
+                {% for key,hot in hot %}
                 <li>
-                    <em class="no1">1</em>
-                    <a href="/web/58424.html" title="iframe标签用法详解(属性、透明、自适应高度)" target="_blank">iframe标签用法详解(属性、透明、自适应高度)</a></li><li><em class="no2">2</em><a href="/web/19216.html" title="16进制颜色代码（完全）" target="_blank">16进制颜色代码（完全）</a>
+                    <em class="no1">{{ key+1 }}</em>
+                    <a href="/{{ hot.id }}" title="{{ hot.title }}" target="_blank">{{ hot.title }}</a>
                 </li>
-                <li>
-                    <em class="no3">3</em>
-                    <a href="/web/20182.html" title="40多个漂亮的网页表单设计实例" target="_blank">40多个漂亮的网页表单设计实例</a>
-                </li>
-                <li>
-                    <em class="no4">4</em>
-                    <a href="/css/44250.html" title="css控制UL LI 的样式详解(推荐)" target="_blank">css控制UL LI 的样式详解(推荐)</a>
-                </li>
-                <li>
-                    <em class="no5">5</em>
-                    <a href="/web/39559.html" title="定义input type=file 样式的方法" target="_blank">定义input type=file 样式的方法</a>
-                </li>
-                <li>
-                    <em class="no6">6</em>
-                    <a href="/css/33920.html" title="HTML设置超链接字体颜色和点击后的字体颜色" target="_blank">HTML设置超链接字体颜色和点击后的字体颜色</a>
-                </li>
-                <li>
-                    <em class="no7">7</em>
-                    <a href="/web/62128.html" title="HTML中让表单input等文本框为只读不可编辑的方法" target="_blank">HTML中让表单input等文本框为只读不可编辑的方法</a>
-                </li>
-                <li>
-                    <em class="no8">8</em>
-                    <a href="/css/28259.html" title="div水平垂直居中的完美解决方案" target="_blank">div水平垂直居中的完美解决方案</a>
-                </li>
-                <li>
-                    <em class="no9">9</em>
-                    <a href="/css/163448.html" title="css设置各种中文字体如雅黑、黑体、宋体、楷体等等" target="_blank">css设置各种中文字体如雅黑、黑体、宋体、楷体等等</a>
-                </li>
-                <li>
-                    <em class="no10">10</em>
-                    <a href="/css/241589.html" title="CSS 文本字体颜色设置方法(CSS color)" target="_blank">CSS 文本字体颜色设置方法(CSS color)</a>
-                </li>
+                {% endfor %}
             </ul>
         </div>
         <div class="wdxc">

@@ -85,12 +85,12 @@ class __TwigTemplate_de137a5d292907214ce703703993bb9511bcc6b24e89507b2bc0602619e
         // line 41
         echo "{{# if(d.status == 1){ }}";
         echo "
-    <a class=\"layui-btn layui-btn-danger layui-btn-sm\" lay-event=\"delete\">封号</a>
+    <a class=\"layui-btn layui-btn-danger layui-btn-sm\" lay-event=\"delete\">删除</a>
     ";
         // line 43
         echo "{{# } else { }}";
         echo "
-    <a class=\"layui-btn layui-btn-sm\" lay-event=\"lifted\">删除</a>
+    <a class=\"layui-btn layui-btn-sm\" lay-event=\"lifted\">恢复</a>
     ";
         // line 45
         echo "{{# } }}";
@@ -134,7 +134,7 @@ class __TwigTemplate_de137a5d292907214ce703703993bb9511bcc6b24e89507b2bc0602619e
                 ,btn: ['确定','取消'] //按钮
                 ,icon: 2
             }, function(){
-                fetch('user/deluser?id='+data.id,{
+                fetch('article/delarticle?id='+data.id,{
                     method: 'GET'
                 }).then(function(response) {
                     return response.text();
@@ -157,7 +157,7 @@ class __TwigTemplate_de137a5d292907214ce703703993bb9511bcc6b24e89507b2bc0602619e
                 type: 2,
                 area: ['100%', '100%'],
                 fixed: false, //不固定
-                content: 'article/edit',
+                content: 'article/edit?id='+data.id,
                 end:function () {
                     table.reload('userlist', {
                         url: 'article/getlist'
@@ -246,9 +246,9 @@ class __TwigTemplate_de137a5d292907214ce703703993bb9511bcc6b24e89507b2bc0602619e
 <script type=\"text/html\" id=\"bar\">
     <a class=\"layui-btn layui-btn-sm\" lay-event=\"edit\">编辑</a>
     {{ \"{{# if(d.status == 1){ }}\" }}
-    <a class=\"layui-btn layui-btn-danger layui-btn-sm\" lay-event=\"delete\">封号</a>
+    <a class=\"layui-btn layui-btn-danger layui-btn-sm\" lay-event=\"delete\">删除</a>
     {{ \"{{# } else { }}\" }}
-    <a class=\"layui-btn layui-btn-sm\" lay-event=\"lifted\">删除</a>
+    <a class=\"layui-btn layui-btn-sm\" lay-event=\"lifted\">恢复</a>
     {{ \"{{# } }}\" }}
 </script>
 <script>
@@ -289,7 +289,7 @@ class __TwigTemplate_de137a5d292907214ce703703993bb9511bcc6b24e89507b2bc0602619e
                 ,btn: ['确定','取消'] //按钮
                 ,icon: 2
             }, function(){
-                fetch('user/deluser?id='+data.id,{
+                fetch('article/delarticle?id='+data.id,{
                     method: 'GET'
                 }).then(function(response) {
                     return response.text();
@@ -312,7 +312,7 @@ class __TwigTemplate_de137a5d292907214ce703703993bb9511bcc6b24e89507b2bc0602619e
                 type: 2,
                 area: ['100%', '100%'],
                 fixed: false, //不固定
-                content: 'article/edit',
+                content: 'article/edit?id='+data.id,
                 end:function () {
                     table.reload('userlist', {
                         url: 'article/getlist'

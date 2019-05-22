@@ -50,13 +50,13 @@ class __TwigTemplate_3331f065ccca525805f941ca454b80dc2a2a0f6be6fb2420a7c162ab66a
 <body class=\"layui-layout-body\">
 <div class=\"layui-layout layui-layout-admin\">
   <div class=\"layui-header layui-bg-green\">
-    <div class=\"layui-logo\" style=\"border-right: 0.1px solid #393d49;\">
+    <div class=\"layui-logo\" style=\"box-shadow: 0 1px 2px 0 rgba(0,0,0,.15);\">
       <img src=\"/images/logo.gif\" alt=\"\" style=\"width: 35px\">
       <span style=\"color: #fff;font-family: ZCOOL XiaoWei\">管理后台</span>
     </div>
     <!-- 头部区域（可配合layui已有的水平导航） -->
     <ul class=\"layui-nav layui-layout-left\">
-      <li class=\"layui-nav-item\"><a href=\"\">前台</a></li>
+      <li class=\"layui-nav-item\"><a href=\"http://wxuns.cn\" target=\"_blank\">前台</a></li>
       <li class=\"layui-nav-item\"><a href=\"\">用户</a></li>
     </ul>
     <ul class=\"layui-nav layui-layout-right\">
@@ -146,13 +146,13 @@ class __TwigTemplate_3331f065ccca525805f941ca454b80dc2a2a0f6be6fb2420a7c162ab66a
 <body class=\"layui-layout-body\">
 <div class=\"layui-layout layui-layout-admin\">
   <div class=\"layui-header layui-bg-green\">
-    <div class=\"layui-logo\" style=\"border-right: 0.1px solid #393d49;\">
+    <div class=\"layui-logo\" style=\"box-shadow: 0 1px 2px 0 rgba(0,0,0,.15);\">
       <img src=\"/images/logo.gif\" alt=\"\" style=\"width: 35px\">
       <span style=\"color: #fff;font-family: ZCOOL XiaoWei\">管理后台</span>
     </div>
     <!-- 头部区域（可配合layui已有的水平导航） -->
     <ul class=\"layui-nav layui-layout-left\">
-      <li class=\"layui-nav-item\"><a href=\"\">前台</a></li>
+      <li class=\"layui-nav-item\"><a href=\"http://wxuns.cn\" target=\"_blank\">前台</a></li>
       <li class=\"layui-nav-item\"><a href=\"\">用户</a></li>
     </ul>
     <ul class=\"layui-nav layui-layout-right\">

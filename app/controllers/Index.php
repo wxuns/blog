@@ -15,7 +15,7 @@ class IndexController extends BaseController
      * Yaf支持直接把Yaf\Request\Abstract::getParam()得到的同名参数作为Action的形参
      * 对于如下的例子, 当访问http://yourhost/Sample/index/index/index/name/Administrator 的时候, 你就会发现不同.
      */
-    public function indexAction($name = 'Polite')
+    public function indexAction()
     {
         //类名
         if ($this->user){
@@ -37,8 +37,13 @@ class IndexController extends BaseController
                 ->select('id','classname')->get();
         }else{
             $class = DB::table('article_class')
-                ->where('auth',3)
+                ->where('auth',2)
                 ->select('id','classname')->get();
+        }
+        $class_array = [];
+        //将分类转为数组
+        foreach ($class as $key=>$value){
+            $class_array[$key] = $value->id;
         }
         //文章列表
         $article = DB::table('article')
@@ -57,6 +62,7 @@ class IndexController extends BaseController
                 'article.last_time',
                 'article_class.classname'
             )
+            ->whereIn('article.class_id',$class_array)
             ->where('article.status',1)
             ->orderBy('id','desc')
             ->get();
@@ -70,12 +76,17 @@ class IndexController extends BaseController
         }
         //点击排行
         $hot = DB::table('article')
-            ->
+            ->orderBy('count', 'desc')
+            ->take(10)->select('id','title')
+            ->where('article.status',1)
+            ->whereIn('article.class_id',$class_array)
+            ->get();
         $this->getView()->display('index/index',[
             'csrf' => Csrf::generate('csrf_token'),
             'class'=>$class,
             'article'=>$article,
-            'user'=>$this->user
+            'user'=>$this->user,
+            'hot'=>$hot
         ]);
         return false;
     }
