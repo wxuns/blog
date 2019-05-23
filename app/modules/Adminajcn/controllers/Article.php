@@ -241,4 +241,11 @@ class ArticleController extends BaseController
         }
         return false;
     }
+    public function websiteAction()
+    {
+        $this->getView()->display('admin/article/website', [
+            'csrf' => Csrf::generate('csrf_token')
+        ]);
+        return false;
+    }
 }

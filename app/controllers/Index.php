@@ -37,7 +37,7 @@ class IndexController extends BaseController
                 ->select('id','classname')->get();
         }else{
             $class = DB::table('article_class')
-                ->where('auth',2)
+                ->where('auth',3)
                 ->select('id','classname')->get();
         }
         $class_array = [];
@@ -81,12 +81,17 @@ class IndexController extends BaseController
             ->where('article.status',1)
             ->whereIn('article.class_id',$class_array)
             ->get();
+        //关于我
+        $user = new UserModel();
+        $admin = $user->where('id',1)
+            ->select('nick','intro','pic')->first();
         $this->getView()->display('index/index',[
             'csrf' => Csrf::generate('csrf_token'),
             'class'=>$class,
             'article'=>$article,
             'user'=>$this->user,
-            'hot'=>$hot
+            'hot'=>$hot,
+            'admin'=>$admin
         ]);
         return false;
     }

@@ -42,7 +42,7 @@ window.addEventListener('scroll', function(e) {
 $("body").niceScroll({cursorcolor:"#bebebe",cursorwidth:'5px'});
 new hcSticky('aside', {
     stickTo: 'main',
-    innerTop: 200,
+    bottom: 200,
     followScroll: false,
     // queries: {
     //     480: {

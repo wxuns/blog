@@ -39,7 +39,7 @@
                     <div class="user-m">
                         <a href="javascript:;" target="_top" title="提醒"><i class="iconfont icon-remind"></i></a>
                         <a href="javascript:;">
-                            <img src="{{ user.pic }}" alt="">
+                            <img src="{{ user.pic?:'/images/tx.jpeg' }}" alt="">
                             <span>{{ user.nick }}</span>
                         </a>
                     </div>
@@ -54,7 +54,7 @@
         </div>
     </div>
     <div class="logo">
-        <img src="images/logo.png" alt="">
+        <img src="images/logo.gif" alt="">
     </div>
     <div class="toolbar"></div>
     <nav id="nav">
@@ -86,7 +86,7 @@
                 <li class="yyui_tab_title">注册</li>
             </ul>
             <div class="yyui_tab_content_this">
-                <form class="layui-form" action="" method="post">
+                <form class="layui-form" method="post">
                     <p class="weui-cells__title">用户名/手机号/邮箱：</p>
                     <div class="weui-cells wx-title">
                         <label class="weui-cell wx-cell">
@@ -145,8 +145,8 @@
         <div class="about_me">
             <h2>关于我</h2>
             <ul>
-                <i><img src="images/4.jpg"></i>
-                <p><b>杨青</b>，一个80后草根女站长！09年入行。一直潜心研究web前端技术，一边工作一边积累经验，分享一些个人博客模板，以及SEO优化等心得。</p>
+                <i><img src="{{ admin.pic }}"></i>
+                <p><b>{{ admin.nick }}</b>，{{ admin.intro }}</p>
             </ul>
         </div>
         <div class="remen">
@@ -180,11 +180,9 @@
         <div class="copy">
             <ul>
                 <li>
-                    <a href="#" target="_blank">关于我们</a>
+                    <a href="https://lizhixu.cn" target="_blank">关于我</a>
                     <span class="pipe">|</span>
-                    <a href="#" target="_blank">联系我们</a>
-                    <span class="pipe">|</span>
-                    <a href="#" target="_blank">版权声明</a>
+                    <a href="/copyright" target="_blank">版权声明</a>
                 </li>
                 <li><p>Designed by <a href="https://github.com/wxuns" target="_blank">wxuns</a> <i class="iconfont icon-xinxing" style="color:red"></i></p></li>
                 <li><p>Copyright ©{{ now|date('Y') }} wxuns.cn All Rights Reserved. <br>
