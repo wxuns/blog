@@ -241,11 +241,31 @@ class ArticleController extends BaseController
         }
         return false;
     }
+
+    /**
+     * 网站设置
+     * @return bool
+     */
     public function websiteAction()
     {
+        $seo = DB::table('seo')->where('id',1)->first();
         $this->getView()->display('admin/article/website', [
-            'csrf' => Csrf::generate('csrf_token')
+            'csrf' => Csrf::generate('csrf_token'),
+            'seo'=>$seo
         ]);
+        return false;
+    }
+
+    /**
+     * 博客网站seo
+     * @return bool
+     */
+    public function seoAction(){
+        $request = Request($this->getRequest());
+        unset($request->csrf_token);
+        if (DB::table('seo')->where('id',1)->update((array)$request)){
+            echo json_encode(['status'=>0,'msg'=>'修改成功']);
+        }
         return false;
     }
 }

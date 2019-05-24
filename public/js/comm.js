@@ -39,10 +39,9 @@ window.addEventListener('scroll', function(e) {
         new_scroll_position = last_scroll_position;
     }
 });
-$("body").niceScroll({cursorcolor:"#bebebe",cursorwidth:'5px'});
+$("body").niceScroll({cursorcolor:"#bebebe",cursorwidth:'3px'});
 new hcSticky('aside', {
     stickTo: 'main',
-    bottom: 200,
     followScroll: false,
     // queries: {
     //     480: {
