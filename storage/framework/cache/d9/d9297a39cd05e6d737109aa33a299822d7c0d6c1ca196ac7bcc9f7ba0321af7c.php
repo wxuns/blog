@@ -45,7 +45,7 @@ class __TwigTemplate_0f47820e56e5a363f2fb0bce8a9cec7f83b4012f45032296fe42abe2659
     <link href=\"/css/base.css\" rel=\"stylesheet\">
     <link href=\"/css/index.css\" rel=\"stylesheet\">
     <link href=\"https://cdn.bootcss.com/weui/2.0.0/style/weui.min.css\" rel=\"stylesheet\">
-    <link rel=\"stylesheet\" href=\"//at.alicdn.com/t/font_1137992_xzbsfvkqe6h.css\">
+    <link rel=\"stylesheet\" href=\"//at.alicdn.com/t/font_1137992_jfc6jcnc29h.css\">
     <link href=\"https://lib.baomitu.com/Swiper/4.5.0/css/swiper.min.css\" rel=\"stylesheet\">
     <script src=\"https://lib.baomitu.com/Swiper/4.5.0/js/swiper.min.js\"></script>
     <script src=\"/js/hc-sticky.js\"></script>
@@ -57,7 +57,7 @@ class __TwigTemplate_0f47820e56e5a363f2fb0bce8a9cec7f83b4012f45032296fe42abe2659
 </head>
 <body>
 <header id=\"header\">
-    <div class=\"toolbar\">
+    <div class=\"toolbar\" style=\"border-top:#d11a2d 1.5px solid;\">
         <div class=\"clearfix toolbar-inner\">
             <div class=\"quicklink\">
                 <ul id=\"chinaz_website_links\" class=\"accesslink\">
@@ -78,7 +78,7 @@ class __TwigTemplate_0f47820e56e5a363f2fb0bce8a9cec7f83b4012f45032296fe42abe2659
                         <a href=\"javascript:;\">
                             <img src=\"";
             // line 42
-            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, ($context["user"] ?? null), "pic", [], "any", false, false, false, 42), "html", null, true);
+            ((twig_get_attribute($this->env, $this->source, ($context["user"] ?? null), "pic", [], "any", false, false, false, 42)) ? (print (twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, ($context["user"] ?? null), "pic", [], "any", false, false, false, 42), "html", null, true))) : (print ("/images/tx.jpeg")));
             echo "\" alt=\"\">
                             <span>";
             // line 43
@@ -101,7 +101,7 @@ class __TwigTemplate_0f47820e56e5a363f2fb0bce8a9cec7f83b4012f45032296fe42abe2659
         </div>
     </div>
     <div class=\"logo\">
-        <img src=\"images/logo.png\" alt=\"\">
+        <img src=\"images/logo.gif\" alt=\"\">
     </div>
     <div class=\"toolbar\"></div>
     <nav id=\"nav\">
@@ -146,11 +146,12 @@ class __TwigTemplate_0f47820e56e5a363f2fb0bce8a9cec7f83b4012f45032296fe42abe2659
             // line 83
             echo "        <div class=\"user yyui_tab\" id=\"yyui_tab\">
             <ul>
-                <li class=\"yyui_tab_title_this\">登录</li>
+                <li class=\"yyui_tab_title_this\">
+                    <i class=\"iconfont icon-dengluyemianyonghuming\"></i> 登录</li>
                 <li class=\"yyui_tab_title\">注册</li>
             </ul>
             <div class=\"yyui_tab_content_this\">
-                <form class=\"layui-form\" action=\"\" method=\"post\">
+                <form class=\"layui-form\" method=\"post\">
                     <p class=\"weui-cells__title\">用户名/手机号/邮箱：</p>
                     <div class=\"weui-cells wx-title\">
                         <label class=\"weui-cell wx-cell\">
@@ -168,7 +169,7 @@ class __TwigTemplate_0f47820e56e5a363f2fb0bce8a9cec7f83b4012f45032296fe42abe2659
                         </label>
                     </div>
                     <input type=\"hidden\" name=\"csrf_token\" value=\"";
-            // line 106
+            // line 107
             echo twig_escape_filter($this->env, ($context["csrf"] ?? null), "html", null, true);
             echo "\">
                     <p class=\"weui-cells__title\"></p>
@@ -203,7 +204,7 @@ class __TwigTemplate_0f47820e56e5a363f2fb0bce8a9cec7f83b4012f45032296fe42abe2659
                         </label>
                     </div>
                     <input type=\"hidden\" name=\"csrf_token\" value=\"";
-            // line 138
+            // line 139
             echo twig_escape_filter($this->env, ($context["csrf"] ?? null), "html", null, true);
             echo "\">
                     <p class=\"weui-cells__title\"></p>
@@ -213,35 +214,43 @@ class __TwigTemplate_0f47820e56e5a363f2fb0bce8a9cec7f83b4012f45032296fe42abe2659
         </div>
         ";
         }
-        // line 145
+        // line 146
         echo "        <div class=\"about_me\">
             <h2>关于我</h2>
             <ul>
-                <i><img src=\"images/4.jpg\"></i>
-                <p><b>杨青</b>，一个80后草根女站长！09年入行。一直潜心研究web前端技术，一边工作一边积累经验，分享一些个人博客模板，以及SEO优化等心得。</p>
+                <i><img src=\"";
+        // line 149
+        echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, ($context["admin"] ?? null), "pic", [], "any", false, false, false, 149), "html", null, true);
+        echo "\"></i>
+                <p><b>";
+        // line 150
+        echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, ($context["admin"] ?? null), "nick", [], "any", false, false, false, 150), "html", null, true);
+        echo "</b>，";
+        echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, ($context["admin"] ?? null), "intro", [], "any", false, false, false, 150), "html", null, true);
+        echo "</p>
             </ul>
         </div>
         <div class=\"remen\">
             <h2>点击排行</h2>
             <ul>
                 ";
-        // line 155
+        // line 156
         $context['_parent'] = $context;
         $context['_seq'] = twig_ensure_traversable($context["hot"]);
         foreach ($context['_seq'] as $context["key"] => $context["hot"]) {
-            // line 156
+            // line 157
             echo "                <li>
                     <em class=\"no1\">";
-            // line 157
+            // line 158
             echo twig_escape_filter($this->env, ($context["key"] + 1), "html", null, true);
             echo "</em>
                     <a href=\"/";
-            // line 158
-            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["hot"], "id", [], "any", false, false, false, 158), "html", null, true);
+            // line 159
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["hot"], "id", [], "any", false, false, false, 159), "html", null, true);
             echo "\" title=\"";
-            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["hot"], "title", [], "any", false, false, false, 158), "html", null, true);
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["hot"], "title", [], "any", false, false, false, 159), "html", null, true);
             echo "\" target=\"_blank\">";
-            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["hot"], "title", [], "any", false, false, false, 158), "html", null, true);
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["hot"], "title", [], "any", false, false, false, 159), "html", null, true);
             echo "</a>
                 </li>
                 ";
@@ -249,7 +258,7 @@ class __TwigTemplate_0f47820e56e5a363f2fb0bce8a9cec7f83b4012f45032296fe42abe2659
         $_parent = $context['_parent'];
         unset($context['_seq'], $context['_iterated'], $context['key'], $context['hot'], $context['_parent'], $context['loop']);
         $context = array_intersect_key($context, $_parent) + $_parent;
-        // line 161
+        // line 162
         echo "            </ul>
         </div>
         <div class=\"wdxc\">
@@ -272,15 +281,13 @@ class __TwigTemplate_0f47820e56e5a363f2fb0bce8a9cec7f83b4012f45032296fe42abe2659
         <div class=\"copy\">
             <ul>
                 <li>
-                    <a href=\"#\" target=\"_blank\">关于我们</a>
+                    <a href=\"https://lizhixu.cn\" target=\"_blank\">关于我</a>
                     <span class=\"pipe\">|</span>
-                    <a href=\"#\" target=\"_blank\">联系我们</a>
-                    <span class=\"pipe\">|</span>
-                    <a href=\"#\" target=\"_blank\">版权声明</a>
+                    <a href=\"/copyright\" target=\"_blank\">版权声明</a>
                 </li>
                 <li><p>Designed by <a href=\"https://github.com/wxuns\" target=\"_blank\">wxuns</a> <i class=\"iconfont icon-xinxing\" style=\"color:red\"></i></p></li>
                 <li><p>Copyright ©";
-        // line 190
+        // line 189
         echo twig_escape_filter($this->env, twig_date_format_filter($this->env, ($context["now"] ?? null), "Y"), "html", null, true);
         echo " wxuns.cn All Rights Reserved. <br>
                         <a href=\"http://www.miitbeian.gov.cn/\" target=\"_blank\" rel=\"nofollow\">陇ICP备15001053号</a><br>
@@ -305,38 +312,38 @@ class __TwigTemplate_0f47820e56e5a363f2fb0bce8a9cec7f83b4012f45032296fe42abe2659
             </div>
         </li>
         ";
-        // line 212
+        // line 211
         $context['_parent'] = $context;
         $context['_seq'] = twig_ensure_traversable(($context["article"] ?? null));
         foreach ($context['_seq'] as $context["_key"] => $context["art"]) {
-            // line 213
+            // line 212
             echo "            <li>
                 ";
-            // line 214
-            if (twig_get_attribute($this->env, $this->source, $context["art"], "img", [], "any", false, false, false, 214)) {
-                // line 215
+            // line 213
+            if (twig_get_attribute($this->env, $this->source, $context["art"], "img", [], "any", false, false, false, 213)) {
+                // line 214
                 echo "                    <i><a href=\"/\"><img src=\"";
-                echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["art"], "img", [], "any", false, false, false, 215), "html", null, true);
+                echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["art"], "img", [], "any", false, false, false, 214), "html", null, true);
                 echo "\"></a></i>
                 ";
             }
-            // line 217
+            // line 216
             echo "                <h3><a href=\"/";
-            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["art"], "id", [], "any", false, false, false, 217), "html", null, true);
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["art"], "id", [], "any", false, false, false, 216), "html", null, true);
             echo "\">";
-            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["art"], "title", [], "any", false, false, false, 217), "html", null, true);
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["art"], "title", [], "any", false, false, false, 216), "html", null, true);
             echo "</a></h3>
                 <p>";
-            // line 218
-            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["art"], "content", [], "any", false, false, false, 218), "html", null, true);
+            // line 217
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["art"], "content", [], "any", false, false, false, 217), "html", null, true);
             echo "</p>
                 <div class=\"weui-flex\">
                     <div class=\"weui-flex__item\">
                         <div class=\"placeholder\">
                             <a href=\"javascript:;\" class=\"weui-btn wx-btn_mini weui-btn_mini weui-btn_default\">
                                 <span class=\"iconfont icon-shang\"></span> ";
-            // line 223
-            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["art"], "laud", [], "any", false, false, false, 223), "html", null, true);
+            // line 222
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["art"], "laud", [], "any", false, false, false, 222), "html", null, true);
             echo "
                             </a>
                             <a href=\"javascript:;\" class=\"weui-btn wx-btn_mini weui-btn_mini weui-btn_default\">
@@ -347,16 +354,16 @@ class __TwigTemplate_0f47820e56e5a363f2fb0bce8a9cec7f83b4012f45032296fe42abe2659
                     <div class=\"weui-flex__item contentim\">
                         <div class=\"placeholder\">
                             <span class=\"iconfont icon-shijian\"></span> ";
-            // line 232
-            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["art"], "last_time", [], "any", false, false, false, 232), "html", null, true);
+            // line 231
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["art"], "last_time", [], "any", false, false, false, 231), "html", null, true);
             echo "
                         </div>
                     </div>
                     <div class=\"weui-flex__item contentim\">
                         <div class=\"placeholder\">
                             <span class=\"iconfont icon-weibiaoti--\"></span> ";
-            // line 237
-            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["art"], "count", [], "any", false, false, false, 237), "html", null, true);
+            // line 236
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["art"], "count", [], "any", false, false, false, 236), "html", null, true);
             echo "
                         </div>
                     </div>
@@ -364,8 +371,8 @@ class __TwigTemplate_0f47820e56e5a363f2fb0bce8a9cec7f83b4012f45032296fe42abe2659
                         <div class=\"placeholder\">
                             <span class=\"iconfont icon-nav\"></span>
                             <a href=\"#\" style=\"color: #797b7c\">【";
-            // line 243
-            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["art"], "classname", [], "any", false, false, false, 243), "html", null, true);
+            // line 242
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["art"], "classname", [], "any", false, false, false, 242), "html", null, true);
             echo "】</a>
                         </div>
                     </div>
@@ -376,7 +383,7 @@ class __TwigTemplate_0f47820e56e5a363f2fb0bce8a9cec7f83b4012f45032296fe42abe2659
         $_parent = $context['_parent'];
         unset($context['_seq'], $context['_iterated'], $context['_key'], $context['art'], $context['_parent'], $context['loop']);
         $context = array_intersect_key($context, $_parent) + $_parent;
-        // line 249
+        // line 248
         echo "    </main>
 </article>
 
@@ -417,8 +424,8 @@ class __TwigTemplate_0f47820e56e5a363f2fb0bce8a9cec7f83b4012f45032296fe42abe2659
         //自定义验证规则
         form.verify({
             username: function (value) {
-                if (value.length < 5) {
-                    return '标题至少得5个字符啊';
+                if (value.length < 4) {
+                    return '没这么短的？';
                 }
             }
             , pass: [
@@ -456,7 +463,7 @@ class __TwigTemplate_0f47820e56e5a363f2fb0bce8a9cec7f83b4012f45032296fe42abe2659
 
     public function getDebugInfo()
     {
-        return array (  380 => 249,  368 => 243,  359 => 237,  351 => 232,  339 => 223,  331 => 218,  324 => 217,  318 => 215,  316 => 214,  313 => 213,  309 => 212,  284 => 190,  253 => 161,  240 => 158,  236 => 157,  233 => 156,  229 => 155,  217 => 145,  207 => 138,  172 => 106,  147 => 83,  145 => 82,  127 => 66,  116 => 64,  112 => 63,  100 => 53,  92 => 47,  85 => 43,  81 => 42,  76 => 39,  74 => 38,  35 => 1,);
+        return array (  387 => 248,  375 => 242,  366 => 236,  358 => 231,  346 => 222,  338 => 217,  331 => 216,  325 => 214,  323 => 213,  320 => 212,  316 => 211,  291 => 189,  262 => 162,  249 => 159,  245 => 158,  242 => 157,  238 => 156,  227 => 150,  223 => 149,  218 => 146,  208 => 139,  173 => 107,  147 => 83,  145 => 82,  127 => 66,  116 => 64,  112 => 63,  100 => 53,  92 => 47,  85 => 43,  81 => 42,  76 => 39,  74 => 38,  35 => 1,);
     }
 
     public function getSourceContext()
@@ -474,7 +481,7 @@ class __TwigTemplate_0f47820e56e5a363f2fb0bce8a9cec7f83b4012f45032296fe42abe2659
     <link href=\"/css/base.css\" rel=\"stylesheet\">
     <link href=\"/css/index.css\" rel=\"stylesheet\">
     <link href=\"https://cdn.bootcss.com/weui/2.0.0/style/weui.min.css\" rel=\"stylesheet\">
-    <link rel=\"stylesheet\" href=\"//at.alicdn.com/t/font_1137992_xzbsfvkqe6h.css\">
+    <link rel=\"stylesheet\" href=\"//at.alicdn.com/t/font_1137992_jfc6jcnc29h.css\">
     <link href=\"https://lib.baomitu.com/Swiper/4.5.0/css/swiper.min.css\" rel=\"stylesheet\">
     <script src=\"https://lib.baomitu.com/Swiper/4.5.0/js/swiper.min.js\"></script>
     <script src=\"/js/hc-sticky.js\"></script>
@@ -486,7 +493,7 @@ class __TwigTemplate_0f47820e56e5a363f2fb0bce8a9cec7f83b4012f45032296fe42abe2659
 </head>
 <body>
 <header id=\"header\">
-    <div class=\"toolbar\">
+    <div class=\"toolbar\" style=\"border-top:#d11a2d 1.5px solid;\">
         <div class=\"clearfix toolbar-inner\">
             <div class=\"quicklink\">
                 <ul id=\"chinaz_website_links\" class=\"accesslink\">
@@ -502,7 +509,7 @@ class __TwigTemplate_0f47820e56e5a363f2fb0bce8a9cec7f83b4012f45032296fe42abe2659
                     <div class=\"user-m\">
                         <a href=\"javascript:;\" target=\"_top\" title=\"提醒\"><i class=\"iconfont icon-remind\"></i></a>
                         <a href=\"javascript:;\">
-                            <img src=\"{{ user.pic }}\" alt=\"\">
+                            <img src=\"{{ user.pic?:'/images/tx.jpeg' }}\" alt=\"\">
                             <span>{{ user.nick }}</span>
                         </a>
                     </div>
@@ -517,7 +524,7 @@ class __TwigTemplate_0f47820e56e5a363f2fb0bce8a9cec7f83b4012f45032296fe42abe2659
         </div>
     </div>
     <div class=\"logo\">
-        <img src=\"images/logo.png\" alt=\"\">
+        <img src=\"images/logo.gif\" alt=\"\">
     </div>
     <div class=\"toolbar\"></div>
     <nav id=\"nav\">
@@ -545,11 +552,12 @@ class __TwigTemplate_0f47820e56e5a363f2fb0bce8a9cec7f83b4012f45032296fe42abe2659
         {% if not user %}
         <div class=\"user yyui_tab\" id=\"yyui_tab\">
             <ul>
-                <li class=\"yyui_tab_title_this\">登录</li>
+                <li class=\"yyui_tab_title_this\">
+                    <i class=\"iconfont icon-dengluyemianyonghuming\"></i> 登录</li>
                 <li class=\"yyui_tab_title\">注册</li>
             </ul>
             <div class=\"yyui_tab_content_this\">
-                <form class=\"layui-form\" action=\"\" method=\"post\">
+                <form class=\"layui-form\" method=\"post\">
                     <p class=\"weui-cells__title\">用户名/手机号/邮箱：</p>
                     <div class=\"weui-cells wx-title\">
                         <label class=\"weui-cell wx-cell\">
@@ -608,8 +616,8 @@ class __TwigTemplate_0f47820e56e5a363f2fb0bce8a9cec7f83b4012f45032296fe42abe2659
         <div class=\"about_me\">
             <h2>关于我</h2>
             <ul>
-                <i><img src=\"images/4.jpg\"></i>
-                <p><b>杨青</b>，一个80后草根女站长！09年入行。一直潜心研究web前端技术，一边工作一边积累经验，分享一些个人博客模板，以及SEO优化等心得。</p>
+                <i><img src=\"{{ admin.pic }}\"></i>
+                <p><b>{{ admin.nick }}</b>，{{ admin.intro }}</p>
             </ul>
         </div>
         <div class=\"remen\">
@@ -643,11 +651,9 @@ class __TwigTemplate_0f47820e56e5a363f2fb0bce8a9cec7f83b4012f45032296fe42abe2659
         <div class=\"copy\">
             <ul>
                 <li>
-                    <a href=\"#\" target=\"_blank\">关于我们</a>
+                    <a href=\"https://lizhixu.cn\" target=\"_blank\">关于我</a>
                     <span class=\"pipe\">|</span>
-                    <a href=\"#\" target=\"_blank\">联系我们</a>
-                    <span class=\"pipe\">|</span>
-                    <a href=\"#\" target=\"_blank\">版权声明</a>
+                    <a href=\"/copyright\" target=\"_blank\">版权声明</a>
                 </li>
                 <li><p>Designed by <a href=\"https://github.com/wxuns\" target=\"_blank\">wxuns</a> <i class=\"iconfont icon-xinxing\" style=\"color:red\"></i></p></li>
                 <li><p>Copyright ©{{ now|date('Y') }} wxuns.cn All Rights Reserved. <br>
@@ -749,8 +755,8 @@ class __TwigTemplate_0f47820e56e5a363f2fb0bce8a9cec7f83b4012f45032296fe42abe2659
         //自定义验证规则
         form.verify({
             username: function (value) {
-                if (value.length < 5) {
-                    return '标题至少得5个字符啊';
+                if (value.length < 4) {
+                    return '没这么短的？';
                 }
             }
             , pass: [

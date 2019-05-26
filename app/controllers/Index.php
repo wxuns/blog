@@ -37,7 +37,7 @@ class IndexController extends BaseController
                 ->select('id','classname')->get();
         }else{
             $class = DB::table('article_class')
-                ->where('auth',3)
+                ->where('auth',2)
                 ->select('id','classname')->get();
         }
         $class_array = [];

@@ -263,9 +263,16 @@ class ArticleController extends BaseController
     public function seoAction(){
         $request = Request($this->getRequest());
         unset($request->csrf_token);
-        if (DB::table('seo')->where('id',1)->update((array)$request)){
-            echo json_encode(['status'=>0,'msg'=>'修改成功']);
+        if(DB::table('seo')->count()){
+            if (DB::table('seo')->where('id',1)->update((array)$request)){
+                echo json_encode(['status'=>0,'msg'=>'修改成功']);
+            }
+        }else{
+            if (DB::table('seo')->insert((array)$request)){
+                echo json_encode(['status'=>0,'msg'=>'添加成功']);
+            }
         }
+
         return false;
     }
 }
