@@ -277,7 +277,32 @@ class ArticleController extends BaseController
     }
     public function posterAction()
     {
-        dump(21321);
+        $request = $_POST;
+
+        $file = $_FILES['pic'];
+        $type = explode('/',$file['type']);
+        if($type[0]=='image'&&$file['error']==0&&$file['size']<=10485760){
+            $key = '/' . $_GET['type'] . '/' . date('Y/m/') . md5(time()) . '.' . $type[1];
+            $local_path = $file['tmp_name'];
+            $result = $this->ossUpload($key,$local_path);
+            $request['pic'] = str_replace('wxuns-1251014182.cos.ap-beijing.myqcloud.com','images.wxuns.cn',$result['ObjectURL']);
+            $request['type'] = '1';
+            if(DB::table('poster')->insert($request)){
+                echo json_encode([
+                    'success'=>1,
+                    'message'=>'上传成功',
+                    'url'=>''
+                ]);
+            }else{
+                echo json_encode([
+                    'success'=>0,
+                    'message'=>'上传失败'
+                ]);
+            }
+        }else{
+            throw new Exception('not image.');
+        }
+
         return false;
     }
 }

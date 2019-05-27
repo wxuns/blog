@@ -96,23 +96,9 @@ class IndexController extends BaseController
         $file = $_FILES['editormd-image-file'];
         $type = explode('/',$file['type']);
         if($type[0]=='image'&&$file['error']==0&&$file['size']<=10485760){
-            $secretId = "AKIDUsGZgb9YZPAwX86y897GUhweSUUaBv2x"; //"云 API 密钥 SecretId";
-            $secretKey = "PtCKLYaUZbgIrGUoDg1BOSKYzS4e9qTw"; //"云 API 密钥 SecretKey";
-            $region = "ap-beijing"; //设置一个默认的存储桶地域
-            $cosClient = new Qcloud\Cos\Client(
-                array(
-                    'region' => $region,
-                    'schema' => 'https', //协议头部，默认为http
-                    'credentials'=> array(
-                        'secretId'  => $secretId ,
-                        'secretKey' => $secretKey)));
-            $bucket = 'wxuns-1251014182';
             $key = '/' . $_GET['type'] . '/' . date('Y/m/') . md5(time()) . '.' . $type[1];
             $local_path = $_FILES['editormd-image-file']['tmp_name'];
-            $result = $cosClient->putObject(array(
-                'Bucket' => $bucket,
-                'Key' => $key,
-                'Body' => fopen($local_path, 'rb')));
+            $result = $this->ossUpload($key,$local_path);
             if ($result){
                 echo json_encode([
                     'success'=>1,

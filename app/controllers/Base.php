@@ -6,6 +6,8 @@
  * Date: 2019/1/17
  * Time: 14:40.
  */
+
+use Qcloud\Cos\Client;
 use Yaf\Controller_Abstract as YafController;
 use Overtrue\Validation\Translator;
 use Overtrue\Validation\Factory as ValidatorFactory;
@@ -155,5 +157,30 @@ abstract class BaseController extends YafController
         ];
         $this->factory = new ValidatorFactory(new Translator($messages));
         $this->user = \Tool\Session::get('user');
+    }
+
+    /**
+     * oss上传
+     * @param $key
+     * @param $local_path
+     * @return mixed
+     */
+    public function ossUpload($key,$local_path)
+    {
+        $secretId = "AKIDUsGZgb9YZPAwX86y897GUhweSUUaBv2x"; //"云 API 密钥 SecretId";
+        $secretKey = "PtCKLYaUZbgIrGUoDg1BOSKYzS4e9qTw"; //"云 API 密钥 SecretKey";
+        $region = "ap-beijing"; //设置一个默认的存储桶地域
+        $cosClient = new Client(
+            array(
+                'region' => $region,
+                'schema' => 'https', //协议头部，默认为http
+                'credentials'=> array(
+                    'secretId'  => $secretId ,
+                    'secretKey' => $secretKey)));
+        $bucket = 'wxuns-1251014182';
+        return $cosClient->putObject(array(
+            'Bucket' => $bucket,
+            'Key' => $key,
+            'Body' => fopen($local_path, 'rb')));
     }
 }

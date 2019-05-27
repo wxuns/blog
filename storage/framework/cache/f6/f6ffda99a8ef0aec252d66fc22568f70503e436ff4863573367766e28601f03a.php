@@ -99,26 +99,25 @@ class __TwigTemplate_06a0a38789be8bc8f3376c802bc9464b526c1524533b5eb5f708bbbd5b0
 
                         <div class=\"layui-upload\">
                             <div class=\"layui-upload-list\">
-                                <table class=\"layui-table\">
-                                    <thead>
-                                    <tr><th>文件名</th>
-                                        <th>状态</th>
-                                        <th>操作</th>
-                                    </tr></thead>
-                                    <tbody id=\"demoList\"></tbody>
-                                </table>
+                                <div class=\"layui-carousel\" id=\"test1\">
+                                    <div carousel-item>
+                                        <div>条目1</div>
+                                        <div>条目2</div>
+                                        <div>条目3</div>
+                                        <div>条目4</div>
+                                        <div>条目5</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class=\"layui-form-item\">
+                                <input type=\"text\" name=\"title\" placeholder=\"请输入广告标题\" class=\"layui-input\" id=\"posttitle\">
+                                <input type=\"text\" name=\"link\" placeholder=\"请输入广告链接\" class=\"layui-input\" id=\"postlink\">
                             </div>
                             <button type=\"button\" class=\"layui-btn\" id=\"upload\">
                                 <i class=\"layui-icon\">&#xe67c;</i>上传图片
                             </button>
-                            <div id=\"uploader\" class=\"wu-example\">
-                                <!--用来存放文件信息-->
-                                <div id=\"thelist\" class=\"uploader-list\"></div>
-                                <div class=\"btns\">
-                                    <div id=\"picker\">选择文件</div>
-                                    <button id=\"ctlBtn\" class=\"btn btn-default\">开始上传</button>
-                                </div>
-                            </div>
+                            <input type=\"file\" name=\"poster\" id=\"poster\" hidden>
+
                         </div>
                     </div>
                 </div>
@@ -127,14 +126,40 @@ class __TwigTemplate_06a0a38789be8bc8f3376c802bc9464b526c1524533b5eb5f708bbbd5b0
     </div>
 </div>
 <script type=\"text/javascript\" src=\"./layui/layui.all.js\"></script>
-<script src=\"https://cdn.bootcss.com/webuploader/0.1.1/webuploader.js\"></script>
 <script>
-    console.log(\$(\"#upload\"))
-    // \$(\"#upload\").imageUpload({
-    //     formAction: \"/upload\"
-    // }).on(\"imageChanged\", function () {
-    //     console.log(\"Changed the src\");
-    // });
+    var carousel = layui.carousel;
+    //建造实例
+    carousel.render({
+        elem: '#test1'
+        ,width: '100%' //设置容器宽度
+        ,height:'150px'
+        ,arrow: 'hover' //始终显示箭头
+        //,anim: 'updown' //切换动画方式
+    });
+    //触发文件上传按钮
+    var poster = \$('#poster');
+    \$('#upload').click(function () {
+        poster.trigger('click');
+    });
+    //上传文件
+    poster.change(function () {
+        var form = new FormData();
+        form.append('pic',poster[0].files[0]);
+        form.append('title',\$('#posttitle').val());
+        form.append('link',\$('#postlink').val());
+        \$.ajax({
+            url:'/article/poster?type=poster',
+            type:'post',
+            data:form,
+            cache: false,
+            processData: false,
+            contentType: false,
+            success : function (e)
+            {
+            },
+            error:function(xhr){alert(xhr.responseText)}
+        })
+    });
     \$('#website').click(function () {
         var title = \$('input[name=\"title\"]');
         var description = \$('input[name=\"description\"]');
@@ -231,26 +256,25 @@ class __TwigTemplate_06a0a38789be8bc8f3376c802bc9464b526c1524533b5eb5f708bbbd5b0
 
                         <div class=\"layui-upload\">
                             <div class=\"layui-upload-list\">
-                                <table class=\"layui-table\">
-                                    <thead>
-                                    <tr><th>文件名</th>
-                                        <th>状态</th>
-                                        <th>操作</th>
-                                    </tr></thead>
-                                    <tbody id=\"demoList\"></tbody>
-                                </table>
+                                <div class=\"layui-carousel\" id=\"test1\">
+                                    <div carousel-item>
+                                        <div>条目1</div>
+                                        <div>条目2</div>
+                                        <div>条目3</div>
+                                        <div>条目4</div>
+                                        <div>条目5</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class=\"layui-form-item\">
+                                <input type=\"text\" name=\"title\" placeholder=\"请输入广告标题\" class=\"layui-input\" id=\"posttitle\">
+                                <input type=\"text\" name=\"link\" placeholder=\"请输入广告链接\" class=\"layui-input\" id=\"postlink\">
                             </div>
                             <button type=\"button\" class=\"layui-btn\" id=\"upload\">
                                 <i class=\"layui-icon\">&#xe67c;</i>上传图片
                             </button>
-                            <div id=\"uploader\" class=\"wu-example\">
-                                <!--用来存放文件信息-->
-                                <div id=\"thelist\" class=\"uploader-list\"></div>
-                                <div class=\"btns\">
-                                    <div id=\"picker\">选择文件</div>
-                                    <button id=\"ctlBtn\" class=\"btn btn-default\">开始上传</button>
-                                </div>
-                            </div>
+                            <input type=\"file\" name=\"poster\" id=\"poster\" hidden>
+
                         </div>
                     </div>
                 </div>
@@ -259,14 +283,40 @@ class __TwigTemplate_06a0a38789be8bc8f3376c802bc9464b526c1524533b5eb5f708bbbd5b0
     </div>
 </div>
 <script type=\"text/javascript\" src=\"./layui/layui.all.js\"></script>
-<script src=\"https://cdn.bootcss.com/webuploader/0.1.1/webuploader.js\"></script>
 <script>
-    console.log(\$(\"#upload\"))
-    // \$(\"#upload\").imageUpload({
-    //     formAction: \"/upload\"
-    // }).on(\"imageChanged\", function () {
-    //     console.log(\"Changed the src\");
-    // });
+    var carousel = layui.carousel;
+    //建造实例
+    carousel.render({
+        elem: '#test1'
+        ,width: '100%' //设置容器宽度
+        ,height:'150px'
+        ,arrow: 'hover' //始终显示箭头
+        //,anim: 'updown' //切换动画方式
+    });
+    //触发文件上传按钮
+    var poster = \$('#poster');
+    \$('#upload').click(function () {
+        poster.trigger('click');
+    });
+    //上传文件
+    poster.change(function () {
+        var form = new FormData();
+        form.append('pic',poster[0].files[0]);
+        form.append('title',\$('#posttitle').val());
+        form.append('link',\$('#postlink').val());
+        \$.ajax({
+            url:'/article/poster?type=poster',
+            type:'post',
+            data:form,
+            cache: false,
+            processData: false,
+            contentType: false,
+            success : function (e)
+            {
+            },
+            error:function(xhr){alert(xhr.responseText)}
+        })
+    });
     \$('#website').click(function () {
         var title = \$('input[name=\"title\"]');
         var description = \$('input[name=\"description\"]');
