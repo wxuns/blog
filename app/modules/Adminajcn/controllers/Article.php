@@ -275,4 +275,9 @@ class ArticleController extends BaseController
 
         return false;
     }
+    public function posterAction()
+    {
+        dump(21321);
+        return false;
+    }
 }

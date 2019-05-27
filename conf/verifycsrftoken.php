@@ -5,5 +5,6 @@
  * @var array
  */
 return [
-        'uploadimg',
+    'uploadimg',
+    'article/poster'
 ];

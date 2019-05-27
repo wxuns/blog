@@ -56,7 +56,6 @@
                                 <table class="layui-table">
                                     <thead>
                                     <tr><th>文件名</th>
-                                        <th>状态</th>
                                         <th>操作</th>
                                     </tr></thead>
                                     <tbody id="demoList"></tbody>
@@ -65,14 +64,7 @@
                             <button type="button" class="layui-btn" id="upload">
                                 <i class="layui-icon">&#xe67c;</i>上传图片
                             </button>
-                            <div id="uploader" class="wu-example">
-                                <!--用来存放文件信息-->
-                                <div id="thelist" class="uploader-list"></div>
-                                <div class="btns">
-                                    <div id="picker">选择文件</div>
-                                    <button id="ctlBtn" class="btn btn-default">开始上传</button>
-                                </div>
-                            </div>
+                            <input type="file" name="poster" id="poster" hidden>
                         </div>
                     </div>
                 </div>
@@ -81,14 +73,30 @@
     </div>
 </div>
 <script type="text/javascript" src="./layui/layui.all.js"></script>
-<script src="https://cdn.bootcss.com/webuploader/0.1.1/webuploader.js"></script>
 <script>
-    console.log($("#upload"))
-    // $("#upload").imageUpload({
-    //     formAction: "/upload"
-    // }).on("imageChanged", function () {
-    //     console.log("Changed the src");
-    // });
+    //触发文件上传按钮
+    var poster = $('#poster');
+    $('#upload').click(function () {
+        poster.trigger('click');
+    });
+    //上传文件
+    poster.change(function () {
+        var form = new FormData();
+        form.append('pic',poster[0].files[0]);
+        console.log(poster[0].files[0])
+        $.ajax({
+            url:'/article/poster',
+            type:'post',
+            data:form,
+            cache: false,
+            processData: false,
+            contentType: false,
+            success : function (e)
+            {
+            },
+            error:function(xhr){alert(xhr.responseText)}
+        })
+    });
     $('#website').click(function () {
         var title = $('input[name="title"]');
         var description = $('input[name="description"]');
