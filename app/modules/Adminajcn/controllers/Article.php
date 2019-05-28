@@ -249,9 +249,11 @@ class ArticleController extends BaseController
     public function websiteAction()
     {
         $seo = DB::table('seo')->where('id',1)->first();
+        $poster = DB::table('poster')->where('type',1)->get();
         $this->getView()->display('admin/article/website', [
             'csrf' => Csrf::generate('csrf_token'),
-            'seo'=>$seo
+            'seo'=>$seo,
+            'poster'=>$poster
         ]);
         return false;
     }
@@ -275,6 +277,12 @@ class ArticleController extends BaseController
 
         return false;
     }
+
+    /**
+     * 轮播图
+     * @return bool
+     * @throws Exception
+     */
     public function posterAction()
     {
         $request = $_POST;
@@ -291,7 +299,7 @@ class ArticleController extends BaseController
                 echo json_encode([
                     'success'=>1,
                     'message'=>'上传成功',
-                    'url'=>''
+                    'url'=>$request['pic']
                 ]);
             }else{
                 echo json_encode([

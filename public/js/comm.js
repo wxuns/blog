@@ -41,8 +41,7 @@ window.addEventListener('scroll', function(e) {
 });
 $("body").niceScroll({cursorcolor:"#bebebe",cursorwidth:'3px'});
 new hcSticky('aside', {
-    stickTo: 'main',
-    followScroll: false,
+    stickTo: 'main'
     // queries: {
     //     480: {
     //         disable: true,

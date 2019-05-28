@@ -85,13 +85,15 @@ class IndexController extends BaseController
         $user = new UserModel();
         $admin = $user->where('id',1)
             ->select('nick','intro','pic')->first();
+        $poster = DB::table('poster')->where('type',1)->get();
         $this->getView()->display('index/index',[
             'csrf' => Csrf::generate('csrf_token'),
             'class'=>$class,
             'article'=>$article,
             'user'=>$this->user,
             'hot'=>$hot,
-            'admin'=>$admin
+            'admin'=>$admin,
+            'poster'=>$poster
         ]);
         return false;
     }

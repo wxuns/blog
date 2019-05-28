@@ -196,9 +196,11 @@
         <li style="padding: 0">
             <div class="swiper-container swiper-container-initialized swiper-container-horizontal">
                 <div class="swiper-wrapper">
-                    <a class="swiper-slide" href="/"><img src="http://sc.chinaz.com/Files/pic/indexpic/hdpic2.jpg" alt=""></a>
-                    <a class="swiper-slide" href="/"><img src="http://sc.chinaz.com/Files/pic/indexpic/hdpic1.jpg" alt=""></a>
-                    <a class="swiper-slide" href="/"><img src="http://sc.chinaz.com/Files/pic/indexpic/hdpic3.jpg" alt=""></a>
+                    {% for p in poster %}
+                    <a class="swiper-slide" href="{{ p.link }}" title="{{ p.title }}" target="_blank">
+                        <img src="{{ p.pic }}" alt="{{ p.title }}">
+                    </a>
+                    {% endfor %}
                 </div>
                 <!-- 如果需要分页器 -->
                 <div class="swiper-pagination"></div>

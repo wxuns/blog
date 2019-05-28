@@ -54,12 +54,13 @@
                         <div class="layui-upload">
                             <div class="layui-upload-list">
                                 <div class="layui-carousel" id="test1">
-                                    <div carousel-item>
-                                        <div>条目1</div>
-                                        <div>条目2</div>
-                                        <div>条目3</div>
-                                        <div>条目4</div>
-                                        <div>条目5</div>
+                                    <div carousel-item id="item">
+                                        {% for p in poster %}
+                                        <div>
+                                            <img src="{{ p.pic }}" alt="">{{ p.title }}
+                                            <button>修改</button>
+                                        </div>
+                                        {% endfor %}
                                     </div>
                                 </div>
                             </div>
@@ -86,8 +87,9 @@
     carousel.render({
         elem: '#test1'
         ,width: '100%' //设置容器宽度
-        ,height:'150px'
-        ,arrow: 'hover' //始终显示箭头
+        ,height:'120px'
+        ,indicator:'none'
+        ,arrow: 'none' //始终显示箭头
         //,anim: 'updown' //切换动画方式
     });
     //触发文件上传按钮
@@ -110,6 +112,8 @@
             contentType: false,
             success : function (e)
             {
+                data = JSON.parse(e)
+                $('<div><img src="'+data.url+'" alt="">'+data.title+'</div>').appendTo('#item')
             },
             error:function(xhr){alert(xhr.responseText)}
         })
